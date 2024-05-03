@@ -31,9 +31,8 @@ public class MapManager : MonoBehaviour
         {
             for(int zSize = 0; zSize < _height; zSize++)
             {
-                int randomfloor = Random.Range(0, 2);
                 Vector3 spawnPosition = GameMap.GetWorldPosition(xSize, zSize);
-                GameObject objectPrefab = Instantiate(testefloors[randomfloor], spawnPosition, Quaternion.identity);
+                GameObject objectPrefab = Instantiate(testefloors[0], spawnPosition, Quaternion.identity);
                 objectPrefab.transform.SetParent(this.transform);
                 objectPrefab.name = "Hex: " + xSize + "." + zSize;
 

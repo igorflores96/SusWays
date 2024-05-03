@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7500978695489585690}
   m_Layer: 0
-  m_Name: RoadCrossing
+  m_Name: Challanges
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,7 +93,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -347936904605023872, guid: 952b4721185cb4e4db6b9978c011fc15, type: 3}
+  - {fileID: 2100000, guid: 3c32e70f69906cf48bbd5480a6e9b528, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
