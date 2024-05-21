@@ -10,8 +10,7 @@ public class MapManager : MonoBehaviour
     [SerializeField] private int _width;
     [SerializeField] private int _height; 
     [SerializeField] private float _cellSize; 
-
-    public GameObject[] testefloors;
+    [SerializeField] private GameObject[] testefloors;
     private Tile _lastTile;
 
     private void Start() 
@@ -53,7 +52,6 @@ public class MapManager : MonoBehaviour
         }
 
         Vector3 mousePosition = Mouse3D.GetMouseWorldPosition();
-        Debug.Log(mousePosition);
         
         _lastTile = GameMap.GetGridObject(mousePosition);
         
@@ -61,6 +59,5 @@ public class MapManager : MonoBehaviour
         {
             _lastTile.Show();
         }
-
     }   
 }
