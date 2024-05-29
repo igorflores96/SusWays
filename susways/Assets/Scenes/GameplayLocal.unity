@@ -2643,11 +2643,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e22e0d27f6ab9d74ea7bc3e242843b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _mapData: {fileID: 11400000, guid: e901f26cb91078e479fab498e96d9413, type: 2}
   _width: 24
   _height: 17
   _cellSize: 2
   testefloors:
-  - {fileID: 1989942389870224326, guid: 1e3b253139d730d4b9f8a50582a16fd6, type: 3}
+  - {fileID: -5677083028364583441, guid: 1e3b253139d730d4b9f8a50582a16fd6, type: 3}
 --- !u!4 &547357417
 Transform:
   m_ObjectHideFlags: 0
@@ -9688,6 +9689,9 @@ MonoBehaviour:
   playerColliderLayerMask:
     serializedVersion: 2
     m_Bits: 1048576
+  feedbackColliderLayerMask:
+    serializedVersion: 2
+    m_Bits: 33554432
 --- !u!4 &1948152782
 Transform:
   m_ObjectHideFlags: 0
