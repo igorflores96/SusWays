@@ -20,8 +20,7 @@ public class MapData : ScriptableObject
                 TilePositions.Add(new Vector2Int(xSize, zSize));
             }
         }
-        Debug.Log(TilePositions.Count);
-        Debug.Log(WalkableStatus.Count);
+
         if(TilePositions.Count == WalkableStatus.Count)
         {
             for(int i = 0; i < TilePositions.Count; i++)
@@ -32,10 +31,10 @@ public class MapData : ScriptableObject
                 }
             }
 
-            foreach(var key in TileMap)
-            {
-                Debug.Log(key.Key + ": " + key.Value);
-            }
+            // foreach(var key in TileMap) //Debug para verificar os valores do dicionario
+            // {
+            //     Debug.Log(key.Key + ": " + key.Value);
+            // }
         }
         else
         {
