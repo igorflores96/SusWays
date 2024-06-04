@@ -7,5 +7,5 @@ public class PlayerInfo : ScriptableObject
     public GameObject VisualPrefab;
     public CardMission CurrentMission;
     [NonSerialized] public Vector2Int CurrentPosition;
-    [NonSerialized] public int CurrentDiceNumber;
+    [NonSerialized] public int CurrentDiceNumber = 0;
 }
