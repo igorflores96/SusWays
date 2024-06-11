@@ -6,6 +6,7 @@ public class PlayerFourState : PlayerBaseState
 
     public override void EnterState(GameStateManager playerContext)
     {
-        playerInfo.CurrentDiceNumber = Dice.RollSixDice();
+        base.playerInfo.CurrentDiceNumber = Dice.RollSixDice();
+        Debug.Log("State Quatro sorteou o dado no valor: " + base.playerInfo.CurrentDiceNumber);
     }
 }

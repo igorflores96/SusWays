@@ -14,6 +14,7 @@ public class GameStateManager : MonoBehaviour
         _matchPlayers = _matchData.MatchPlayerInfos;  
         _currentState = GenerateMatchPlayers(_matchData.MatchPlayerQuantity);
         
+        Debug.Log("Game state manager está com o current state como: " + _currentState.GetType().Name);
         _currentState.EnterState(this);
     }
     public void SwitchState(PlayerBaseState state)
