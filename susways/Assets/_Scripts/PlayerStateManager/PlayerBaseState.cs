@@ -1,4 +1,11 @@
 public abstract class PlayerBaseState
 {
-    public abstract void EnterState(PlayerStateManager playerContext, PlayerInfo playerInfo);
+    protected PlayerInfo playerInfo;
+
+    public PlayerBaseState(PlayerInfo playerinfo)
+    {
+        playerInfo = playerinfo;
+    }
+
+    public abstract void EnterState(GameStateManager playerContext);
 }

@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class PlayerOneState : PlayerBaseState
 {
-    public override void EnterState(PlayerStateManager playerContext, PlayerInfo playerInfo)
+    public PlayerOneState(PlayerInfo playerInfo) : base(playerInfo) {}
+    public override void EnterState(GameStateManager playerContext)
     {
-        playerInfo.CurrentDiceNumber = Dice.RollSixDice();
+        base.playerInfo.CurrentDiceNumber = Dice.RollSixDice();
     }
 }
