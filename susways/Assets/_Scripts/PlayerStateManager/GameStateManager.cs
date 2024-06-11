@@ -23,9 +23,11 @@ public class GameStateManager : MonoBehaviour
         _currentState.EnterState(this);
     }
 
+    #region PlayerManagement
+
     private PlayerBaseState GenerateMatchPlayers(int playersQuantity)
     {
-        _matchStatePlayers.Clear();
+        _matchStatePlayers.Clear(); //we instantiate to use players in other places
 
         if(playersQuantity > 1)
         {            
@@ -35,7 +37,8 @@ public class GameStateManager : MonoBehaviour
 
                 if(newPlayerState != null)
                 {
-                    _matchStatePlayers.Add(newPlayerState); 
+                    _matchStatePlayers.Add(newPlayerState);
+                    EventManager.RequestPlayerSpawn(newPlayerState);
                     Debug.Log("Criou o player state: " + newPlayerState.GetType().Name);
                 }
             }
@@ -52,20 +55,21 @@ public class GameStateManager : MonoBehaviour
         switch (index)
         {
             case 0:
-                PlayerOneState player1 = new PlayerOneState(_matchPlayers[index]);
+                PlayerOneState player1 = new PlayerOneState(_matchPlayers[index], _matchData.MatchHouses[index]);
                 return player1;
             case 1:
-                PlayerTwoState player2 = new PlayerTwoState(_matchPlayers[index]);
+                PlayerTwoState player2 = new PlayerTwoState(_matchPlayers[index], _matchData.MatchHouses[index]);
                 return player2;
             case 2:
-                PlayerThreeState player3 = new PlayerThreeState(_matchPlayers[index]);
+                PlayerThreeState player3 = new PlayerThreeState(_matchPlayers[index], _matchData.MatchHouses[index]);
                 return player3;
             case 3:
-                PlayerFourState player4 = new PlayerFourState(_matchPlayers[index]);
+                PlayerFourState player4 = new PlayerFourState(_matchPlayers[index], _matchData.MatchHouses[index]);
                 return player4;
             default:
                 return null;
         }
     }
 
+    #endregion PlayerManagement
 }

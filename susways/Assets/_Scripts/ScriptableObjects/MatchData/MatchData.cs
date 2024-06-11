@@ -6,6 +6,7 @@ public class MatchData : ScriptableObject
 {
     public int MatchPlayerQuantity;
     public List<PlayerInfo> MatchPlayerInfos = new List<PlayerInfo>();
+    public List<Vector2Int> MatchHouses = new List<Vector2Int>();
 
     public void AddPlayerOnMatch(PlayerInfo playerInfo)
     {

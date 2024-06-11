@@ -8260,10 +8260,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09a9517846e0a1f4ba984ff681e50db7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerOne: {fileID: 11400000, guid: 5570e74af2bb7eb4792ff0b40420cba0, type: 2}
-  _playerTwo: {fileID: 11400000, guid: d5c6fad3710d03b44b151358b1d37e4e, type: 2}
-  _playerThree: {fileID: 11400000, guid: 19e6b8c5b5230df45a132ad3a559acd9, type: 2}
-  _playerFour: {fileID: 11400000, guid: 57eb1305427d37c4780483b2116fbc5b, type: 2}
   _matchData: {fileID: 11400000, guid: e11a462992960084c8a0dc94baa03de2, type: 2}
 --- !u!4 &1658735814
 Transform:

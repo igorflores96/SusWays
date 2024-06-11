@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 209735242528234905}
   - component: {fileID: 3618080804654557721}
-  - component: {fileID: 4697891943251653694}
   m_Layer: 20
   m_Name: PlayerThree
   m_TagString: Untagged
@@ -55,18 +54,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.2, y: 2, z: 1.2}
   m_Center: {x: 1, y: 1, z: 1}
---- !u!114 &4697891943251653694
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6965447388828470198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 449286d1b1d10b440ab63257dca0777a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8363614589930316625
 GameObject:
   m_ObjectHideFlags: 0

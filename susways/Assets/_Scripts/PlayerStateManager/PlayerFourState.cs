@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class PlayerFourState : PlayerBaseState
 {
-    public PlayerFourState(PlayerInfo playerInfo) : base(playerInfo) {}
+    public PlayerFourState(PlayerInfo playerInfo, Vector2Int housePosition) : base(playerInfo, housePosition) {}
 
     public override void EnterState(GameStateManager playerContext)
     {
-        base.playerInfo.CurrentDiceNumber = Dice.RollSixDice();
-        Debug.Log("State Quatro sorteou o dado no valor: " + base.playerInfo.CurrentDiceNumber);
+        CurrentDiceNumber = Dice.RollSixDice();
+        Debug.Log("State Quatro sorteou o dado no valor: " + CurrentDiceNumber);
     }
 }

@@ -22,6 +22,15 @@ public class MapManager : MonoBehaviour
         GenerateMap();
     }
 
+    private void OnEnable() {
+        EventManager.OnPlayerSpawnRequested += SpawnPlayer;
+    }
+
+    private void OnDisable() {
+        EventManager.OnPlayerSpawnRequested -= SpawnPlayer;
+        
+    }
+
     private void Update() {
         UpdateTileHoverFeedBack();
     }
@@ -72,5 +81,13 @@ public class MapManager : MonoBehaviour
         {
             _lastFeedback.ShowFeedback();
         }
-    }   
+    }
+
+    private void SpawnPlayer(PlayerBaseState player)
+    {
+        Vector3 spawnPosition = GameMap.GetWorldPosition(player.GetPosition().x, player.GetPosition().y);
+        GameObject playerPrefab = Instantiate(player.GetVisualPrefab(), spawnPosition, Quaternion.identity);
+        playerPrefab.transform.SetParent(this.transform);
+        playerPrefab.name = player.GetType().Name;
+    }
 }

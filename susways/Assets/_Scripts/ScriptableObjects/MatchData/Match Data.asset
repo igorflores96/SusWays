@@ -18,3 +18,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d5c6fad3710d03b44b151358b1d37e4e, type: 2}
   - {fileID: 11400000, guid: 19e6b8c5b5230df45a132ad3a559acd9, type: 2}
   - {fileID: 11400000, guid: 57eb1305427d37c4780483b2116fbc5b, type: 2}
+  MatchHouses:
+  - {x: 2, y: 0}
+  - {x: 21, y: 0}
+  - {x: 2, y: 16}
+  - {x: 21, y: 16}
