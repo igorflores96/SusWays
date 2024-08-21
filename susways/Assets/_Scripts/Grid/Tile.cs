@@ -8,6 +8,9 @@ public class Tile
     private int _z;
 
     public bool IsWalkable => _isWalkable;
+    public int X => _x;
+    public int Z => _z;
+
 
     public Tile(int x, int z)
     {
@@ -22,6 +25,22 @@ public class Tile
 
     public void Hide()
     {
+        SelectedTransform.HideFeedback();
+    }
+
+    public void ShowWalkFeedback()
+    {
+        SelectedTransform.ShowWalkFeedback();
+    }
+    
+    public void HideWalkFeedback()
+    {
+        SelectedTransform.HideWalkFeedback();
+    }
+
+    public void HideAllFeedbacks()
+    {
+        SelectedTransform.HideWalkFeedback();
         SelectedTransform.HideFeedback();
     }
 

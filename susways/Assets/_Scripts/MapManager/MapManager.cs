@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class MapManager : MonoBehaviour
@@ -10,28 +11,34 @@ public class MapManager : MonoBehaviour
     [SerializeField] private int _height; 
     [SerializeField] private float _cellSize; 
     [SerializeField] private TileFeedback[] testefloors;
+    
+    private List<Vector3Int> _listToMove = new List<Vector3Int>();
     private Tile _lastTile;
-    private TileFeedback _lastFeedback;
-
+   
     private void Awake() 
     {
         GameMap = new CustomGrid<Tile>(_width, _height, _cellSize, Vector3.zero, (CustomGrid<Tile> g, int x, int z) => new Tile(x, z));
         _lastTile = null;
-        _lastFeedback = null;
         _mapData.InitDicionary(_width, _height);
         GenerateMap();
     }
 
-    private void OnEnable() {
+    private void OnEnable() 
+    {
         EventManager.OnPlayerSpawnRequested += SpawnPlayer;
+        EventManager.OnPlayerSelected += SetTilesToMoveFeedback;     
+
     }
 
-    private void OnDisable() {
+    private void OnDisable() 
+    {
         EventManager.OnPlayerSpawnRequested -= SpawnPlayer;
-        
+        EventManager.OnPlayerSelected -= SetTilesToMoveFeedback;
+
     }
 
-    private void Update() {
+    private void Update() 
+    {
         UpdateTileHoverFeedBack();
     }
 
@@ -50,7 +57,8 @@ public class MapManager : MonoBehaviour
                 Tile tempTile = GameMap.GetGridObject(xSize, zSize);
                 tempTile.SetWalkableStatus(_mapData.GetWalkableStatus(new Vector2Int(xSize, zSize)));
                 tempTile.SetTrasnformTileFeedback(feedback);
-                tempTile.Hide();
+                tempTile.HideAllFeedbacks();
+                
             }
         }
     }
@@ -63,31 +71,54 @@ public class MapManager : MonoBehaviour
             _lastTile.Hide();
         }
 
-        if(_lastFeedback != null)
-        {
-            _lastFeedback.HideFeedback();
-        }
-
         Vector3 mousePosition = Mouse3D.GetMouseWorldPosition();
         _lastTile = GameMap.GetGridObject(mousePosition);
-        _lastFeedback = Mouse3D.GetFeedback();
         
         if(_lastTile != null && _lastTile.IsWalkable)
         {
             _lastTile.Show();
         }
-
-        if(_lastFeedback != null)
-        {
-            _lastFeedback.ShowFeedback();
-        }
     }
+
+    private void SetTilesToMoveFeedback(PlayerBaseState player)
+    {
+        Vector2Int playerPosition = player.GetPosition();
+        int playerDiceNumber = player.GetDiceNumber();
+        _listToMove = GameMap.GetPlayerMoveOptions(playerPosition.x, playerPosition.y, playerDiceNumber, GameMap);
+
+        foreach(Vector3Int tilePosition in _listToMove)
+        {
+            Debug.Log($"x: {tilePosition.x}, z: {tilePosition.z}");
+            Tile tile = GameMap.GetGridObject(tilePosition.x, tilePosition.z);
+            
+            if(tile.IsWalkable)
+                tile.ShowWalkFeedback();
+        }
+
+        EventManager.ListReady(_listToMove);
+    }
+
+
 
     private void SpawnPlayer(PlayerBaseState player)
     {
-        Vector3 spawnPosition = GameMap.GetWorldPosition(player.GetPosition().x, player.GetPosition().y);
+        Vector2Int playerPosition = player.GetPosition();
+        Vector3 spawnPosition = GameMap.GetWorldPosition(playerPosition.x, playerPosition.y);
         GameObject playerPrefab = Instantiate(player.GetVisualPrefab(), spawnPosition, Quaternion.identity);
         playerPrefab.transform.SetParent(this.transform);
         playerPrefab.name = player.GetType().Name;
+        player.SetInstantiatePrefab(playerPrefab);
+    }
+
+    private void UpdateFeedbacks() //we gonna use this on the end of turn
+    {
+        
+        foreach(Vector3Int tilePosition in _listToMove)
+        {
+            Tile tile = GameMap.GetGridObject(tilePosition.x, tilePosition.z);
+            tile.HideWalkFeedback();
+        }
+
+        _listToMove.Clear();
     }
 }

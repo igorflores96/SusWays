@@ -1,16 +1,39 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameStateManager : MonoBehaviour
 {
     [SerializeField] private MatchData _matchData;
+    private PlayerControl _playerControl;
     private PlayerBaseState _currentState;
     private List<PlayerInfo> _matchPlayers;
     private List<PlayerBaseState> _matchStatePlayers = new List<PlayerBaseState>();
+    private GameObject _currentPlayerGrabed;
+    private bool _isPlayerGrabed; //use this until we need to create a state machine
+    private List<Vector3Int> _listToMove = new List<Vector3Int>();
+
+
+
+    private void OnEnable() 
+    {
+        _playerControl = new PlayerControl();
+        _isPlayerGrabed = false;
+
+        _playerControl.PlayerGraber.ClickPlayer.performed += TryGrabPlayer;
+        EventManager.OnListReady += UpdateList;
+        
+        EnablePlayerInput();
+    }
+
+    private void OnDisable() 
+    {
+        EventManager.OnListReady -= UpdateList;    
+    }
+
 
     private void Start()
     {
-        //We are going to need to modify this when players have the choice of how many of them are going to play
         _matchPlayers = _matchData.MatchPlayerInfos;  
         _currentState = GenerateMatchPlayers(_matchData.MatchPlayerQuantity);
         
@@ -21,6 +44,16 @@ public class GameStateManager : MonoBehaviour
     {
         _currentState = state;
         _currentState.EnterState(this);
+    }
+
+    private void UpdateList(List<Vector3Int> list)
+    {
+        _listToMove = list;
+
+        foreach(var position in _listToMove)
+        {
+            Debug.Log(position.x + " " + position.z);
+        }
     }
 
     #region PlayerManagement
@@ -72,4 +105,69 @@ public class GameStateManager : MonoBehaviour
     }
 
     #endregion PlayerManagement
+
+    #region Player and Inputs
+
+    private void TryGrabPlayer(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            if(!_isPlayerGrabed)
+            {
+                _currentPlayerGrabed = Mouse3D.GetPlayer();
+                
+                if(_currentPlayerGrabed == null)
+                    return;
+                
+                if(_currentPlayerGrabed == _currentState.GetInstantiatePrefab())
+                {
+                    Debug.Log("Player do state: " + _currentState + " selecionado.");
+                    _currentPlayerGrabed.transform.position = new Vector3(_currentPlayerGrabed.transform.position.x, 0.5f, _currentPlayerGrabed.transform.position.z);
+                    EventManager.PlayerSelected(_currentState);
+                    _isPlayerGrabed = true;
+                }
+            }
+            else
+                TryMove();
+
+        }
+    }
+
+    private void TryMove()
+    {
+        Vector3 position = Mouse3D.GetMouseWorldPosition();
+
+        int x = Mathf.FloorToInt(position.x / 2); //2 is cell size
+        int z = Mathf.FloorToInt(position.z / 2);
+        Vector3 newPosition = new Vector3(x * 2, 0f, z * 2);
+
+        
+        if(_listToMove.Contains(new Vector3Int(x, 0, z)))
+        {
+            _currentPlayerGrabed.transform.position = newPosition;
+            _currentPlayerGrabed = null;
+            _isPlayerGrabed = false;
+            //EndTurn();
+        }
+
+    }
+
+    private void EndTurn()
+    {
+        Transform transform = _currentState.GetInstantiatePrefab().transform;
+        _currentState.UpdatePosition((int)transform.position.x / 2, (int)transform.position.z / 2);
+    }
+
+    public void EnablePlayerInput()
+    {
+        _playerControl.Enable();
+    }
+
+    public void DisablePlayerInput()
+    {
+        _playerControl.Disable();
+    }
+
+    #endregion Player and Inputs
+
 }

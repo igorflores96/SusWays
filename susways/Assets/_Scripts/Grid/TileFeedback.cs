@@ -1,10 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TileFeedback : MonoBehaviour
 {
     [SerializeField] Transform _feedbackTransform;
+    [SerializeField] Transform _walkFeedback;
+
 
     public void ShowFeedback()
     {
@@ -14,5 +14,15 @@ public class TileFeedback : MonoBehaviour
     public void HideFeedback()
     {
         _feedbackTransform.gameObject.SetActive(false);
+    }
+
+    public void ShowWalkFeedback()
+    {
+        _walkFeedback.gameObject.SetActive(true);
+    }
+
+    public void HideWalkFeedback()
+    {
+        _walkFeedback.gameObject.SetActive(false);
     }
 }
