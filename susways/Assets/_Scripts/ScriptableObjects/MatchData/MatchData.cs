@@ -12,7 +12,6 @@ public class MatchData : ScriptableObject
     {
         if(!MatchPlayerInfos.Contains(playerInfo))
         {
-            MatchPlayerQuantity++;
             MatchPlayerInfos.Add(playerInfo);
         }
     }
@@ -21,9 +20,28 @@ public class MatchData : ScriptableObject
     {
         if(MatchPlayerInfos.Contains(playerInfo))
         {
-            MatchPlayerQuantity--;
             MatchPlayerInfos.Remove(playerInfo);
         }
+    }
+
+    public void PrepareNewGame()
+    {
+        MatchPlayerInfos.Clear();
+        MatchPlayerQuantity = 2;
+    }
+
+    public void UpdateMatchPlayerQuantity(bool playerShouldBeAdded)
+    {
+        if(playerShouldBeAdded)
+            MatchPlayerQuantity++;
+        else
+            MatchPlayerQuantity--;
+
+        if(MatchPlayerQuantity < 2)
+            MatchPlayerQuantity = 2;
+        else if(MatchPlayerQuantity > 4)
+            MatchPlayerQuantity = 4;
+
     }
 
 }

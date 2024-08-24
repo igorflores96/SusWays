@@ -26,7 +26,8 @@ public class MapManager : MonoBehaviour
     private void OnEnable() 
     {
         EventManager.OnPlayerSpawnRequested += SpawnPlayer;
-        EventManager.OnPlayerSelected += SetTilesToMoveFeedback;     
+        EventManager.OnPlayerSelected += SetTilesToMoveFeedback;
+        EventManager.OnEndTurn += UpdateFeedbacks;
 
     }
 
@@ -34,6 +35,7 @@ public class MapManager : MonoBehaviour
     {
         EventManager.OnPlayerSpawnRequested -= SpawnPlayer;
         EventManager.OnPlayerSelected -= SetTilesToMoveFeedback;
+        EventManager.OnEndTurn -= UpdateFeedbacks;
 
     }
 
@@ -88,7 +90,6 @@ public class MapManager : MonoBehaviour
 
         foreach(Vector3Int tilePosition in _listToMove)
         {
-            Debug.Log($"x: {tilePosition.x}, z: {tilePosition.z}");
             Tile tile = GameMap.GetGridObject(tilePosition.x, tilePosition.z);
             
             if(tile.IsWalkable)
@@ -112,7 +113,6 @@ public class MapManager : MonoBehaviour
 
     private void UpdateFeedbacks() //we gonna use this on the end of turn
     {
-        
         foreach(Vector3Int tilePosition in _listToMove)
         {
             Tile tile = GameMap.GetGridObject(tilePosition.x, tilePosition.z);

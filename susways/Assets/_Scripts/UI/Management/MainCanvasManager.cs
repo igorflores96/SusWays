@@ -9,12 +9,14 @@ public class MainCanvasManager : MonoBehaviour
     [SerializeField] private Button _backMenuButton;
     [SerializeField] private Button _quitButton;
 
+
     [Header("Canvas")]
     [SerializeField] private GameObject _playerSelectionCanvas;
     [SerializeField] private GameObject _buttonsCanvas;
 
     [Header("Managers")]
     [SerializeField] private PlayerSelection _playerSelection;
+
 
     private void OnEnable() 
     {
@@ -23,6 +25,7 @@ public class MainCanvasManager : MonoBehaviour
         _backMenuButton.onClick.AddListener(BackToMenu);
         _quitButton.onClick.AddListener(QuitGame);
 
+        BackToMenu();
     }
 
     private void OnDisable()
@@ -43,6 +46,7 @@ public class MainCanvasManager : MonoBehaviour
     {
         _buttonsCanvas.SetActive(false);
         _playerSelectionCanvas.SetActive(true);
+        _playerSelection.InitLocalGame();
     }
 
     private void QuitGame()

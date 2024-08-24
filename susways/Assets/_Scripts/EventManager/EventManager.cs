@@ -10,6 +10,9 @@ public static class EventManager
 
     public static event Action<List<Vector3Int>> OnListReady;
 
+    public static event Action OnEndTurn;
+
+
 
     public static void RequestPlayerSpawn(PlayerBaseState playerState) //Disparado por GameStateManager, ouvido por MapManager
     {
@@ -44,6 +47,18 @@ public static class EventManager
         else
         {
             Debug.LogWarning("No listeners for OnPlayerTryMove event.");
+        }
+    }
+
+    public static void EndTurn() //Fired by GameplayUIManager, listened for MapManager to clen the selection tiles and for GameStateManager to update de turn of the game.
+    {
+        if (OnEndTurn != null)
+        {
+            OnEndTurn();
+        }
+        else
+        {
+            Debug.LogWarning("No listeners for OnEndTurn event.");
         }
     }
 

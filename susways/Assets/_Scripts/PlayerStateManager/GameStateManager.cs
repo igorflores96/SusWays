@@ -22,13 +22,15 @@ public class GameStateManager : MonoBehaviour
 
         _playerControl.PlayerGraber.ClickPlayer.performed += TryGrabPlayer;
         EventManager.OnListReady += UpdateList;
+        EventManager.OnEndTurn += EndTurn;
         
         EnablePlayerInput();
     }
 
     private void OnDisable() 
     {
-        EventManager.OnListReady -= UpdateList;    
+        EventManager.OnListReady -= UpdateList;   
+        EventManager.OnEndTurn -= EndTurn;
     }
 
 
@@ -49,11 +51,6 @@ public class GameStateManager : MonoBehaviour
     private void UpdateList(List<Vector3Int> list)
     {
         _listToMove = list;
-
-        foreach(var position in _listToMove)
-        {
-            Debug.Log(position.x + " " + position.z);
-        }
     }
 
     #region PlayerManagement
@@ -78,7 +75,7 @@ public class GameStateManager : MonoBehaviour
 
         }
         
-        int firstPlayerToPlay = Random.Range(0, _matchData.MatchPlayerQuantity);
+        int firstPlayerToPlay = Random.Range(0, playersQuantity);
 
         return _matchStatePlayers[firstPlayerToPlay];
     }
@@ -147,7 +144,6 @@ public class GameStateManager : MonoBehaviour
             _currentPlayerGrabed.transform.position = newPosition;
             _currentPlayerGrabed = null;
             _isPlayerGrabed = false;
-            //EndTurn();
         }
 
     }
@@ -156,6 +152,10 @@ public class GameStateManager : MonoBehaviour
     {
         Transform transform = _currentState.GetInstantiatePrefab().transform;
         _currentState.UpdatePosition((int)transform.position.x / 2, (int)transform.position.z / 2);
+
+        int nextState = (_matchStatePlayers.IndexOf(_currentState) + 1) % _matchStatePlayers.Count;
+
+        SwitchState(_matchStatePlayers[nextState]);
     }
 
     public void EnablePlayerInput()

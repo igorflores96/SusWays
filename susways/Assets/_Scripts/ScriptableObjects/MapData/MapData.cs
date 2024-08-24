@@ -10,7 +10,7 @@ public class MapData : ScriptableObject
 
     public void InitDicionary(int width, int height)
     {
-        TilePositions.Clear();
+        TilePositions = new List<Vector2Int>();
         TileMap = new Dictionary<Vector2Int, bool>();
 
         for(int xSize = 0; xSize < width; xSize++)
