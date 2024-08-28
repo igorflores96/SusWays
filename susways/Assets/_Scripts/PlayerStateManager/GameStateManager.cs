@@ -4,7 +4,12 @@ using UnityEngine.InputSystem;
 
 public class GameStateManager : MonoBehaviour
 {
+    [Header("Match Infos")]
     [SerializeField] private MatchData _matchData;
+    [Header("Missions")]
+    [SerializeField] private List<CardMission> _missions;
+    
+
     private PlayerControl _playerControl;
     private PlayerBaseState _currentState;
     private List<PlayerInfo> _matchPlayers;
@@ -22,7 +27,8 @@ public class GameStateManager : MonoBehaviour
 
         _playerControl.PlayerGraber.ClickPlayer.performed += TryGrabPlayer;
         EventManager.OnListReady += UpdateList;
-        EventManager.OnEndTurn += EndTurn;
+        EventManager.OnEndTurn += PlayerPassedTurn;
+        EventManager.OnCofirmObjective += PlayerConfirmObjective;
         
         EnablePlayerInput();
     }
@@ -30,7 +36,9 @@ public class GameStateManager : MonoBehaviour
     private void OnDisable() 
     {
         EventManager.OnListReady -= UpdateList;   
-        EventManager.OnEndTurn -= EndTurn;
+        EventManager.OnEndTurn -= PlayerPassedTurn;
+        EventManager.OnCofirmObjective -= PlayerConfirmObjective;
+
     }
 
 
@@ -41,11 +49,13 @@ public class GameStateManager : MonoBehaviour
         
         Debug.Log("Game state manager está com o current state como: " + _currentState.GetType().Name);
         _currentState.EnterState(this);
+        EventManager.NewPlayerTurn(_currentState.GetMission());
     }
     public void SwitchState(PlayerBaseState state)
     {
         _currentState = state;
         _currentState.EnterState(this);
+        EventManager.NewPlayerTurn(_currentState.GetMission());
     }
 
     private void UpdateList(List<Vector3Int> list)
@@ -82,28 +92,76 @@ public class GameStateManager : MonoBehaviour
 
     private PlayerBaseState CreatePlayerState(int index)
     {
+        Mission mission = GetMission();
+        Debug.Log("Player: " + index + "esta com a missão: " + mission.Name);
         switch (index)
         {
             case 0:
-                PlayerOneState player1 = new PlayerOneState(_matchPlayers[index], _matchData.MatchHouses[index]);
+                PlayerOneState player1 = new PlayerOneState(_matchPlayers[index], _matchData.MatchHouses[index], mission);
                 return player1;
             case 1:
-                PlayerTwoState player2 = new PlayerTwoState(_matchPlayers[index], _matchData.MatchHouses[index]);
+                PlayerTwoState player2 = new PlayerTwoState(_matchPlayers[index], _matchData.MatchHouses[index], mission);
                 return player2;
             case 2:
-                PlayerThreeState player3 = new PlayerThreeState(_matchPlayers[index], _matchData.MatchHouses[index]);
+                PlayerThreeState player3 = new PlayerThreeState(_matchPlayers[index], _matchData.MatchHouses[index], mission);
                 return player3;
             case 3:
-                PlayerFourState player4 = new PlayerFourState(_matchPlayers[index], _matchData.MatchHouses[index]);
+                PlayerFourState player4 = new PlayerFourState(_matchPlayers[index], _matchData.MatchHouses[index], mission);
                 return player4;
             default:
                 return null;
         }
     }
 
+    private Mission GetMission()
+    {
+        CardMission card = _missions[Random.Range(0, _missions.Count)];
+        Mission mission = new Mission(card);
+        _missions.Remove(card);
+
+        return mission;
+    }
+
+    private void PlayerPassedTurn()
+    {
+        UpdatePlayerPosition();
+
+        if(PlayerAchievedObjective())
+        {
+            DisablePlayerInput();
+            EventManager.PlayerCompleteObjective(_currentState.GetMission());
+        }
+        else
+            PassToNextTun();
+    }
+
+    private void  PlayerConfirmObjective()
+    {
+        EnablePlayerInput();
+        PassToNextTun();
+    }
+
+    public void PassToNextTun()
+    {
+        int nextState = (_matchStatePlayers.IndexOf(_currentState) + 1) % _matchStatePlayers.Count;
+        SwitchState(_matchStatePlayers[nextState]);
+    }
+
+    private void UpdatePlayerPosition()
+    {
+        Transform transform = _currentState.GetInstantiatePrefab().transform;
+        Vector2 newPosition = new Vector2((int)transform.position.x / 2, (int)transform.position.z / 2);
+        _currentState.UpdatePosition((int)newPosition.x, (int)newPosition.y);
+    }
+
+    private bool PlayerAchievedObjective()
+    {
+        return _currentState.PlayerIsOnObjective();
+    }
+
     #endregion PlayerManagement
 
-    #region Player and Inputs
+    #region Player
 
     private void TryGrabPlayer(InputAction.CallbackContext context)
     {
@@ -148,15 +206,9 @@ public class GameStateManager : MonoBehaviour
 
     }
 
-    private void EndTurn()
-    {
-        Transform transform = _currentState.GetInstantiatePrefab().transform;
-        _currentState.UpdatePosition((int)transform.position.x / 2, (int)transform.position.z / 2);
+    #endregion Player
 
-        int nextState = (_matchStatePlayers.IndexOf(_currentState) + 1) % _matchStatePlayers.Count;
-
-        SwitchState(_matchStatePlayers[nextState]);
-    }
+    #region Inputs
 
     public void EnablePlayerInput()
     {
@@ -168,6 +220,6 @@ public class GameStateManager : MonoBehaviour
         _playerControl.Disable();
     }
 
-    #endregion Player and Inputs
+    #endregion Inputs
 
 }

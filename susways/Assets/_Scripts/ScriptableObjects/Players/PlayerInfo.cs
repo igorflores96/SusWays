@@ -5,5 +5,4 @@ using UnityEngine;
 public class PlayerInfo : ScriptableObject 
 {
     public GameObject VisualPrefab;
-    public CardMission CurrentMission;
 }

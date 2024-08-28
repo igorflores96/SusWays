@@ -5,12 +5,12 @@ using UnityEngine;
 public static class EventManager
 {
     public static event Action<PlayerBaseState> OnPlayerSpawnRequested;
-
     public static event Action<PlayerBaseState> OnPlayerSelected;
-
+    public static event Action<Mission> OnNewPlayerTurn;
+    public static event Action<Mission> OnPlayerCompleteObjective;
     public static event Action<List<Vector3Int>> OnListReady;
-
     public static event Action OnEndTurn;
+    public static event Action OnCofirmObjective;
 
 
 
@@ -38,6 +38,30 @@ public static class EventManager
         }
     }
 
+    public static void NewPlayerTurn(Mission playerMission) //Fired for GameStateManager, listened for GameplayUIManager to update UI infos. 
+    {
+        if (OnNewPlayerTurn != null)
+        {
+            OnNewPlayerTurn(playerMission);
+        }
+        else
+        {
+            Debug.LogWarning("No listeners for OnNewPlayerTurn event.");
+        }
+    }
+
+    public static void PlayerCompleteObjective(Mission playerMission) //Fired for GameStateManager, listened for GameplayUIManager to update UI infos. 
+    {
+        if (OnPlayerCompleteObjective != null)
+        {
+            OnPlayerCompleteObjective(playerMission);
+        }
+        else
+        {
+            Debug.LogWarning("No listeners for OnPlayerCompleteObjective event.");
+        }
+    }
+
     public static void ListReady(List<Vector3Int> list) //Fired for GameStateManager, listened for MapManager for try to move the player. 
     {
         if (OnListReady != null)
@@ -59,6 +83,18 @@ public static class EventManager
         else
         {
             Debug.LogWarning("No listeners for OnEndTurn event.");
+        }
+    }
+
+    public static void ConfirmObjective() //Fired by GameplayUIManager, listened for GameStateManager to update de turn of the game.
+    {
+        if (OnCofirmObjective != null)
+        {
+            OnCofirmObjective();
+        }
+        else
+        {
+            Debug.LogWarning("No listeners for OnCofirmObjective event.");
         }
     }
 

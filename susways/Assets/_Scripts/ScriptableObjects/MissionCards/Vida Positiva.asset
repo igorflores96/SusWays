@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb97ebaec5d3f714e9d78c4a6cc52440, type: 3}
+  m_Name: Vida Positiva
+  m_EditorClassIdentifier: 
+  Title: Vida Positiva
+  Text: "Voc\xEA est\xE1 lendo o livro \u201C5 anos comigo\u201D\u2026\n\r\n\rCAP.
+    1 - Tha\xEDs desconfia que tenha algo errado na sua sa\xFAde e vai a UNIDADE
+    DE S\xC1UDE (US) fazer o teste r\xE1pido.\n\r\n\rCAP. 2 - O teste para HIV da
+    positivo e ela \xE9 encaminhada para o CENTRO DE ATENDIMENTO SOROLOGIA para receber
+    informa\xE7\xF5es e atendimento especializado.\n\r\n\rCAP 3 - Tha\xEDs fica preocupada
+    com seu futuro e tem dificuldade de se abrir com a fam\xEDlia, ela vai at\xE9
+    o CENTRO DE ATEN\xC7\xC3O PSICOSSOCIAL (CAPS) para ser atendida por um psic\xF3logo.\n\r\n\rCAP
+    4 - Com tratamento Tha\xEDs NEGATIVA o v\xEDrus, ela continua com HIV, mas N\xC3O
+    transmite. Ela procura o CENTRO MATERNO INFANTIL e sua m\xE9dica diz, que nesse
+    caso, ela pode engravidar sem transmitir HIV para os filhos e companheiro, desde
+    que continue o tratamento."
+  Objectives:
+  - NormalIcon: {fileID: 21300000, guid: 5b9806d6d6fbdc1488a4bc6b7a4a71bb, type: 3}
+    CompletedIcon: {fileID: 21300000, guid: 232f45f35d645d349a6a2d6757df903e, type: 3}
+    Name: Unidade de Saude
+    IsComplete: 0
+    GoalPositions:
+    - {x: 11, y: 4}
+  - NormalIcon: {fileID: 21300000, guid: 0dfb1e42504824d479ea5f60a74078ce, type: 3}
+    CompletedIcon: {fileID: 21300000, guid: 50f8ce52b9781c34e915df39c4ebb120, type: 3}
+    Name: Centro de Atendimento a Sorologia
+    IsComplete: 0
+    GoalPositions:
+    - {x: 5, y: 7}
+  - NormalIcon: {fileID: 21300000, guid: 0988b09b77aa95a4b9cd03b611dea6d6, type: 3}
+    CompletedIcon: {fileID: 21300000, guid: 16e505f8b25fe6a47886da1725efe0c8, type: 3}
+    Name: CAPS
+    IsComplete: 0
+    GoalPositions:
+    - {x: 21, y: 12}
+  - NormalIcon: {fileID: 21300000, guid: 19ac172653d36e040ab8df49b9c2e782, type: 3}
+    CompletedIcon: {fileID: 21300000, guid: 0653e28a2c3851047a07ba8fafbd4ce2, type: 3}
+    Name: Centro Materno Infantil
+    IsComplete: 0
+    GoalPositions:
+    - {x: 15, y: 14}

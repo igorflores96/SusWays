@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb97ebaec5d3f714e9d78c4a6cc52440, type: 3}
+  m_Name: Mudancas de habitos
+  m_EditorClassIdentifier: 
+  Title: "Mudan\xE7as de H\xE1bitos"
+  Text: "Seu av\xF4 comentou que queria parar de fumar, por\xE9m n\xE3o sabe como.
+    E agora?! Voc\xEA sabe que parar de fumar \xE9 uma quest\xE3o de sa\xFAde ent\xE3o
+    leve ele at\xE9 a UNIDADE DE SA\xDADE (US) do bairro (ESF\xAE ou UBS\xAE) para
+    pedir informa\xE7\xF5es. L\xE1, voc\xEAs descobrem que o CENTRO DE ATEN\xC7\xC3O
+    PSICOSSOCIAL \xC1LCOOL E DROGAS (CAPS AD) realiza grupos para tabagistas. Seu
+    av\xF4 come\xE7a a ir ao grupo e recebe medica\xE7\xF5es para seguir o tratamento.
+    V\xE1 com ele at\xE9 a FARM\xC1CIA MUNICIPAL para pegar os medicamentos. O exerc\xEDcio
+    f\xEDsico tamb\xE9m faz parte do tratamento para tabagismo, convide seu av\xF4
+    para caminhar na PRA\xC7A."
+  Objectives:
+  - NormalIcon: {fileID: 21300000, guid: 5b9806d6d6fbdc1488a4bc6b7a4a71bb, type: 3}
+    CompletedIcon: {fileID: 21300000, guid: 232f45f35d645d349a6a2d6757df903e, type: 3}
+    Name: Unidade de Saude
+    IsComplete: 0
+    GoalPositions:
+    - {x: 11, y: 4}
+  - NormalIcon: {fileID: 21300000, guid: b48482d189abd0d4e8cfe4877280469e, type: 3}
+    CompletedIcon: {fileID: 21300000, guid: 618fae3b3d91d78448676e03ef2a94fa, type: 3}
+    Name: CAPSad
+    IsComplete: 0
+    GoalPositions:
+    - {x: 8, y: 2}
+  - NormalIcon: {fileID: 21300000, guid: 95ec12002ccc7a84d898dc56c228246d, type: 3}
+    CompletedIcon: {fileID: 21300000, guid: 4cfdd14b04c39c34eb1843f28bcf8f0f, type: 3}
+    Name: Farmacia Municipal
+    IsComplete: 0
+    GoalPositions:
+    - {x: 11, y: 13}
+  - NormalIcon: {fileID: 21300000, guid: 548f4c8253bfd0241b0381ac8b08c542, type: 3}
+    CompletedIcon: {fileID: 21300000, guid: 836d304bd38247a44b2d36bf4241abce, type: 3}
+    Name: Praca
+    IsComplete: 0
+    GoalPositions:
+    - {x: 11, y: 6}
+    - {x: 12, y: 6}

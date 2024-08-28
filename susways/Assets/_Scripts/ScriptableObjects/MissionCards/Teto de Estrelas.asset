@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb97ebaec5d3f714e9d78c4a6cc52440, type: 3}
+  m_Name: Teto de Estrelas
+  m_EditorClassIdentifier: 
+  Title: Teto de Estrelas
+  Text: "Voc\xEA \xE9 diretor de um filme. Ele conta a hist\xF3ria de JOHN um morador
+    de rua alcoolista e portador do v\xEDrus HIV. E se esse filme fosse no Brasil?
+    Agora voc\xEA deve dirigir a cenas:\n \r\nCENA 1 - O CONSULT\xD3RIO DE RUA encontra 
+    o JOHN em uma pra\xE7a e presta atendimento a ele. \n\r\nCENA 2 - JOHN vai ao
+    CENTRO DE REFER\xCANCIA DE ASSIST\xCANCIA SOCIAL (CRAS) refazer os documentos
+    que tinha perdido e ser direcionado para passar as noites em um abrigo p\xFAblico.\n\r\nCENA
+    3 - JOHN \xE9 encaminhado ao CENTRO DE ATEN\xC7\xC3O PSICOSSOCIAL \xC1LCOOL E
+    DROGAS (CAPSad) para participar de grupo de apoio e receber atendimento e medicamentos
+    para o alcoolismo. \n\r\nCENA 4 - JOHN deve ir ao CENTRO DE ATENDIMENTO \xC0
+    SOROLOGIA para receber um atendimento especializado, ter informa\xE7\xF5es sobre
+    o tratamento e medicamentos para  o HIV."
+  Objectives:
+  - NormalIcon: {fileID: 21300000, guid: 1f8e8958ee753d247adc5a1d847dd301, type: 3}
+    CompletedIcon: {fileID: 21300000, guid: 32e2df3bbc26c0c4aa1aec764e52051f, type: 3}
+    Name: Consultorio de Rua
+    IsComplete: 0
+    GoalPositions:
+    - {x: 17, y: 4}
+  - NormalIcon: {fileID: 21300000, guid: 868271c8e3d24b74ab9791f8ed311465, type: 3}
+    CompletedIcon: {fileID: 21300000, guid: 58e87b79b3fe89e4c9d7b85915aa05c6, type: 3}
+    Name: CRAS
+    IsComplete: 0
+    GoalPositions:
+    - {x: 3, y: 2}
+  - NormalIcon: {fileID: 21300000, guid: b48482d189abd0d4e8cfe4877280469e, type: 3}
+    CompletedIcon: {fileID: 21300000, guid: 618fae3b3d91d78448676e03ef2a94fa, type: 3}
+    Name: CAPSad
+    IsComplete: 0
+    GoalPositions:
+    - {x: 8, y: 2}
+  - NormalIcon: {fileID: 21300000, guid: 0dfb1e42504824d479ea5f60a74078ce, type: 3}
+    CompletedIcon: {fileID: 21300000, guid: 50f8ce52b9781c34e915df39c4ebb120, type: 3}
+    Name: Centro de Atendimento a Sorologia
+    IsComplete: 0
+    GoalPositions:
+    - {x: 5, y: 7}

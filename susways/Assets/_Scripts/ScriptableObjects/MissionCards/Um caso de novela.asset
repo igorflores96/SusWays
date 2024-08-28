@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb97ebaec5d3f714e9d78c4a6cc52440, type: 3}
+  m_Name: Um caso de novela
+  m_EditorClassIdentifier: 
+  Title: Um Caso de Novela
+  Text: "Na novela uma adolescente foi enganada pela internet por um homem mais velho.
+    Ela conta aos seus pais que foi abusada. Se voc\xEA fosse o autor da novela?
+    Voc\xEA saberia o que fazer a seguir? Voc\xEA deve escrever a continua\xE7\xE3o
+    dessa hist\xF3ria:\r\nOs pais devem denunciar o caso na DELEGACIA, depois a adolescente
+    deve ser levada ao HOSPITAL para ser examinada e ver se est\xE1 tudo bem. A fam\xEDlia
+    vai ao CENTRO DE ATENDIMENTO \xC0 SOROLOGIA se informar sobre as doen\xE7as que
+    podem ser transmitidas sexualmente, saber dos tipos de tratamento e receber um
+    coquetel de rem\xE9dios para preven\xE7\xE3o. Como a adolescente teve seu direito
+    sexual violado, ela foi encaminhada ao CENTRO DE REFER\xCANCIA ESPECIALIZADO
+    DE ASSIST\xCANCIA SOCIAL (CREAS) para ter atendimento psicol\xF3gico."
+  Objectives:
+  - NormalIcon: {fileID: 21300000, guid: 1fb176f13ed1c2f4f93d287cf6f0aaa2, type: 3}
+    CompletedIcon: {fileID: 21300000, guid: 380d858f0ff3fd04285f861c5d3fca91, type: 3}
+    Name: Delegacia
+    IsComplete: 0
+    GoalPositions:
+    - {x: 15, y: 1}
+  - NormalIcon: {fileID: 21300000, guid: 60c2d1c4cbcd5354888e42c5fb108a7a, type: 3}
+    CompletedIcon: {fileID: 21300000, guid: 55d3a5771eef91f4a9e2f78e65576773, type: 3}
+    Name: Hospital
+    IsComplete: 0
+    GoalPositions:
+    - {x: 20, y: 8}
+    - {x: 20, y: 7}
+  - NormalIcon: {fileID: 21300000, guid: 0dfb1e42504824d479ea5f60a74078ce, type: 3}
+    CompletedIcon: {fileID: 21300000, guid: 50f8ce52b9781c34e915df39c4ebb120, type: 3}
+    Name: Centro de Atendimento a Sorologia
+    IsComplete: 0
+    GoalPositions:
+    - {x: 5, y: 7}
+  - NormalIcon: {fileID: 21300000, guid: fd148a3e64e693041ac2f504d0ee6f26, type: 3}
+    CompletedIcon: {fileID: 21300000, guid: 46c01be7a770f79419513e6cf1efd5ae, type: 3}
+    Name: CREAS
+    IsComplete: 0
+    GoalPositions:
+    - {x: 15, y: 9}

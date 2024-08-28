@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb97ebaec5d3f714e9d78c4a6cc52440, type: 3}
+  m_Name: "Vozes na minha cabe\xE7a"
+  m_EditorClassIdentifier: 
+  Title: "Vozes na Minha Cabe\xE7a"
+  Text: "Durante uma conversa com seu primo ele come\xE7a a ficar com medo e pergunta
+    se voc\xEA est\xE1 ouvindo as vozes. Como assim? Mesmo prestando muita aten\xE7\xE3o
+    voc\xEA n\xE3o consegue ouvir nada. Ele est\xE1 tendo uma alucina\xE7\xE3o e
+    ficando cada vez mais agitado. Para ajud\xE1-lo, voc\xEA deve ir ao HOSPITAL,
+    l\xE1 ele receber\xE1 tratamento para se acalmar. Quando voc\xEAs forem liberados
+    ser\xE3o encaminhados para o CENTRO DE ATEN\xC7\xC3O PSICOSSOCIAL (CAPS), onde
+    ele ter\xE1 atendimento psicol\xF3gico e tratamento psiqui\xE1trico, saindo com
+    uma receita para retirar medicamentos na FAM\xC1CIA MUNICIPAL. Para ter acompanhamento
+    e evitar novas alucina\xE7\xF5es voc\xEA v\xE3o \xE0 UNIDADE DE SA\xDADE do bairro
+    (ESF ou UBS). "
+  Objectives:
+  - NormalIcon: {fileID: 21300000, guid: 60c2d1c4cbcd5354888e42c5fb108a7a, type: 3}
+    CompletedIcon: {fileID: 21300000, guid: 55d3a5771eef91f4a9e2f78e65576773, type: 3}
+    Name: Hospital
+    IsComplete: 0
+    GoalPositions:
+    - {x: 20, y: 8}
+    - {x: 20, y: 7}
+  - NormalIcon: {fileID: 21300000, guid: 0988b09b77aa95a4b9cd03b611dea6d6, type: 3}
+    CompletedIcon: {fileID: 21300000, guid: 16e505f8b25fe6a47886da1725efe0c8, type: 3}
+    Name: CAPS
+    IsComplete: 0
+    GoalPositions:
+    - {x: 21, y: 12}
+  - NormalIcon: {fileID: 21300000, guid: 95ec12002ccc7a84d898dc56c228246d, type: 3}
+    CompletedIcon: {fileID: 21300000, guid: 4cfdd14b04c39c34eb1843f28bcf8f0f, type: 3}
+    Name: Farmacia Municipal
+    IsComplete: 0
+    GoalPositions:
+    - {x: 11, y: 13}
+  - NormalIcon: {fileID: 21300000, guid: 5b9806d6d6fbdc1488a4bc6b7a4a71bb, type: 3}
+    CompletedIcon: {fileID: 21300000, guid: 232f45f35d645d349a6a2d6757df903e, type: 3}
+    Name: Unidade de Saude
+    IsComplete: 0
+    GoalPositions:
+    - {x: 11, y: 4}

@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb97ebaec5d3f714e9d78c4a6cc52440, type: 3}
+  m_Name: Questao Familiar
+  m_EditorClassIdentifier: 
+  Title: "Quest\xE3o Familiar"
+  Text: "A nutricionista do PSE foi em uma ESCOLA pesar e medir os alunos. Ela identificou
+    que dois irm\xE3os estavam com peso abaixo do esperado para a idade. Ela entrou
+    em contato com voc\xEA que \xE9 Agente Comunit\xE1rio de Sa\xFAde da UNIDADE
+    DE SA\xDADE (US) respons\xE1vel pelo seu territ\xF3rio. Chegando na casa dos
+    irm\xE3s, voc\xEA se deparou com uma situa\xE7\xE3o de neglig\xEAncia. O pai,
+    respons\xE1vel pelo sustento da fam\xEDlia era alcoolista e gastava todo dinheiro
+    no bar. Sua equipe multiprofissional deve encaminh\xE1-lo para o CENTRO DE ATEN\xC7\xC3O
+    PSICOSSOCIAL \xC1LCOOL E DROGAS (CAPSad), para tratamento da depend\xEAncia,.
+    Al\xE9m disso, por causa da neglig\xEAncia, voc\xEA deve entrar em contato com
+    o CENTRO DE REFER\xCANCIA ESPECIALIZADA EM ASSIST\xCANCIA SOCIAL (CREAS), para
+    a fam\xEDlia receber acolhimento, atendimento psicol\xF3gico e solicitar recebimento
+    de benef\xEDcios de programas sociais."
+  Objectives:
+  - NormalIcon: {fileID: 21300000, guid: 7664d3fa771fceb4e8920f93c01bfe51, type: 3}
+    CompletedIcon: {fileID: 21300000, guid: 2032684e020958b4eae11dee8832009b, type: 3}
+    Name: Escola
+    IsComplete: 0
+    GoalPositions:
+    - {x: 6, y: 10}
+    - {x: 7, y: 10}
+  - NormalIcon: {fileID: 21300000, guid: 5b9806d6d6fbdc1488a4bc6b7a4a71bb, type: 3}
+    CompletedIcon: {fileID: 21300000, guid: 232f45f35d645d349a6a2d6757df903e, type: 3}
+    Name: Unidade de Saude
+    IsComplete: 0
+    GoalPositions:
+    - {x: 11, y: 4}
+  - NormalIcon: {fileID: 21300000, guid: b48482d189abd0d4e8cfe4877280469e, type: 3}
+    CompletedIcon: {fileID: 21300000, guid: 618fae3b3d91d78448676e03ef2a94fa, type: 3}
+    Name: CAPSad
+    IsComplete: 0
+    GoalPositions:
+    - {x: 8, y: 2}
+  - NormalIcon: {fileID: 21300000, guid: fd148a3e64e693041ac2f504d0ee6f26, type: 3}
+    CompletedIcon: {fileID: 21300000, guid: 46c01be7a770f79419513e6cf1efd5ae, type: 3}
+    Name: CREAS
+    IsComplete: 0
+    GoalPositions:
+    - {x: 15, y: 9}

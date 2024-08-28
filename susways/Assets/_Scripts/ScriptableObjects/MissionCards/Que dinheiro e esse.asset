@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb97ebaec5d3f714e9d78c4a6cc52440, type: 3}
+  m_Name: Que dinheiro e esse
+  m_EditorClassIdentifier: 
+  Title: "Que Dinheiro \xE9 Esse?"
+  Text: "Voc\xEA percebe que um colega est\xE1 faltando \xE0s aulas e ganhando dinheiro
+    sem trabalhar. Certo dia voc\xEA fica sabendo que ele foi preso por vender drogas
+    e est\xE1 na delegacia. Tenso! Indo a DELEGACIA voc\xEA descobre que o juizado
+    de menores determinou para ele uma medida socioeducativa e que ele fosse atendido
+    no CENTRO DE REFER\xCANCIA ESPECIALIZADO EM ASSIST\xCANCIA SOCIAL (CREAS). Sua
+    medida socioeducativa \xE9 varrer a pra\xE7a da cidade duas vezes por semana
+    por tr\xEAs meses. Voc\xEA decide ajud\xE1-lo a voltar a estudar, v\xE1 at\xE9
+    a PRA\xC7A conversar com seu colega e leve-o para a ESCOLA."
+  Objectives:
+  - NormalIcon: {fileID: 21300000, guid: 1fb176f13ed1c2f4f93d287cf6f0aaa2, type: 3}
+    CompletedIcon: {fileID: 21300000, guid: 380d858f0ff3fd04285f861c5d3fca91, type: 3}
+    Name: Delegacia
+    IsComplete: 0
+    GoalPositions:
+    - {x: 15, y: 1}
+  - NormalIcon: {fileID: 21300000, guid: fd148a3e64e693041ac2f504d0ee6f26, type: 3}
+    CompletedIcon: {fileID: 21300000, guid: 46c01be7a770f79419513e6cf1efd5ae, type: 3}
+    Name: CREAS
+    IsComplete: 0
+    GoalPositions:
+    - {x: 15, y: 9}
+  - NormalIcon: {fileID: 21300000, guid: 548f4c8253bfd0241b0381ac8b08c542, type: 3}
+    CompletedIcon: {fileID: 21300000, guid: 836d304bd38247a44b2d36bf4241abce, type: 3}
+    Name: Praca
+    IsComplete: 0
+    GoalPositions:
+    - {x: 11, y: 6}
+    - {x: 12, y: 6}
+  - NormalIcon: {fileID: 21300000, guid: 7664d3fa771fceb4e8920f93c01bfe51, type: 3}
+    CompletedIcon: {fileID: 21300000, guid: 2032684e020958b4eae11dee8832009b, type: 3}
+    Name: Escola
+    IsComplete: 0
+    GoalPositions:
+    - {x: 6, y: 10}
+    - {x: 7, y: 10}

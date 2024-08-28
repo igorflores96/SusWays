@@ -4,16 +4,16 @@ public abstract class PlayerBaseState
 {
     protected GameObject VisualPrefab { get; private set; }
     protected GameObject InstantiatePrefab { get; private set; }
-    protected CardMission CurrentMission { get; private set; }
+    protected Mission CurrentMission { get; private set; }
     protected Vector2Int CurrentPosition { get; set; }
     protected int CurrentDiceNumber { get; set; }
 
-    public PlayerBaseState(PlayerInfo playerinfo, Vector2Int houseToSpawnPosition)
+    public PlayerBaseState(PlayerInfo playerinfo, Vector2Int houseToSpawnPosition, Mission mission)
     {
         CurrentDiceNumber = 0;
         this.CurrentPosition = houseToSpawnPosition;
         this.VisualPrefab = playerinfo.VisualPrefab;
-        this.CurrentMission = playerinfo.CurrentMission;
+        this.CurrentMission = mission;
     }
 
     public abstract void EnterState(GameStateManager playerContext);
@@ -46,5 +46,30 @@ public abstract class PlayerBaseState
     public void SetInstantiatePrefab(GameObject prefab)
     {
         InstantiatePrefab = prefab;
+    }
+
+    public Mission GetMission()
+    {
+        return CurrentMission;
+    }
+
+    public bool PlayerIsOnObjective()
+    {
+        bool isOn = false;
+
+        MissionObjective objectiveToCheck = CurrentMission.Objectives[CurrentMission.CurrentObjective];
+
+        for(int i = 0; i < objectiveToCheck.GoalPositions.Count; i++)
+        {
+            if(CurrentPosition == objectiveToCheck.GoalPositions[i])
+            {
+                isOn = true;
+                objectiveToCheck.IsComplete = true;
+                CurrentMission.UpdateToNextObjective();
+                break;
+            }
+        }
+
+        return isOn;
     }
 }

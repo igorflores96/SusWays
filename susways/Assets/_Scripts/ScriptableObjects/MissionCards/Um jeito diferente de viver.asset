@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb97ebaec5d3f714e9d78c4a6cc52440, type: 3}
+  m_Name: Um jeito diferente de viver
+  m_EditorClassIdentifier: 
+  Title: Um Jeito Diferente de Viver
+  Text: "Na s\xE9rie \"Atypical\", a m\xE3e de Sam percebeu que ele tinha comportamentos
+    diferentes de sua irm\xE3 na inf\xE2ncia. Ele \xE9 diagnosticado com Transtorno
+    do Espectro Autista (TEA). Se essa s\xE9rie se passase na sua cidade, quais os
+    servi\xE7os que a m\xE3e de Sam poderia utilizar?\n\r\nEP1 - A fam\xEDlia procura
+    a \xDANIDADE DE SA\xDADE (US). L\xE1, a equipe constata sintomas caracter\xEDsticos
+    do TEA.\n \r\nEP2 - Ap\xF3s o acolhimento ele \xE9 encaminhado para o CENTRO
+    DE ATEN\xC7\xC3O PSICOSSOCIAL INFANTIL\n\r\n(CAPSi). L\xE1 recebe atendimento
+    especializado de um psiquiatra que confirma o TEA e gera um laudo.\n\r\nEP3 -
+    Com o laudo, a m\xE3e vai ao CENTRO DE REFER\xCANCIA DE ASSIST\xCANCIA SOCIAL
+    (CRAS), encaminhar os programas sociais, que pessoas com defici\xEAncia (PCD)
+    f\xEDsica ou intelectual t\xEAm direito.\n\r\nEP4 - Por fim, a fam\xEDlia vai
+    \xE0 ESCOLA garantir o curr\xEDculo adaptado, o acompanhamento e o atendimento
+    especializado com monitores em sala de aula."
+  Objectives:
+  - NormalIcon: {fileID: 21300000, guid: 5b9806d6d6fbdc1488a4bc6b7a4a71bb, type: 3}
+    CompletedIcon: {fileID: 21300000, guid: 232f45f35d645d349a6a2d6757df903e, type: 3}
+    Name: Unidade de Saude
+    IsComplete: 0
+    GoalPositions:
+    - {x: 11, y: 4}
+  - NormalIcon: {fileID: 21300000, guid: 28c0d33278cffa44fbd6af3b88e1dd28, type: 3}
+    CompletedIcon: {fileID: 21300000, guid: 5fa850f8396e1af449b49ed5b2f57204, type: 3}
+    Name: CAPSi
+    IsComplete: 0
+    GoalPositions:
+    - {x: 21, y: 4}
+  - NormalIcon: {fileID: 21300000, guid: 868271c8e3d24b74ab9791f8ed311465, type: 3}
+    CompletedIcon: {fileID: 21300000, guid: 58e87b79b3fe89e4c9d7b85915aa05c6, type: 3}
+    Name: CRAS
+    IsComplete: 0
+    GoalPositions:
+    - {x: 3, y: 2}
+  - NormalIcon: {fileID: 21300000, guid: 7664d3fa771fceb4e8920f93c01bfe51, type: 3}
+    CompletedIcon: {fileID: 21300000, guid: 2032684e020958b4eae11dee8832009b, type: 3}
+    Name: Escola
+    IsComplete: 0
+    GoalPositions:
+    - {x: 6, y: 10}
+    - {x: 7, y: 10}
