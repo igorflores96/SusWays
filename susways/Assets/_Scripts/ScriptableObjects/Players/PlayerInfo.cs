@@ -5,4 +5,10 @@ using UnityEngine;
 public class PlayerInfo : ScriptableObject 
 {
     public GameObject VisualPrefab;
+    public string PlayerName;
+
+    public void SetPlayerName(string value)
+    {
+        PlayerName = value;
+    }
 }

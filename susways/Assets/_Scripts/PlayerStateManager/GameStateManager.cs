@@ -17,12 +17,15 @@ public class GameStateManager : MonoBehaviour
     private GameObject _currentPlayerGrabed;
     private bool _isPlayerGrabed; //use this until we need to create a state machine
     private List<Vector3Int> _listToMove = new List<Vector3Int>();
+    private List<PlayerBaseState> _rankingList;
 
 
 
     private void OnEnable() 
     {
         _playerControl = new PlayerControl();
+       
+        _rankingList = new List<PlayerBaseState>();
         _isPlayerGrabed = false;
 
         _playerControl.PlayerGraber.ClickPlayer.performed += TryGrabPlayer;
@@ -125,20 +128,20 @@ public class GameStateManager : MonoBehaviour
     private void PlayerPassedTurn()
     {
         UpdatePlayerPosition();
-
         if(PlayerAchievedObjective())
         {
             DisablePlayerInput();
-            EventManager.PlayerCompleteObjective(_currentState.GetMission());
+            
+            Mission playerMission = _currentState.GetMission();
+            EventManager.PlayerCompleteObjective(playerMission);
         }
         else
             PassToNextTun();
     }
 
-    private void  PlayerConfirmObjective()
+    private void PlayerConfirmObjective()
     {
-        EnablePlayerInput();
-        PassToNextTun();
+        CheckEndGame();
     }
 
     public void PassToNextTun()
@@ -147,11 +150,68 @@ public class GameStateManager : MonoBehaviour
         SwitchState(_matchStatePlayers[nextState]);
     }
 
+    private void CheckEndGame()
+    {
+        Mission playerMission = _currentState.GetMission();
+        
+        if(playerMission.MissionComplete)
+        {
+            _matchStatePlayers.Remove(_currentState);
+            _rankingList.Add(_currentState);
+        }
+
+        if(_matchStatePlayers.Count == 0)
+            EventManager.TheGameIsEnd(_rankingList);
+        else
+        {
+            EnablePlayerInput();
+            PassToNextTun();
+        }
+    }
     private void UpdatePlayerPosition()
     {
         Transform transform = _currentState.GetInstantiatePrefab().transform;
-        Vector2 newPosition = new Vector2((int)transform.position.x / 2, (int)transform.position.z / 2);
+        Vector2 precisePosition = new Vector2(transform.position.x, transform.position.z);
+        Vector2 newPosition = new Vector2(Mathf.RoundToInt(precisePosition.x / 2), Mathf.RoundToInt(precisePosition.y / 2));
+
         _currentState.UpdatePosition((int)newPosition.x, (int)newPosition.y);
+
+        List<PlayerBaseState> playersInSamePosition = new List<PlayerBaseState>();
+
+        foreach (PlayerBaseState player in _matchStatePlayers)
+        {
+            Vector2Int playerPosition = player.GetPosition();
+
+            if (playerPosition == new Vector2Int((int)newPosition.x, (int)newPosition.y))
+            {
+                playersInSamePosition.Add(player);
+            }
+        }
+
+        if (playersInSamePosition.Count > 1)
+        {
+            float offset = 0.5f;
+            Vector2[] offsets = new Vector2[]
+            {
+                new Vector2(offset, offset),
+                new Vector2(-offset, offset),
+                new Vector2(-offset, -offset),
+                new Vector2(offset, -offset)
+            };
+
+            for (int i = 0; i < playersInSamePosition.Count; i++)
+            {
+                Transform playerTransform = playersInSamePosition[i].GetInstantiatePrefab().transform;
+
+                Vector3 targetPosition = new Vector3(
+                    playersInSamePosition[i].GetPosition().x * 2 + offsets[i].x, playerTransform.position.y, playersInSamePosition[i].GetPosition().y * 2 + offsets[i].y);
+
+                if (playerTransform.position != targetPosition)
+                {
+                    playerTransform.position = targetPosition;
+                }
+            }
+        }
     }
 
     private bool PlayerAchievedObjective()

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameplayUIManager : MonoBehaviour
@@ -10,14 +11,23 @@ public class GameplayUIManager : MonoBehaviour
     [SerializeField] private Button _nextTunButton;
     [SerializeField] private Button _showMissionButton;
     [SerializeField] private Button _confirmObjectiveCompleteButton;
+    [SerializeField] private Button _backToMenuButton;
 
     [Header("Mission Card")]
     [SerializeField] private TextMeshProUGUI _missionTitle;
     [SerializeField] private TextMeshProUGUI _missionText;
     [SerializeField] private List<Image> _objectives; //We goin to populate on the inspector
 
+    [Header("End Game Screen")]
+    [SerializeField] private GameObject _endGameCanvas;
+    [SerializeField] private GameObject _gameplayUI;
+    [SerializeField] private TextMeshProUGUI[] _playerNames;
+    [SerializeField] private GameObject[] _playerRankingObjects;
+
+
     [Header("Card Mission Animator")]
     [SerializeField] private Animator _cardAnimator;
+    [SerializeField] private Animator _rankingAnimator;
 
     private bool shouldOpenCanvas;
 
@@ -27,8 +37,10 @@ public class GameplayUIManager : MonoBehaviour
         _nextTunButton.onClick.AddListener(UpdateNextTurn);
         _showMissionButton.onClick.AddListener(CheckMissionCanvas);
         _confirmObjectiveCompleteButton.onClick.AddListener(ConfirmObjective);
+        _backToMenuButton.onClick.AddListener(GoToMenu);
         
         EventManager.OnNewPlayerTurn += UpdateInfos;
+        EventManager.OnPlayersEndGame += ShowEndGameScreen;
         EventManager.OnPlayerCompleteObjective += ShowObjectives;
     }
 
@@ -37,8 +49,11 @@ public class GameplayUIManager : MonoBehaviour
         _nextTunButton.onClick.RemoveListener(UpdateNextTurn);
         _showMissionButton.onClick.RemoveListener(CheckMissionCanvas);
         _confirmObjectiveCompleteButton.onClick.RemoveListener(ConfirmObjective);
+        _backToMenuButton.onClick.RemoveListener(GoToMenu);
+
        
         EventManager.OnNewPlayerTurn -= UpdateInfos;
+        EventManager.OnPlayersEndGame -= ShowEndGameScreen;
         EventManager.OnPlayerCompleteObjective -= ShowObjectives;
     }
 
@@ -123,5 +138,29 @@ public class GameplayUIManager : MonoBehaviour
             _missionText.alignment = TextAlignmentOptions.Center;
         }
 
+    }
+
+    private void ShowEndGameScreen(List<PlayerBaseState> playerList)
+    {
+        int players = playerList.Count;
+
+        for (int i = players; i < _playerRankingObjects.Length; i++)
+        {
+            _playerRankingObjects[i].SetActive(false);
+        }
+
+        for (int i = 0; i < players; i++)
+        {
+            _playerRankingObjects[i].SetActive(true);
+            _playerNames[i].text = playerList[i].GetPlayerName();
+        }
+
+        _rankingAnimator.SetTrigger("Show");
+        _gameplayUI.SetActive(false);
+    }
+
+    private void GoToMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }

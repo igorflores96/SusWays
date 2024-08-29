@@ -9,6 +9,7 @@ public static class EventManager
     public static event Action<Mission> OnNewPlayerTurn;
     public static event Action<Mission> OnPlayerCompleteObjective;
     public static event Action<List<Vector3Int>> OnListReady;
+    public static event Action<List<PlayerBaseState>> OnPlayersEndGame;
     public static event Action OnEndTurn;
     public static event Action OnCofirmObjective;
 
@@ -71,6 +72,18 @@ public static class EventManager
         else
         {
             Debug.LogWarning("No listeners for OnPlayerTryMove event.");
+        }
+    }
+
+    public static void TheGameIsEnd(List<PlayerBaseState> list) //Fired for GameStateManager, listened for Gameplay UI for show the player's ranking. 
+    {
+        if (OnPlayersEndGame != null)
+        {
+            OnPlayersEndGame(list);
+        }
+        else
+        {
+            Debug.LogWarning("No listeners for OnPlayersEndGame event.");
         }
     }
 

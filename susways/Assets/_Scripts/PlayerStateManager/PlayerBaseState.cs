@@ -7,6 +7,8 @@ public abstract class PlayerBaseState
     protected Mission CurrentMission { get; private set; }
     protected Vector2Int CurrentPosition { get; set; }
     protected int CurrentDiceNumber { get; set; }
+    protected string PlayerName { get; set; }
+
 
     public PlayerBaseState(PlayerInfo playerinfo, Vector2Int houseToSpawnPosition, Mission mission)
     {
@@ -14,6 +16,7 @@ public abstract class PlayerBaseState
         this.CurrentPosition = houseToSpawnPosition;
         this.VisualPrefab = playerinfo.VisualPrefab;
         this.CurrentMission = mission;
+        this.PlayerName = playerinfo.PlayerName;
     }
 
     public abstract void EnterState(GameStateManager playerContext);
@@ -51,6 +54,11 @@ public abstract class PlayerBaseState
     public Mission GetMission()
     {
         return CurrentMission;
+    }
+
+    public string GetPlayerName()
+    {
+        return PlayerName;
     }
 
     public bool PlayerIsOnObjective()
