@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,13 +10,16 @@ public class MainCanvasManager : MonoBehaviour
     [SerializeField] private Button _backMenuButton;
     [SerializeField] private Button _quitButton;
 
-
     [Header("Canvas")]
     [SerializeField] private GameObject _playerSelectionCanvas;
     [SerializeField] private GameObject _buttonsCanvas;
+    
+    [Header("Input Fields")]
+    [SerializeField] private TMP_InputField[] _playerInputFields;
 
     [Header("Managers")]
     [SerializeField] private PlayerSelection _playerSelection;
+    [SerializeField] private Animator _canvasAnimator;
 
 
     private void OnEnable() 
@@ -24,8 +28,6 @@ public class MainCanvasManager : MonoBehaviour
         _creditsButton.onClick.AddListener(OpenCredits);
         _backMenuButton.onClick.AddListener(BackToMenu);
         _quitButton.onClick.AddListener(QuitGame);
-
-        BackToMenu();
     }
 
     private void OnDisable()
@@ -44,8 +46,7 @@ public class MainCanvasManager : MonoBehaviour
 
     private void PlayLocal()
     {
-        _buttonsCanvas.SetActive(false);
-        _playerSelectionCanvas.SetActive(true);
+        _canvasAnimator.SetTrigger("OpenGame");
         _playerSelection.InitLocalGame();
     }
 
@@ -57,7 +58,11 @@ public class MainCanvasManager : MonoBehaviour
 
     private void BackToMenu()
     {
-        _playerSelectionCanvas.SetActive(false);
-        _buttonsCanvas.SetActive(true);
+        _canvasAnimator.SetTrigger("BackMenu");
+
+        for(int i = 0; i < _playerInputFields.Length; i++)
+        {
+            _playerInputFields[i].text = "";
+        }
     }
 }
