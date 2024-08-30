@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Player Info", menuName = "Scriptable Objects/Data/Informações do Jogador", order = 0)]

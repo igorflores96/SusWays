@@ -17,6 +17,14 @@ public class GameplayUIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _missionTitle;
     [SerializeField] private TextMeshProUGUI _missionText;
     [SerializeField] private List<Image> _objectives; //We goin to populate on the inspector
+    
+    [Header("Current Player Infos")]
+    [SerializeField] private TextMeshProUGUI _playerName;
+    [SerializeField] private List<Image> _missionObjectives; //We goin to populate on the inspector
+    [SerializeField] private TextMeshProUGUI _playerNewTurnName;
+    [SerializeField] private TextMeshProUGUI _playerDiceNumber;
+
+    
 
     [Header("End Game Screen")]
     [SerializeField] private GameObject _endGameCanvas;
@@ -28,6 +36,8 @@ public class GameplayUIManager : MonoBehaviour
     [Header("Card Mission Animator")]
     [SerializeField] private Animator _cardAnimator;
     [SerializeField] private Animator _rankingAnimator;
+    [SerializeField] private Animator _turnAnimator;
+
 
     private bool shouldOpenCanvas;
 
@@ -74,7 +84,15 @@ public class GameplayUIManager : MonoBehaviour
         shouldOpenCanvas = !shouldOpenCanvas;
     }
 
-    private void UpdateInfos(Mission playerMission)
+    private void UpdateInfos(Mission playerMission, PlayerBaseState playerInfo)
+    {
+        _turnAnimator.SetTrigger("Show");
+        EventManager.AnimationOn();
+        UpdateMissionInfos(playerMission);
+        UpdatePlayerInfos(playerInfo);
+    }
+
+    private void UpdateMissionInfos(Mission playerMission)
     {
         _missionTitle.text = playerMission.Name;
         _missionText.text = playerMission.Text;
@@ -84,11 +102,25 @@ public class GameplayUIManager : MonoBehaviour
         for(int i = 0; i < playerMission.Objectives.Count; i++)
         {
             if(playerMission.Objectives[i].IsComplete)
+            {
                 _objectives[i].sprite = playerMission.Objectives[i].CompletedIcon;
+                _missionObjectives[i].sprite = playerMission.Objectives[i].CompletedIcon;
+            }
             else
+            {
                 _objectives[i].sprite = playerMission.Objectives[i].NormalIcon;
+                _missionObjectives[i].sprite = playerMission.Objectives[i].NormalIcon;
+            }
         }
+    }
 
+    private void UpdatePlayerInfos(PlayerBaseState playerInfo)
+    {
+        string playerName = _playerName.text = playerInfo.GetPlayerName();
+
+        _playerName.text = playerName;
+        _playerNewTurnName.text = $"Vez de {playerName}";
+        _playerDiceNumber.text = $"Dado sorteado: {playerInfo.GetDiceNumber()}";
     }
 
     private void ShowObjectives(Mission playerMission)
@@ -157,10 +189,16 @@ public class GameplayUIManager : MonoBehaviour
 
         _rankingAnimator.SetTrigger("Show");
         _gameplayUI.SetActive(false);
+        EventManager.AnimationOn();
     }
 
     private void GoToMenu()
     {
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void AnimationEnd()
+    {
+        EventManager.AnimationOff();
     }
 }

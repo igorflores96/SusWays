@@ -14,6 +14,9 @@ public class MapManager : MonoBehaviour
     
     private List<Vector3Int> _listToMove = new List<Vector3Int>();
     private Tile _lastTile;
+    private TileFeedback _lastFeedback;
+    private bool _shouldShowFeedback = true;
+    private bool _shouldInteract = true;
    
     private void Awake() 
     {
@@ -28,6 +31,9 @@ public class MapManager : MonoBehaviour
         EventManager.OnPlayerSpawnRequested += SpawnPlayer;
         EventManager.OnPlayerSelected += SetTilesToMoveFeedback;
         EventManager.OnEndTurn += UpdateFeedbacks;
+        EventManager.OnAnimation += BlockMapAction;
+        EventManager.OnAnimationOff += UnlockMapAction;
+
 
     }
 
@@ -36,12 +42,15 @@ public class MapManager : MonoBehaviour
         EventManager.OnPlayerSpawnRequested -= SpawnPlayer;
         EventManager.OnPlayerSelected -= SetTilesToMoveFeedback;
         EventManager.OnEndTurn -= UpdateFeedbacks;
+        EventManager.OnAnimation -= BlockMapAction;
+        EventManager.OnAnimationOff -= UnlockMapAction;
 
     }
 
     private void Update() 
     {
-        UpdateTileHoverFeedBack();
+        if(_shouldInteract)
+            UpdateTileHoverFeedBack();
     }
 
     private void GenerateMap()
@@ -73,17 +82,30 @@ public class MapManager : MonoBehaviour
             _lastTile.Hide();
         }
 
+        if(_lastFeedback != null)
+        {
+            _lastFeedback.HideFeedback();
+        }
+
         Vector3 mousePosition = Mouse3D.GetMouseWorldPosition();
         _lastTile = GameMap.GetGridObject(mousePosition);
+        _lastFeedback = Mouse3D.GetFeedback();
         
         if(_lastTile != null && _lastTile.IsWalkable)
         {
             _lastTile.Show();
         }
+
+        if(_lastFeedback != null && _shouldShowFeedback)
+        {
+            _lastFeedback.ShowFeedback();
+        }
     }
 
     private void SetTilesToMoveFeedback(PlayerBaseState player)
     {
+        _shouldShowFeedback = false;
+
         Vector2Int playerPosition = player.GetPosition();
         int playerDiceNumber = player.GetDiceNumber();
         _listToMove = GameMap.GetPlayerMoveOptions(playerPosition.x, playerPosition.y, playerDiceNumber, GameMap);
@@ -119,6 +141,17 @@ public class MapManager : MonoBehaviour
             tile.HideWalkFeedback();
         }
 
+        _shouldShowFeedback = true;
         _listToMove.Clear();
+    }
+
+    private void BlockMapAction()
+    {
+        _shouldInteract = false;
+    }
+
+    private void UnlockMapAction()
+    {
+        _shouldInteract = true;
     }
 }

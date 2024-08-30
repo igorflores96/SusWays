@@ -52,13 +52,13 @@ public class GameStateManager : MonoBehaviour
         
         Debug.Log("Game state manager está com o current state como: " + _currentState.GetType().Name);
         _currentState.EnterState(this);
-        EventManager.NewPlayerTurn(_currentState.GetMission());
+        EventManager.NewPlayerTurn(_currentState.GetMission(), _currentState);
     }
     public void SwitchState(PlayerBaseState state)
     {
         _currentState = state;
         _currentState.EnterState(this);
-        EventManager.NewPlayerTurn(_currentState.GetMission());
+        EventManager.NewPlayerTurn(_currentState.GetMission(), _currentState);
     }
 
     private void UpdateList(List<Vector3Int> list)
@@ -236,7 +236,6 @@ public class GameStateManager : MonoBehaviour
                 
                 if(_currentPlayerGrabed == _currentState.GetInstantiatePrefab())
                 {
-                    Debug.Log("Player do state: " + _currentState + " selecionado.");
                     _currentPlayerGrabed.transform.position = new Vector3(_currentPlayerGrabed.transform.position.x, 0.5f, _currentPlayerGrabed.transform.position.z);
                     EventManager.PlayerSelected(_currentState);
                     _isPlayerGrabed = true;

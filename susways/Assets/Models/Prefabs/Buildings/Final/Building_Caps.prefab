@@ -235,3 +235,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _feedbackTransform: {fileID: 6092099141294358282}
+  _walkFeedback: {fileID: 0}

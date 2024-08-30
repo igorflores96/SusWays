@@ -6,12 +6,14 @@ public static class EventManager
 {
     public static event Action<PlayerBaseState> OnPlayerSpawnRequested;
     public static event Action<PlayerBaseState> OnPlayerSelected;
-    public static event Action<Mission> OnNewPlayerTurn;
+    public static event Action<Mission, PlayerBaseState> OnNewPlayerTurn;
     public static event Action<Mission> OnPlayerCompleteObjective;
     public static event Action<List<Vector3Int>> OnListReady;
     public static event Action<List<PlayerBaseState>> OnPlayersEndGame;
     public static event Action OnEndTurn;
     public static event Action OnCofirmObjective;
+    public static event Action OnAnimation;
+    public static event Action OnAnimationOff;
 
 
 
@@ -39,11 +41,11 @@ public static class EventManager
         }
     }
 
-    public static void NewPlayerTurn(Mission playerMission) //Fired for GameStateManager, listened for GameplayUIManager to update UI infos. 
+    public static void NewPlayerTurn(Mission playerMission, PlayerBaseState playerInfos) //Fired for GameStateManager, listened for GameplayUIManager to update UI infos and CameraPlayer to change the mesh. 
     {
         if (OnNewPlayerTurn != null)
         {
-            OnNewPlayerTurn(playerMission);
+            OnNewPlayerTurn(playerMission, playerInfos);
         }
         else
         {
@@ -111,4 +113,27 @@ public static class EventManager
         }
     }
 
+    public static void AnimationOn() //Fired by any animation manager to block other scripts usages
+    {
+        if (OnAnimation != null)
+        {
+            OnAnimation();
+        }
+        else
+        {
+            Debug.LogWarning("No listeners for OnCofirmObjective event.");
+        }
+    }
+    
+    public static void AnimationOff() //Fired by any animation manager to block other scripts usages
+    {
+        if (OnAnimationOff != null)
+        {
+            OnAnimationOff();
+        }
+        else
+        {
+            Debug.LogWarning("No listeners for OnCofirmObjective event.");
+        }
+    }
 }
