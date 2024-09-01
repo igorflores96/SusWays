@@ -14,8 +14,8 @@ public static class EventManager
     public static event Action OnCofirmObjective;
     public static event Action OnAnimation;
     public static event Action OnAnimationOff;
-
-
+    public static event Action OnBusJump;
+    public static event Action OnBusProcessEnd;
 
     public static void RequestPlayerSpawn(PlayerBaseState playerState) //Disparado por GameStateManager, ouvido por MapManager
     {
@@ -121,7 +121,7 @@ public static class EventManager
         }
         else
         {
-            Debug.LogWarning("No listeners for OnCofirmObjective event.");
+            Debug.LogWarning("No listeners for OnAnimation event.");
         }
     }
     
@@ -133,7 +133,31 @@ public static class EventManager
         }
         else
         {
-            Debug.LogWarning("No listeners for OnCofirmObjective event.");
+            Debug.LogWarning("No listeners for OnAnimationOff event.");
+        }
+    }
+
+    public static void BusJumpEnd() //Fired by bus for gameplay UI show de confirmation for players.
+    {
+        if (OnBusJump != null)
+        {
+            OnBusJump();
+        }
+        else
+        {
+            Debug.LogWarning("No listeners for OnBusJump event.");
+        }
+    }
+
+    public static void StateShouldBeUpdated() //Fired by  gameplay UI for game state manager update game turn.
+    {
+        if (OnBusProcessEnd != null)
+        {
+            OnBusProcessEnd();
+        }
+        else
+        {
+            Debug.LogWarning("No listeners for OnBusProcessEnd event.");
         }
     }
 }

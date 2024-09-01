@@ -14,8 +14,6 @@ public class MapManager : MonoBehaviour
     
     private List<Vector3Int> _listToMove = new List<Vector3Int>();
     private Tile _lastTile;
-    private TileFeedback _lastFeedback;
-    private bool _shouldShowFeedback = true;
     private bool _shouldInteract = true;
    
     private void Awake() 
@@ -82,29 +80,18 @@ public class MapManager : MonoBehaviour
             _lastTile.Hide();
         }
 
-        if(_lastFeedback != null)
-        {
-            _lastFeedback.HideFeedback();
-        }
-
         Vector3 mousePosition = Mouse3D.GetMouseWorldPosition();
         _lastTile = GameMap.GetGridObject(mousePosition);
-        _lastFeedback = Mouse3D.GetFeedback();
         
         if(_lastTile != null && _lastTile.IsWalkable)
         {
             _lastTile.Show();
         }
 
-        if(_lastFeedback != null && _shouldShowFeedback)
-        {
-            _lastFeedback.ShowFeedback();
-        }
     }
 
     private void SetTilesToMoveFeedback(PlayerBaseState player)
     {
-        _shouldShowFeedback = false;
 
         Vector2Int playerPosition = player.GetPosition();
         int playerDiceNumber = player.GetDiceNumber();
@@ -140,8 +127,6 @@ public class MapManager : MonoBehaviour
             Tile tile = GameMap.GetGridObject(tilePosition.x, tilePosition.z);
             tile.HideWalkFeedback();
         }
-
-        _shouldShowFeedback = true;
         _listToMove.Clear();
     }
 

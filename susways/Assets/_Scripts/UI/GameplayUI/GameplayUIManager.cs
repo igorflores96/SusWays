@@ -12,6 +12,7 @@ public class GameplayUIManager : MonoBehaviour
     [SerializeField] private Button _showMissionButton;
     [SerializeField] private Button _confirmObjectiveCompleteButton;
     [SerializeField] private Button _backToMenuButton;
+    [SerializeField] private Button _confirmBus;
 
     [Header("Mission Card")]
     [SerializeField] private TextMeshProUGUI _missionTitle;
@@ -48,10 +49,12 @@ public class GameplayUIManager : MonoBehaviour
         _showMissionButton.onClick.AddListener(CheckMissionCanvas);
         _confirmObjectiveCompleteButton.onClick.AddListener(ConfirmObjective);
         _backToMenuButton.onClick.AddListener(GoToMenu);
+        _confirmBus.onClick.AddListener(HideBus);
         
         EventManager.OnNewPlayerTurn += UpdateInfos;
         EventManager.OnPlayersEndGame += ShowEndGameScreen;
         EventManager.OnPlayerCompleteObjective += ShowObjectives;
+        EventManager.OnBusJump += ShowBusFeedback;
     }
 
     private void OnDisable() 
@@ -60,11 +63,15 @@ public class GameplayUIManager : MonoBehaviour
         _showMissionButton.onClick.RemoveListener(CheckMissionCanvas);
         _confirmObjectiveCompleteButton.onClick.RemoveListener(ConfirmObjective);
         _backToMenuButton.onClick.RemoveListener(GoToMenu);
+        _confirmBus.onClick.RemoveListener(HideBus);
+
 
        
         EventManager.OnNewPlayerTurn -= UpdateInfos;
         EventManager.OnPlayersEndGame -= ShowEndGameScreen;
         EventManager.OnPlayerCompleteObjective -= ShowObjectives;
+        EventManager.OnBusJump -= ShowBusFeedback;
+
     }
 
     private void UpdateNextTurn()
@@ -190,6 +197,19 @@ public class GameplayUIManager : MonoBehaviour
         _rankingAnimator.SetTrigger("Show");
         _gameplayUI.SetActive(false);
         EventManager.AnimationOn();
+    }
+
+    private void ShowBusFeedback()
+    {
+        _turnAnimator.SetTrigger("Bus");
+        EventManager.AnimationOn();
+    }
+
+    private void HideBus()
+    {
+        _turnAnimator.SetTrigger("HideBus");
+        EventManager.AnimationOff();
+        EventManager.StateShouldBeUpdated();
     }
 
     private void GoToMenu()

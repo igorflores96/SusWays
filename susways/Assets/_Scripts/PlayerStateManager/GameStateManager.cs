@@ -6,8 +6,12 @@ public class GameStateManager : MonoBehaviour
 {
     [Header("Match Infos")]
     [SerializeField] private MatchData _matchData;
+    
     [Header("Missions")]
     [SerializeField] private List<CardMission> _missions;
+
+    [Header("Bus")]
+    [SerializeField] private Bus _bus;
     
 
     private PlayerControl _playerControl;
@@ -18,12 +22,15 @@ public class GameStateManager : MonoBehaviour
     private bool _isPlayerGrabed; //use this until we need to create a state machine
     private List<Vector3Int> _listToMove = new List<Vector3Int>();
     private List<PlayerBaseState> _rankingList;
+    private int _busTurn;
 
 
 
     private void OnEnable() 
     {
         _playerControl = new PlayerControl();
+
+        _busTurn = 0;
        
         _rankingList = new List<PlayerBaseState>();
         _isPlayerGrabed = false;
@@ -32,6 +39,10 @@ public class GameStateManager : MonoBehaviour
         EventManager.OnListReady += UpdateList;
         EventManager.OnEndTurn += PlayerPassedTurn;
         EventManager.OnCofirmObjective += PlayerConfirmObjective;
+        EventManager.OnAnimation += DisablePlayerInput;
+        EventManager.OnAnimationOff += EnablePlayerInput;
+        EventManager.OnBusProcessEnd += BusJumped;
+
         
         EnablePlayerInput();
     }
@@ -41,6 +52,9 @@ public class GameStateManager : MonoBehaviour
         EventManager.OnListReady -= UpdateList;   
         EventManager.OnEndTurn -= PlayerPassedTurn;
         EventManager.OnCofirmObjective -= PlayerConfirmObjective;
+        EventManager.OnAnimation -= DisablePlayerInput;
+        EventManager.OnAnimationOff -= EnablePlayerInput;
+        EventManager.OnBusProcessEnd -= BusJumped;
 
     }
 
@@ -145,6 +159,22 @@ public class GameStateManager : MonoBehaviour
     }
 
     public void PassToNextTun()
+    {
+        _busTurn = (_busTurn + 1) % _matchStatePlayers.Count;
+
+        if(_busTurn == 0)
+        {
+            _bus.GoToNextStop(_matchStatePlayers);
+            DisablePlayerInput();
+        }
+        else
+        {
+            int nextState = (_matchStatePlayers.IndexOf(_currentState) + 1) % _matchStatePlayers.Count;
+            SwitchState(_matchStatePlayers[nextState]);
+        }
+    }
+
+    private void BusJumped()
     {
         int nextState = (_matchStatePlayers.IndexOf(_currentState) + 1) % _matchStatePlayers.Count;
         SwitchState(_matchStatePlayers[nextState]);
