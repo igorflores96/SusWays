@@ -16,6 +16,16 @@ public static class EventManager
     public static event Action OnAnimationOff;
     public static event Action OnBusJump;
     public static event Action OnBusProcessEnd;
+    public static event Action OnPlayerTryEnterBusStop;
+    public static event Action OnPlayerEnterBus;
+    public static event Action OnPlayerCancelEnterBus;
+    public static event Action OnPlayerMoveDone;
+    public static event Action OnHideUI;
+    public static event Action OnShowUI;
+
+
+
+
 
     public static void RequestPlayerSpawn(PlayerBaseState playerState) //Disparado por GameStateManager, ouvido por MapManager
     {
@@ -158,6 +168,78 @@ public static class EventManager
         else
         {
             Debug.LogWarning("No listeners for OnBusProcessEnd event.");
+        }
+    }
+
+    public static void PlayerTryEnterOnBusStop() //Fired by game state manager to UI manager show the confirmation panel.
+    {
+        if (OnPlayerTryEnterBusStop != null)
+        {
+            OnPlayerTryEnterBusStop();
+        }
+        else
+        {
+            Debug.LogWarning("No listeners for OnPlayerTryEnterBusStop event.");
+        }
+    }
+
+    public static void PlayerEnterBus() //Fired by UI manager to game state manager move the player
+    {
+        if (OnPlayerEnterBus != null)
+        {
+            OnPlayerEnterBus();
+        }
+        else
+        {
+            Debug.LogWarning("No listeners for OnPlayerEnterBus event.");
+        }
+    }
+
+    public static void PlayerCancelEnterBus() //Fired by UI manager to game state manager not move the player
+    {
+        if (OnPlayerCancelEnterBus != null)
+        {
+            OnPlayerCancelEnterBus();
+        }
+        else
+        {
+            Debug.LogWarning("No listeners for OnPlayerCancelEnterBus event.");
+        }
+    }
+
+    public static void PlayerMoveDone() //Fired by Player Pawn to Game State Manager Update Position
+    {
+        if (OnPlayerMoveDone != null)
+        {
+            OnPlayerMoveDone();
+        }
+        else
+        {
+            Debug.LogWarning("No listeners for OnPlayerMoveDone event.");
+        }
+    }
+
+    public static void ShouldShowUI() //Use to show importante UI
+    {
+        if (OnShowUI != null)
+        {
+            OnShowUI();
+        }
+        else
+        {
+            Debug.LogWarning("No listeners for OnShowUI event.");
+        }
+    }
+
+    public static void ShouldHideUI() //Use to hide importante UI
+    {
+        if (OnHideUI != null)
+        {
+            OnHideUI();
+        }
+        else
+        {
+            Debug.LogWarning("No listeners for OnHideUI event.");
         }
     }
 }

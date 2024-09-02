@@ -1,16 +1,36 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Bus : MonoBehaviour
 {
     [SerializeField] private List<BusStop> _stops;
-    [SerializeField] private Transform _busMesh; 
+    [SerializeField] private Transform _busMesh;
+    [SerializeField] private TextMeshPro _feedbackPlayersQuantity; 
     [SerializeField] private Animator _animator;
-
     private List<PlayerBaseState> _playersOnTheBus = new List<PlayerBaseState>();
     private int _currentStop = 0;
+    private int _currentPlayersOnBus = 0;
 
-    public void GoToNextStop(List<PlayerBaseState> playersInGame)
+    public void InitFeedback(int playerQuantity)
+    {
+        _currentPlayersOnBus = 0;
+        _feedbackPlayersQuantity.text = $"{_currentPlayersOnBus}/{playerQuantity}";
+    }
+
+    public void AddPlayerOnBus(int playerQuantity)
+    {
+        _currentPlayersOnBus++;
+        _feedbackPlayersQuantity.text = $"{_currentPlayersOnBus}/{playerQuantity}";
+    }
+
+    public void ResetPlayerQuantityFeedback(int playerQuantity)
+    {
+        _currentPlayersOnBus = 0;
+        _feedbackPlayersQuantity.text = $"{_currentPlayersOnBus}/{playerQuantity}";
+    }
+
+    public List<PlayerBaseState> GoToNextStop(List<PlayerBaseState> playersInGame)
     {
         for(int i = 0; i < playersInGame.Count; i++)
         {
@@ -23,6 +43,8 @@ public class Bus : MonoBehaviour
 
         _currentStop = (_currentStop + 1) % _stops.Count;
         _animator.SetTrigger("Jump");
+
+        return _playersOnTheBus;
     }
 
     public void ChangePosition()
@@ -49,4 +71,7 @@ public class Bus : MonoBehaviour
     }
 
     public List<Vector2Int> BusPositions => _stops[_currentStop].StopPositions;
+
+    public Vector2Int LandingSpot => _stops[_currentStop].SafePosition;
+
 }

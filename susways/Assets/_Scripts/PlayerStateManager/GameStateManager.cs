@@ -22,6 +22,8 @@ public class GameStateManager : MonoBehaviour
     private bool _isPlayerGrabed; //use this until we need to create a state machine
     private List<Vector3Int> _listToMove = new List<Vector3Int>();
     private List<PlayerBaseState> _rankingList;
+    private List<PlayerBaseState> _playersOnBus;
+    private Vector3 _playerNewPosition;
     private int _busTurn;
 
 
@@ -31,8 +33,10 @@ public class GameStateManager : MonoBehaviour
         _playerControl = new PlayerControl();
 
         _busTurn = 0;
+        _playerNewPosition = Vector3.zero;
        
         _rankingList = new List<PlayerBaseState>();
+        _playersOnBus = new List<PlayerBaseState>();
         _isPlayerGrabed = false;
 
         _playerControl.PlayerGraber.ClickPlayer.performed += TryGrabPlayer;
@@ -42,6 +46,11 @@ public class GameStateManager : MonoBehaviour
         EventManager.OnAnimation += DisablePlayerInput;
         EventManager.OnAnimationOff += EnablePlayerInput;
         EventManager.OnBusProcessEnd += BusJumped;
+        EventManager.OnPlayerEnterBus += PlayerConfirmEnterBus;
+        EventManager.OnPlayerCancelEnterBus += PlayerCancelEnterBus;
+        EventManager.OnPlayerMoveDone += PlayerGoToPosition;
+
+
 
         
         EnablePlayerInput();
@@ -55,7 +64,9 @@ public class GameStateManager : MonoBehaviour
         EventManager.OnAnimation -= DisablePlayerInput;
         EventManager.OnAnimationOff -= EnablePlayerInput;
         EventManager.OnBusProcessEnd -= BusJumped;
-
+        EventManager.OnPlayerEnterBus -= PlayerConfirmEnterBus;
+        EventManager.OnPlayerCancelEnterBus -= PlayerCancelEnterBus;
+        EventManager.OnPlayerMoveDone -= PlayerGoToPosition;
     }
 
 
@@ -63,8 +74,8 @@ public class GameStateManager : MonoBehaviour
     {
         _matchPlayers = _matchData.MatchPlayerInfos;  
         _currentState = GenerateMatchPlayers(_matchData.MatchPlayerQuantity);
+        _bus.InitFeedback(_matchData.MatchPlayerQuantity);
         
-        Debug.Log("Game state manager está com o current state como: " + _currentState.GetType().Name);
         _currentState.EnterState(this);
         EventManager.NewPlayerTurn(_currentState.GetMission(), _currentState);
     }
@@ -96,7 +107,6 @@ public class GameStateManager : MonoBehaviour
                 {
                     _matchStatePlayers.Add(newPlayerState);
                     EventManager.RequestPlayerSpawn(newPlayerState);
-                    Debug.Log("Criou o player state: " + newPlayerState.GetType().Name);
                 }
             }
 
@@ -110,7 +120,6 @@ public class GameStateManager : MonoBehaviour
     private PlayerBaseState CreatePlayerState(int index)
     {
         Mission mission = GetMission();
-        Debug.Log("Player: " + index + "esta com a missão: " + mission.Name);
         switch (index)
         {
             case 0:
@@ -164,8 +173,37 @@ public class GameStateManager : MonoBehaviour
 
         if(_busTurn == 0)
         {
-            _bus.GoToNextStop(_matchStatePlayers);
+            _playersOnBus = _bus.GoToNextStop(_matchStatePlayers);
+            EventManager.ShouldHideUI();
             DisablePlayerInput();
+
+            float offset = 0.5f;
+            Vector2[] offsets = new Vector2[]
+            {
+                new Vector2(offset, offset),
+                new Vector2(-offset, offset),
+                new Vector2(-offset, -offset),
+                new Vector2(offset, -offset)
+            };
+
+            for (int i = 0; i < _matchStatePlayers.Count; i++)
+            {
+                Vector2Int playerPosition = _matchStatePlayers[i].GetPosition();
+                Transform playerTransform = _matchStatePlayers[i].GetInstantiatePrefab().transform;
+
+                if(_bus.BusPositions.Contains(playerPosition))
+                {
+                    _matchStatePlayers[i].UpdatePosition(_bus.LandingSpot.x, _bus.LandingSpot.y);
+
+                    Vector3 targetPosition = new Vector3(
+                        _matchStatePlayers[i].GetPosition().x * 2 + offsets[i].x, playerTransform.position.y, _matchStatePlayers[i].GetPosition().y * 2 + offsets[i].y);
+
+                    if (playerTransform.position != targetPosition)
+                    {
+                        playerTransform.position = targetPosition;
+                    }
+                }
+            }
         }
         else
         {
@@ -176,8 +214,15 @@ public class GameStateManager : MonoBehaviour
 
     private void BusJumped()
     {
-        int nextState = (_matchStatePlayers.IndexOf(_currentState) + 1) % _matchStatePlayers.Count;
-        SwitchState(_matchStatePlayers[nextState]);
+        if(_playersOnBus.Count > 0)
+        {
+            UpdatePlayersBus();
+        }
+        else
+        {
+            int nextState = (_matchStatePlayers.IndexOf(_currentState) + 1) % _matchStatePlayers.Count;
+            SwitchState(_matchStatePlayers[nextState]);
+        }
     }
 
     private void CheckEndGame()
@@ -244,6 +289,45 @@ public class GameStateManager : MonoBehaviour
         }
     }
 
+    private void UpdatePlayersBus()
+    {
+        float offset = 0.5f;
+        Vector2[] offsets = new Vector2[]
+        {
+            new Vector2(offset, offset),
+            new Vector2(-offset, offset),
+            new Vector2(-offset, -offset),
+            new Vector2(offset, -offset)
+        };
+
+        for (int i = 0; i < _playersOnBus.Count; i++)
+        {
+            Transform playerTransform = _playersOnBus[i].GetInstantiatePrefab().transform;
+            _playersOnBus[i].UpdatePosition(_bus.LandingSpot.x, _bus.LandingSpot.y);
+
+            Vector3 targetPosition = new Vector3(
+                _playersOnBus[i].GetPosition().x * 2 + offsets[i].x, playerTransform.position.y, _playersOnBus[i].GetPosition().y * 2 + offsets[i].y);
+
+            if (playerTransform.position != targetPosition)
+            {
+                playerTransform.position = targetPosition;
+                
+                if(_playersOnBus[i].GetInstantiatePrefab().TryGetComponent(out PlayerPawn pawn))
+                {
+                    pawn.PlayerExitBus();
+                }
+            }
+
+
+        }
+
+        _playersOnBus.Clear();
+        _bus.ResetPlayerQuantityFeedback(_matchData.MatchPlayerQuantity);
+        int nextState = (_matchStatePlayers.IndexOf(_currentState) + 1) % _matchStatePlayers.Count;
+        SwitchState(_matchStatePlayers[nextState]);
+        EventManager.ShouldShowUI();
+    }
+
     private bool PlayerAchievedObjective()
     {
         return _currentState.PlayerIsOnObjective();
@@ -266,9 +350,14 @@ public class GameStateManager : MonoBehaviour
                 
                 if(_currentPlayerGrabed == _currentState.GetInstantiatePrefab())
                 {
-                    _currentPlayerGrabed.transform.position = new Vector3(_currentPlayerGrabed.transform.position.x, 0.5f, _currentPlayerGrabed.transform.position.z);
                     EventManager.PlayerSelected(_currentState);
+                    EventManager.ShouldHideUI();
                     _isPlayerGrabed = true;
+
+                    if(_currentPlayerGrabed.TryGetComponent(out PlayerPawn pawn))
+                    {
+                        pawn.PlayerGrabed();
+                    }
                 }
             }
             else
@@ -283,16 +372,61 @@ public class GameStateManager : MonoBehaviour
 
         int x = Mathf.FloorToInt(position.x / 2); //2 is cell size
         int z = Mathf.FloorToInt(position.z / 2);
-        Vector3 newPosition = new Vector3(x * 2, 0f, z * 2);
+        _playerNewPosition = new Vector3(x * 2, 0f, z * 2);
 
         
         if(_listToMove.Contains(new Vector3Int(x, 0, z)))
         {
-            _currentPlayerGrabed.transform.position = newPosition;
-            _currentPlayerGrabed = null;
-            _isPlayerGrabed = false;
+            if(_bus.BusPositions.Contains(new Vector2Int(x, z)))
+            {
+                EventManager.PlayerTryEnterOnBusStop();
+                EventManager.ShouldHideUI();
+                DisablePlayerInput();
+            }
+            else
+            {
+                if(_currentPlayerGrabed.TryGetComponent(out PlayerPawn pawn))
+                {
+                    pawn.PlayerMove();
+                    DisablePlayerInput();
+                }
+            }
         }
 
+    }
+
+    public void PlayerGoToPosition() //when player pawn desapears, call this function
+    {
+        _currentPlayerGrabed.transform.position = _playerNewPosition;
+        _currentPlayerGrabed = null;
+        _isPlayerGrabed = false;
+        _playerNewPosition = Vector3.zero;
+        EnablePlayerInput();
+        EventManager.ShouldShowUI();
+    }
+
+    private void PlayerConfirmEnterBus()
+    {
+        if(_currentPlayerGrabed.TryGetComponent(out PlayerPawn pawn))
+        {
+            pawn.PlayerEnterBus();
+            _bus.AddPlayerOnBus(_matchData.MatchPlayerQuantity);
+            EventManager.ShouldShowUI();
+        }  
+    }
+
+    private void PlayerCancelEnterBus()
+    {
+        if(_currentPlayerGrabed.TryGetComponent(out PlayerPawn pawn))
+        {
+            pawn.PlayerCancelMove();
+        }
+       
+        _currentPlayerGrabed = null;
+        _isPlayerGrabed = false;
+        _playerNewPosition = Vector3.zero;
+        EventManager.ShouldShowUI();
+        EnablePlayerInput();
     }
 
     #endregion Player

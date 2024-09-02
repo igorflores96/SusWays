@@ -31,8 +31,7 @@ public class MapManager : MonoBehaviour
         EventManager.OnEndTurn += UpdateFeedbacks;
         EventManager.OnAnimation += BlockMapAction;
         EventManager.OnAnimationOff += UnlockMapAction;
-
-
+        EventManager.OnPlayerEnterBus += UpdateFeedbacks;
     }
 
     private void OnDisable() 
@@ -42,7 +41,7 @@ public class MapManager : MonoBehaviour
         EventManager.OnEndTurn -= UpdateFeedbacks;
         EventManager.OnAnimation -= BlockMapAction;
         EventManager.OnAnimationOff -= UnlockMapAction;
-
+        EventManager.OnPlayerEnterBus -= UpdateFeedbacks;
     }
 
     private void Update() 

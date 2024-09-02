@@ -13,6 +13,9 @@ public class GameplayUIManager : MonoBehaviour
     [SerializeField] private Button _confirmObjectiveCompleteButton;
     [SerializeField] private Button _backToMenuButton;
     [SerializeField] private Button _confirmBus;
+    [SerializeField] private Button _confirmEnterBusStop;
+    [SerializeField] private Button _cancelEnterBusStop;
+
 
     [Header("Mission Card")]
     [SerializeField] private TextMeshProUGUI _missionTitle;
@@ -50,11 +53,17 @@ public class GameplayUIManager : MonoBehaviour
         _confirmObjectiveCompleteButton.onClick.AddListener(ConfirmObjective);
         _backToMenuButton.onClick.AddListener(GoToMenu);
         _confirmBus.onClick.AddListener(HideBus);
+        _confirmEnterBusStop.onClick.AddListener(ConfirmBusEnter);
+        _cancelEnterBusStop.onClick.AddListener(CancelEnterBus);
+
         
         EventManager.OnNewPlayerTurn += UpdateInfos;
         EventManager.OnPlayersEndGame += ShowEndGameScreen;
         EventManager.OnPlayerCompleteObjective += ShowObjectives;
         EventManager.OnBusJump += ShowBusFeedback;
+        EventManager.OnPlayerTryEnterBusStop += PlayerTryEnterBusStop;
+        EventManager.OnHideUI += HideUI;
+        EventManager.OnShowUI += ShowUI;
     }
 
     private void OnDisable() 
@@ -64,6 +73,9 @@ public class GameplayUIManager : MonoBehaviour
         _confirmObjectiveCompleteButton.onClick.RemoveListener(ConfirmObjective);
         _backToMenuButton.onClick.RemoveListener(GoToMenu);
         _confirmBus.onClick.RemoveListener(HideBus);
+        _confirmEnterBusStop.onClick.RemoveListener(ConfirmBusEnter);
+        _cancelEnterBusStop.onClick.RemoveListener(CancelEnterBus);
+
 
 
        
@@ -71,6 +83,9 @@ public class GameplayUIManager : MonoBehaviour
         EventManager.OnPlayersEndGame -= ShowEndGameScreen;
         EventManager.OnPlayerCompleteObjective -= ShowObjectives;
         EventManager.OnBusJump -= ShowBusFeedback;
+        EventManager.OnPlayerTryEnterBusStop -= PlayerTryEnterBusStop;
+        EventManager.OnHideUI -= HideUI;
+        EventManager.OnShowUI -= ShowUI;
 
     }
 
@@ -128,6 +143,7 @@ public class GameplayUIManager : MonoBehaviour
         _playerName.text = playerName;
         _playerNewTurnName.text = $"Vez de {playerName}";
         _playerDiceNumber.text = $"Dado sorteado: {playerInfo.GetDiceNumber()}";
+        HideUI();
     }
 
     private void ShowObjectives(Mission playerMission)
@@ -220,5 +236,35 @@ public class GameplayUIManager : MonoBehaviour
     public void AnimationEnd()
     {
         EventManager.AnimationOff();
+        ShowUI();
+    }
+
+    private void PlayerTryEnterBusStop()
+    {
+        _turnAnimator.SetTrigger("EnterBus");
+    }
+
+    private void ConfirmBusEnter()
+    {
+        _turnAnimator.SetTrigger("CancelEnterBus");
+        EventManager.PlayerEnterBus();
+    }
+
+    private void CancelEnterBus()
+    {
+        _turnAnimator.SetTrigger("CancelEnterBus");
+        EventManager.PlayerCancelEnterBus();
+    }
+
+    private void HideUI()
+    {
+        _nextTunButton.interactable = false;
+        _showMissionButton.interactable = false;
+    }
+
+    private void ShowUI()
+    {
+        _nextTunButton.interactable = true;
+        _showMissionButton.interactable = true;
     }
 }
