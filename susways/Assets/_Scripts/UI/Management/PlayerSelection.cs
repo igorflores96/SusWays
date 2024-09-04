@@ -202,6 +202,8 @@ public class PlayerSelection : MonoBehaviour
     {
         CloseThreePlayer();
         CloseFourPlayer();
+        _confirmMatch.interactable = false;
+        _currentPlayersConfirmed = 0;
         _matchData.PrepareNewGame();
     }
 }

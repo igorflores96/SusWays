@@ -10,6 +10,10 @@ public class GameStateManager : MonoBehaviour
     [Header("Missions")]
     [SerializeField] private List<CardMission> _missions;
 
+    [Header("Challange Cards")]
+    [SerializeField] private List<ChallangeCards> _cards;
+    [SerializeField] private ChallangeManager _challangeManager;
+
     [Header("Bus")]
     [SerializeField] private Bus _bus;
     
@@ -25,6 +29,8 @@ public class GameStateManager : MonoBehaviour
     private List<PlayerBaseState> _playersOnBus;
     private Vector3 _playerNewPosition;
     private int _busTurn;
+    private bool _playersAnswerChallangeThisTurn;
+    private bool _activeBonusNextTurn;
 
 
 
@@ -33,6 +39,8 @@ public class GameStateManager : MonoBehaviour
         _playerControl = new PlayerControl();
 
         _busTurn = 0;
+        _playersAnswerChallangeThisTurn = false;
+        _activeBonusNextTurn  = false;
         _playerNewPosition = Vector3.zero;
        
         _rankingList = new List<PlayerBaseState>();
@@ -49,10 +57,8 @@ public class GameStateManager : MonoBehaviour
         EventManager.OnPlayerEnterBus += PlayerConfirmEnterBus;
         EventManager.OnPlayerCancelEnterBus += PlayerCancelEnterBus;
         EventManager.OnPlayerMoveDone += PlayerGoToPosition;
+        EventManager.OnPlayerAnswerChallange += HandleChallange;
 
-
-
-        
         EnablePlayerInput();
     }
 
@@ -67,6 +73,8 @@ public class GameStateManager : MonoBehaviour
         EventManager.OnPlayerEnterBus -= PlayerConfirmEnterBus;
         EventManager.OnPlayerCancelEnterBus -= PlayerCancelEnterBus;
         EventManager.OnPlayerMoveDone -= PlayerGoToPosition;
+        EventManager.OnPlayerAnswerChallange -= HandleChallange;
+
     }
 
 
@@ -79,6 +87,7 @@ public class GameStateManager : MonoBehaviour
         _currentState.EnterState(this);
         EventManager.NewPlayerTurn(_currentState.GetMission(), _currentState);
     }
+
     public void SwitchState(PlayerBaseState state)
     {
         _currentState = state;
@@ -112,7 +121,7 @@ public class GameStateManager : MonoBehaviour
 
         }
         
-        int firstPlayerToPlay = Random.Range(0, playersQuantity);
+        int firstPlayerToPlay = Random.Range(0, _matchData.MatchPlayerQuantity);
 
         return _matchStatePlayers[firstPlayerToPlay];
     }
@@ -139,18 +148,10 @@ public class GameStateManager : MonoBehaviour
         }
     }
 
-    private Mission GetMission()
-    {
-        CardMission card = _missions[Random.Range(0, _missions.Count)];
-        Mission mission = new Mission(card);
-        _missions.Remove(card);
-
-        return mission;
-    }
-
     private void PlayerPassedTurn()
     {
         UpdatePlayerPosition();
+
         if(PlayerAchievedObjective())
         {
             DisablePlayerInput();
@@ -158,50 +159,69 @@ public class GameStateManager : MonoBehaviour
             Mission playerMission = _currentState.GetMission();
             EventManager.PlayerCompleteObjective(playerMission);
         }
+        else if(PlayerIsOnChallange() && !_playersAnswerChallangeThisTurn && _cards.Count > 0)
+        {
+            DisablePlayerInput();
+            EventManager.ShouldHideUI();
+            ChallangeCards card = _cards[Random.Range(0, _cards.Count)];
+            _cards.Remove(card);
+            _challangeManager.SetCardChallange(card);
+            _playersAnswerChallangeThisTurn = true;
+            
+        }
         else
             PassToNextTun();
     }
 
     private void PlayerConfirmObjective()
     {
-        CheckEndGame();
+        EnablePlayerInput();
+        PassToNextTun();
     }
 
     public void PassToNextTun()
     {
         _busTurn = (_busTurn + 1) % _matchStatePlayers.Count;
+        bool isNewTurn = _busTurn == 0;
 
-        if(_busTurn == 0)
+        if(isNewTurn)
         {
-            _playersOnBus = _bus.GoToNextStop(_matchStatePlayers);
-            EventManager.ShouldHideUI();
-            DisablePlayerInput();
+            bool endGame = true;
+            List<PlayerBaseState> playersToRemove = new List<PlayerBaseState>();
 
-            float offset = 0.5f;
-            Vector2[] offsets = new Vector2[]
+            foreach(PlayerBaseState state in _matchStatePlayers)
             {
-                new Vector2(offset, offset),
-                new Vector2(-offset, offset),
-                new Vector2(-offset, -offset),
-                new Vector2(offset, -offset)
-            };
+                Mission playerMission = state.GetMission();
 
-            for (int i = 0; i < _matchStatePlayers.Count; i++)
-            {
-                Vector2Int playerPosition = _matchStatePlayers[i].GetPosition();
-                Transform playerTransform = _matchStatePlayers[i].GetInstantiatePrefab().transform;
-
-                if(_bus.BusPositions.Contains(playerPosition))
+                if(playerMission.MissionComplete)
                 {
-                    _matchStatePlayers[i].UpdatePosition(_bus.LandingSpot.x, _bus.LandingSpot.y);
+                    playersToRemove.Add(state);
+                    _rankingList.Add(state);
+                }
+                else
+                    endGame = false;
+            }
 
-                    Vector3 targetPosition = new Vector3(
-                        _matchStatePlayers[i].GetPosition().x * 2 + offsets[i].x, playerTransform.position.y, _matchStatePlayers[i].GetPosition().y * 2 + offsets[i].y);
+            foreach(var player in playersToRemove)
+            {
+                _matchStatePlayers.Remove(player);
+            }
 
-                    if (playerTransform.position != targetPosition)
-                    {
-                        playerTransform.position = targetPosition;
-                    }
+            if(endGame)
+            {
+                EventManager.TheGameIsEnd(_rankingList);
+            }
+            else
+            {
+                HandleBus();
+                _playersAnswerChallangeThisTurn = false;
+
+                if(_activeBonusNextTurn)
+                {
+                    foreach(PlayerBaseState state in _matchStatePlayers)
+                        state.GainMovement();
+
+                    _activeBonusNextTurn = false;
                 }
             }
         }
@@ -212,37 +232,6 @@ public class GameStateManager : MonoBehaviour
         }
     }
 
-    private void BusJumped()
-    {
-        if(_playersOnBus.Count > 0)
-        {
-            UpdatePlayersBus();
-        }
-        else
-        {
-            int nextState = (_matchStatePlayers.IndexOf(_currentState) + 1) % _matchStatePlayers.Count;
-            SwitchState(_matchStatePlayers[nextState]);
-        }
-    }
-
-    private void CheckEndGame()
-    {
-        Mission playerMission = _currentState.GetMission();
-        
-        if(playerMission.MissionComplete)
-        {
-            _matchStatePlayers.Remove(_currentState);
-            _rankingList.Add(_currentState);
-        }
-
-        if(_matchStatePlayers.Count == 0)
-            EventManager.TheGameIsEnd(_rankingList);
-        else
-        {
-            EnablePlayerInput();
-            PassToNextTun();
-        }
-    }
     private void UpdatePlayerPosition()
     {
         Transform transform = _currentState.GetInstantiatePrefab().transform;
@@ -328,12 +317,85 @@ public class GameStateManager : MonoBehaviour
         EventManager.ShouldShowUI();
     }
 
+    private void HandleBus()
+    {
+        _playersOnBus = _bus.GoToNextStop(_matchStatePlayers);
+        EventManager.ShouldHideUI();
+        DisablePlayerInput();
+
+        float offset = 0.5f;
+        Vector2[] offsets = new Vector2[]
+        {
+            new Vector2(offset, offset),
+            new Vector2(-offset, offset),
+            new Vector2(-offset, -offset),
+            new Vector2(offset, -offset)
+        };
+
+        for (int i = 0; i < _matchStatePlayers.Count; i++)
+        {
+            Vector2Int playerPosition = _matchStatePlayers[i].GetPosition();
+            Transform playerTransform = _matchStatePlayers[i].GetInstantiatePrefab().transform;
+
+            if(_bus.BusPositions.Contains(playerPosition))
+            {
+                _matchStatePlayers[i].UpdatePosition(_bus.LandingSpot.x, _bus.LandingSpot.y);
+
+                Vector3 targetPosition = new Vector3(
+                    _matchStatePlayers[i].GetPosition().x * 2 + offsets[i].x, playerTransform.position.y, _matchStatePlayers[i].GetPosition().y * 2 + offsets[i].y);
+
+                if (playerTransform.position != targetPosition)
+                {
+                    playerTransform.position = targetPosition;
+                }
+            }
+        }
+    }
+
+    private void HandleChallange(bool isCorrectAnswer)
+    {
+        EnablePlayerInput();
+        _activeBonusNextTurn = true;
+        PassToNextTun();
+    }
+
     private bool PlayerAchievedObjective()
     {
         return _currentState.PlayerIsOnObjective();
     }
 
+    private bool PlayerIsOnChallange()
+    {
+        return _matchData.CheckChallangeTile(_currentState.GetPosition());
+    }
+
     #endregion PlayerManagement
+
+    #region OthersGameComponents
+
+    private Mission GetMission()
+    {
+        CardMission card = _missions[Random.Range(0, _missions.Count)];
+        Mission mission = new Mission(card);
+        _missions.Remove(card);
+
+        return mission;
+    }
+
+    private void BusJumped()
+    {
+        if(_playersOnBus.Count > 0)
+        {
+            UpdatePlayersBus();
+        }
+        else
+        {
+            int nextState = (_matchStatePlayers.IndexOf(_currentState) + 1) % _matchStatePlayers.Count;
+            SwitchState(_matchStatePlayers[nextState]);
+        }
+    }
+
+    #endregion OthersGameComponents
 
     #region Player
 

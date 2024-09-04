@@ -8,6 +8,7 @@ public abstract class PlayerBaseState
     protected Vector2Int CurrentPosition { get; set; }
     protected int CurrentDiceNumber { get; set; }
     protected string PlayerName { get; set; }
+    protected bool GainMoreMovement { get; set; }
 
 
     public PlayerBaseState(PlayerInfo playerinfo, Vector2Int houseToSpawnPosition, Mission mission)
@@ -79,5 +80,10 @@ public abstract class PlayerBaseState
         }
 
         return isOn;
+    }
+
+    public void GainMovement()
+    {
+        GainMoreMovement = true;
     }
 }

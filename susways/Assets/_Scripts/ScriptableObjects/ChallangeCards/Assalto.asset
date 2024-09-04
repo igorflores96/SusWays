@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dd2e8493b5fb1a46b56550224312b81, type: 3}
+  m_Name: Assalto
+  m_EditorClassIdentifier: 
+  Title: Assalto
+  Text: "Voc\xEAs acabaram de presenciar um assalto. Liguem para o n\xFAmero correto
+    da POL\xCDCIA."
+  _answers:
+  - OptionText: 191
+    IsCorrect: 0
+  - OptionText: 198
+    IsCorrect: 0
+  - OptionText: 194
+    IsCorrect: 0
+  - OptionText: 190
+    IsCorrect: 1

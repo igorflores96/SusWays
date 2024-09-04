@@ -10,6 +10,7 @@ public static class EventManager
     public static event Action<Mission> OnPlayerCompleteObjective;
     public static event Action<List<Vector3Int>> OnListReady;
     public static event Action<List<PlayerBaseState>> OnPlayersEndGame;
+    public static event Action<bool> OnPlayerAnswerChallange;
     public static event Action OnEndTurn;
     public static event Action OnCofirmObjective;
     public static event Action OnAnimation;
@@ -216,6 +217,18 @@ public static class EventManager
         else
         {
             Debug.LogWarning("No listeners for OnPlayerMoveDone event.");
+        }
+    }
+
+    public static void PlayersAnswerChallange(bool value) //Fired by ChallangeManager to GameStateManager add plus one in players movement.
+    {
+        if (OnPlayerAnswerChallange != null)
+        {
+            OnPlayerAnswerChallange(value);
+        }
+        else
+        {
+            Debug.LogWarning("No listeners for OnPlayerChallangeCorrectAnswer event.");
         }
     }
 

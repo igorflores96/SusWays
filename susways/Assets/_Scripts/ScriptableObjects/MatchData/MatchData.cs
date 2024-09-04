@@ -7,6 +7,8 @@ public class MatchData : ScriptableObject
     public int MatchPlayerQuantity;
     public List<PlayerInfo> MatchPlayerInfos = new List<PlayerInfo>();
     public List<Vector2Int> MatchHouses = new List<Vector2Int>();
+    public List<Vector2Int> ChallangeTiles = new List<Vector2Int>();
+
 
     public void AddPlayerOnMatch(PlayerInfo playerInfo)
     {
@@ -42,6 +44,11 @@ public class MatchData : ScriptableObject
         else if(MatchPlayerQuantity > 4)
             MatchPlayerQuantity = 4;
 
+    }
+
+    public bool CheckChallangeTile(Vector2Int position)
+    {
+        return ChallangeTiles.Contains(position);
     }
 
 }

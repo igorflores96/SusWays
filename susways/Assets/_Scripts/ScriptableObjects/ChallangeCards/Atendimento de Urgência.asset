@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dd2e8493b5fb1a46b56550224312b81, type: 3}
+  m_Name: "Atendimento de Urg\xEAncia"
+  m_EditorClassIdentifier: 
+  Title: "Atendimento de Urg\xEAncia"
+  Text: "Voc\xEAs presenciaram um acidente. Liguem para o n\xFAmero correto do SERVI\xC7O
+    DE ATENDIMENTO M\xD3VEL DE URG\xCANCIA (SAMU)."
+  _answers:
+  - OptionText: 197
+    IsCorrect: 0
+  - OptionText: 192
+    IsCorrect: 1
+  - OptionText: 199
+    IsCorrect: 0
+  - OptionText: 181
+    IsCorrect: 0

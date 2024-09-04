@@ -45,7 +45,10 @@ public class Mission
         if(!_missionComplete)
             _currentObjective++;
 
-        if(_currentObjective > 3)
+        if(_currentObjective > 3 && !_missionComplete)
+        {
             _missionComplete = true;
+            _currentObjective = 3;
+        }
     }
 }
