@@ -2058,7 +2058,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &263500208
@@ -9176,7 +9176,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -150, y: 239}
+  m_AnchoredPosition: {x: -150, y: 228}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &869255285
@@ -9375,7 +9375,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 240}
+  m_AnchoredPosition: {x: 0, y: 229}
   m_SizeDelta: {x: 400, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &884278626
@@ -9954,6 +9954,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 15
+  _lerpSpeed: 3
+  _zCamOffset: 18
 --- !u!1 &971124100
 GameObject:
   m_ObjectHideFlags: 0
@@ -10246,7 +10248,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 240}
+  m_AnchoredPosition: {x: 0, y: 229}
   m_SizeDelta: {x: 400, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &982755856
@@ -11421,7 +11423,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 400}
+  m_AnchoredPosition: {x: 0, y: 432}
   m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1055174396
@@ -12277,7 +12279,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 50, y: 239}
+  m_AnchoredPosition: {x: 50, y: 228}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1115257064
@@ -13987,7 +13989,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 400}
+  m_AnchoredPosition: {x: 0, y: 432}
   m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1314059275
@@ -14997,7 +14999,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 400}
+  m_AnchoredPosition: {x: 0, y: 432}
   m_SizeDelta: {x: 350, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1389393208
@@ -15352,7 +15354,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 150, y: 239}
+  m_AnchoredPosition: {x: 150, y: 228}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1415477810
@@ -18180,7 +18182,7 @@ RectTransform:
   m_GameObject: {fileID: 1739514623}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1799182660}
@@ -20692,7 +20694,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -50, y: 239}
+  m_AnchoredPosition: {x: -50, y: 228}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1905606951
@@ -21637,8 +21639,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -112}
-  m_SizeDelta: {x: 550, y: 600}
+  m_AnchoredPosition: {x: 0, y: -78}
+  m_SizeDelta: {x: 450, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1966371398
 MonoBehaviour:
@@ -21660,19 +21662,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Na s\xE9rie \"Atypical\", a m\xE3e de Sam percebeu que ele tinha comportamentos
-    diferentes de sua irm\xE3 na inf\xE2ncia. Ele \xE9 diagnosticado com Transtorno
-    do Espectro Autista (TEA). Se essa s\xE9rie se passase na sua cidade, quais os
-    servi\xE7os que a m\xE3e de Sam poderia utilizar?\n\r\nEP1 - A fam\xEDlia procura
-    a \xDANIDADE DE SA\xDADE (US). L\xE1, a equipe constata sintomas caracter\xEDsticos
-    do TEA.\n \r\nEP2 - Ap\xF3s o acolhimento ele \xE9 encaminhado para o CENTRO
-    DE ATEN\xC7\xC3O PSICOSSOCIAL INFANTIL\n\r\n(CAPSi). L\xE1 recebe atendimento
-    especializado de um psiquiatra que confirma o TEA e gera um laudo.\n\r\nEP3 -
-    Com o laudo, a m\xE3e vai ao CENTRO DE REFER\xCANCIA DE ASSIST\xCANCIA SOCIAL
-    (CRAS), encaminhar os programas sociais, que pessoas com defici\xEAncia (PCD)
-    f\xEDsica ou intelectual t\xEAm direito.\n\r\nEP4 - Por fim, a fam\xEDlia vai
-    \xE0 ESCOLA garantir o curr\xEDculo adaptado, o acompanhamento e o atendimento
-    especializado com monitores em sala de aula."
+  m_text: "Na novela, uma adolescente foi enganada pela internet por um homem mais
+    velho. Ela conta aos seus pais que foi abusada. Os pais devem denunciar o caso
+    na DELEGACIA, depois a adolescente deve ser levada ao HOSPITAL para ser examinada
+    e ver se est\xE1 tudo bem. A fam\xEDlia vai ao CENTRO DE ATENDIMENTO \xC0 SOROLOGIA
+    se informar sobre as doen\xE7as que podem ser transmitidas sexualmente, saber
+    dos tipos de tratamento e receber um coquetel de rem\xE9dios para preven\xE7\xE3o.
+    Como a adolescente teve seu direito sexual violado, ela foi encaminhada ao CENTRO
+    DE REFER\xCANCIA ESPECIALIZADO DE ASSIST\xCANCIA SOCIAL (CREAS) para ter atendimento
+    psicol\xF3gico."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9d44573add1e5ad4a8d186f120458562, type: 2}
   m_sharedMaterial: {fileID: -8620534012344520644, guid: 9d44573add1e5ad4a8d186f120458562, type: 2}
@@ -21699,13 +21697,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 18
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 8
   m_VerticalAlignment: 512
   m_textAlignment: 65535

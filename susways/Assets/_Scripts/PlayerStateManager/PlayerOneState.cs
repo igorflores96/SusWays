@@ -7,10 +7,6 @@ public class PlayerOneState : PlayerBaseState
     public override void EnterState(GameStateManager playerContext)
     {
         CurrentDiceNumber = GainMoreMovement ? Dice.RollSixDice() + 1 : Dice.RollSixDice();
-        
-        if(GainMoreMovement)
-            Debug.Log("Estava com bonus");
-            
         GainMoreMovement = false;
     }
 }

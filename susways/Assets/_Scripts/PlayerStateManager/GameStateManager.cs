@@ -186,49 +186,63 @@ public class GameStateManager : MonoBehaviour
 
         if(isNewTurn)
         {
-            bool endGame = true;
-            List<PlayerBaseState> playersToRemove = new List<PlayerBaseState>();
+            bool isEndGame = CheckEndGame();
 
-            foreach(PlayerBaseState state in _matchStatePlayers)
-            {
-                Mission playerMission = state.GetMission();
+            _bus.ResetPlayerQuantityFeedback(_matchStatePlayers.Count);
 
-                if(playerMission.MissionComplete)
-                {
-                    playersToRemove.Add(state);
-                    _rankingList.Add(state);
-                }
-                else
-                    endGame = false;
-            }
-
-            foreach(var player in playersToRemove)
-            {
-                _matchStatePlayers.Remove(player);
-            }
-
-            if(endGame)
+            if(isEndGame)
             {
                 EventManager.TheGameIsEnd(_rankingList);
             }
             else
             {
                 HandleBus();
+                UpdateChallangeBonus();
                 _playersAnswerChallangeThisTurn = false;
-
-                if(_activeBonusNextTurn)
-                {
-                    foreach(PlayerBaseState state in _matchStatePlayers)
-                        state.GainMovement();
-
-                    _activeBonusNextTurn = false;
-                }
             }
         }
         else
         {
             int nextState = (_matchStatePlayers.IndexOf(_currentState) + 1) % _matchStatePlayers.Count;
             SwitchState(_matchStatePlayers[nextState]);
+        }
+    }
+
+    private bool CheckEndGame()
+    {
+        bool isEndGame = true;
+
+        List<PlayerBaseState> playersToRemove = new List<PlayerBaseState>();
+
+        foreach(PlayerBaseState state in _matchStatePlayers)
+        {
+            Mission playerMission = state.GetMission();
+
+            if(playerMission.MissionComplete)
+            {
+                playersToRemove.Add(state);
+                _rankingList.Add(state);
+            }
+            else
+                isEndGame = false;
+        }
+
+        foreach(var player in playersToRemove)
+        {
+            _matchStatePlayers.Remove(player);
+        }
+
+        return isEndGame;  
+    }
+
+    private void UpdateChallangeBonus()
+    {
+        if(_activeBonusNextTurn)
+        {
+            foreach(PlayerBaseState state in _matchStatePlayers)
+                state.GainMovement();
+
+            _activeBonusNextTurn = false;
         }
     }
 

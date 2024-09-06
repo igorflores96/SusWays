@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: Novas Responsabilidades
   m_EditorClassIdentifier: 
   Title: Novas Responsabilidades
-  Text: "E se na sua escola tiver uma colega gr\xE1vida? Ser m\xE3e \xE9 uma grande
-    responsabilidade. Para ajud\xE1-la, voc\xEA deve convenc\xEA-la a conversar com
-    a orientadora da ESCOLA. Ap\xF3s a conversa, voc\xEAs falam com a m\xE3e dela
-    e decidem procurar a UNIDADE DE SA\xDADE (US) do bairro (ESF ou UBS). L\xE1,
-    o m\xE9dico explica que devido ela ser adolescente, o corpo ainda n\xE3o est\xE1
-    pronto para uma gravidez, sendo sua gesta\xE7\xE3o de alto risco. Opa! Precisamos
-    ficar atentos! Agora sua colega precisa ser encaminhada ao CENTRO MATERNO INFANTIL,
-    para ser acompanhada por profissionais da ginecologia e obstetr\xEDcia. Depois
-    de alguns meses chegou a hora! Voc\xEA deve ajud\xE1-la a ir para o HOSPITAL
-    para o nascimento do beb\xEA."
+  Text: "Voc\xEA descobre que uma das suas colegas de escola est\xE1 gr\xE1vida.
+    Para ajud\xE1-la, voc\xEA deve convenc\xEA-la a conversar com a orientadora da
+    ESCOLA. Ap\xF3s a conversa, voc\xEAs falam com a m\xE3e dela e decidem procurar
+    a UNIDADE DE SA\xDADE (US) do bairro (ESF ou UBS). L\xE1, o m\xE9dico explica
+    que devido ela ser adolescente, o corpo ainda n\xE3o est\xE1 pronto para uma
+    gravidez, sendo sua gesta\xE7\xE3o de alto risco. Opa! Precisamos ficar atentos!
+    Agora sua colega precisa ser encaminhada ao CENTRO MATERNO INFANTIL, para ser
+    acompanhada por profissionais da ginecologia e obstetr\xEDcia. Depois de alguns
+    meses chegou a hora! Voc\xEA deve ajud\xE1-la a ir para o HOSPITAL para o nascimento
+    do beb\xEA."
   Objectives:
   - NormalIcon: {fileID: 21300000, guid: 7664d3fa771fceb4e8920f93c01bfe51, type: 3}
     CompletedIcon: {fileID: 21300000, guid: 2032684e020958b4eae11dee8832009b, type: 3}

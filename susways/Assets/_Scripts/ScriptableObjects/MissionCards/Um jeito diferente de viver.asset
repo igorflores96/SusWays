@@ -15,16 +15,14 @@ MonoBehaviour:
   Title: Um Jeito Diferente de Viver
   Text: "Na s\xE9rie \"Atypical\", a m\xE3e de Sam percebeu que ele tinha comportamentos
     diferentes de sua irm\xE3 na inf\xE2ncia. Ele \xE9 diagnosticado com Transtorno
-    do Espectro Autista (TEA). Se essa s\xE9rie se passase na sua cidade, quais os
-    servi\xE7os que a m\xE3e de Sam poderia utilizar?\n\r\nEP1 - A fam\xEDlia procura
-    a \xDANIDADE DE SA\xDADE (US). L\xE1, a equipe constata sintomas caracter\xEDsticos
-    do TEA.\n \r\nEP2 - Ap\xF3s o acolhimento ele \xE9 encaminhado para o CENTRO
-    DE ATEN\xC7\xC3O PSICOSSOCIAL INFANTIL\n\r\n(CAPSi). L\xE1 recebe atendimento
-    especializado de um psiquiatra que confirma o TEA e gera um laudo.\n\r\nEP3 -
-    Com o laudo, a m\xE3e vai ao CENTRO DE REFER\xCANCIA DE ASSIST\xCANCIA SOCIAL
-    (CRAS), encaminhar os programas sociais, que pessoas com defici\xEAncia (PCD)
-    f\xEDsica ou intelectual t\xEAm direito.\n\r\nEP4 - Por fim, a fam\xEDlia vai
-    \xE0 ESCOLA garantir o curr\xEDculo adaptado, o acompanhamento e o atendimento
+    do Espectro Autista (TEA). E se fosse no Brasil? A fam\xEDlia deve procurar a
+    UNIDADE DE SA\xDADE (US). A equipe constata sintomas caracter\xEDsticos do TEA.
+    Ap\xF3s o acolhimento, ele \xE9 encaminhado para o CENTRO DE ATEN\xC7\xC3O PSICOSSOCIAL
+    INFANTIL (CAPSi). L\xE1 recebe atendimento especializado de um psiquiatra que
+    confirma o TEA e gera um laudo. Com ele, a m\xE3e vai ao CENTRO DE REFER\xCANCIA
+    DE ASSIST\xCANCIA SOCIAL (CRAS), buscar os programas sociais que pessoas com
+    defici\xEAncia (PCD) f\xEDsica ou intelectual t\xEAm direito. Por fim, a fam\xEDlia
+    vai \xE0 ESCOLA garantir o curr\xEDculo adaptado, com acompanhamento e o atendimento
     especializado com monitores em sala de aula."
   Objectives:
   - NormalIcon: {fileID: 21300000, guid: 5b9806d6d6fbdc1488a4bc6b7a4a71bb, type: 3}

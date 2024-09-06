@@ -13,16 +13,15 @@ MonoBehaviour:
   m_Name: Um caso de novela
   m_EditorClassIdentifier: 
   Title: Um Caso de Novela
-  Text: "Na novela uma adolescente foi enganada pela internet por um homem mais velho.
-    Ela conta aos seus pais que foi abusada. Se voc\xEA fosse o autor da novela?
-    Voc\xEA saberia o que fazer a seguir? Voc\xEA deve escrever a continua\xE7\xE3o
-    dessa hist\xF3ria:\r\nOs pais devem denunciar o caso na DELEGACIA, depois a adolescente
-    deve ser levada ao HOSPITAL para ser examinada e ver se est\xE1 tudo bem. A fam\xEDlia
-    vai ao CENTRO DE ATENDIMENTO \xC0 SOROLOGIA se informar sobre as doen\xE7as que
-    podem ser transmitidas sexualmente, saber dos tipos de tratamento e receber um
-    coquetel de rem\xE9dios para preven\xE7\xE3o. Como a adolescente teve seu direito
-    sexual violado, ela foi encaminhada ao CENTRO DE REFER\xCANCIA ESPECIALIZADO
-    DE ASSIST\xCANCIA SOCIAL (CREAS) para ter atendimento psicol\xF3gico."
+  Text: "Na novela, uma adolescente foi enganada pela internet por um homem mais
+    velho. Ela conta aos seus pais que foi abusada. Os pais devem denunciar o caso
+    na DELEGACIA, depois a adolescente deve ser levada ao HOSPITAL para ser examinada
+    e ver se est\xE1 tudo bem. A fam\xEDlia vai ao CENTRO DE ATENDIMENTO \xC0 SOROLOGIA
+    se informar sobre as doen\xE7as que podem ser transmitidas sexualmente, saber
+    dos tipos de tratamento e receber um coquetel de rem\xE9dios para preven\xE7\xE3o.
+    Como a adolescente teve seu direito sexual violado, ela foi encaminhada ao CENTRO
+    DE REFER\xCANCIA ESPECIALIZADO DE ASSIST\xCANCIA SOCIAL (CREAS) para ter atendimento
+    psicol\xF3gico."
   Objectives:
   - NormalIcon: {fileID: 21300000, guid: 1fb176f13ed1c2f4f93d287cf6f0aaa2, type: 3}
     CompletedIcon: {fileID: 21300000, guid: 380d858f0ff3fd04285f861c5d3fca91, type: 3}

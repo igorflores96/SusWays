@@ -14,17 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Title: "Quest\xE3o Familiar"
   Text: "A nutricionista do PSE foi em uma ESCOLA pesar e medir os alunos. Ela identificou
-    que dois irm\xE3os estavam com peso abaixo do esperado para a idade. Ela entrou
+    que dois irm\xE3os estavam com peso abaixo do esperado para a idade. Ela entra
     em contato com voc\xEA que \xE9 Agente Comunit\xE1rio de Sa\xFAde da UNIDADE
-    DE SA\xDADE (US) respons\xE1vel pelo seu territ\xF3rio. Chegando na casa dos
-    irm\xE3s, voc\xEA se deparou com uma situa\xE7\xE3o de neglig\xEAncia. O pai,
-    respons\xE1vel pelo sustento da fam\xEDlia era alcoolista e gastava todo dinheiro
+    DE SA\xDADE (US). Chegando na casa dos irm\xE3os, voc\xEA percebe que o pai,
+    respons\xE1vel pelo sustento da fam\xEDlia, \xE9 alcoolista e gastava todo dinheiro
     no bar. Sua equipe multiprofissional deve encaminh\xE1-lo para o CENTRO DE ATEN\xC7\xC3O
-    PSICOSSOCIAL \xC1LCOOL E DROGAS (CAPSad), para tratamento da depend\xEAncia,.
-    Al\xE9m disso, por causa da neglig\xEAncia, voc\xEA deve entrar em contato com
-    o CENTRO DE REFER\xCANCIA ESPECIALIZADA EM ASSIST\xCANCIA SOCIAL (CREAS), para
-    a fam\xEDlia receber acolhimento, atendimento psicol\xF3gico e solicitar recebimento
-    de benef\xEDcios de programas sociais."
+    PSICOSSOCIAL \xC1LCOOL E DROGAS (CAPSad), para tratamento da depend\xEAncia.
+    Por causa da neglig\xEAncia, voc\xEA deve entrar em contato com o CENTRO DE REFER\xCANCIA
+    ESPECIALIZADA EM ASSIST\xCANCIA SOCIAL (CREAS), para a fam\xEDlia receber acolhimento,
+    atendimento psicol\xF3gico e solicitar recebimento de benef\xEDcios de programas
+    sociais."
   Objectives:
   - NormalIcon: {fileID: 21300000, guid: 7664d3fa771fceb4e8920f93c01bfe51, type: 3}
     CompletedIcon: {fileID: 21300000, guid: 2032684e020958b4eae11dee8832009b, type: 3}

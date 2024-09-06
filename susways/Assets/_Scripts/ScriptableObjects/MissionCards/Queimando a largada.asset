@@ -13,14 +13,13 @@ MonoBehaviour:
   m_Name: Queimando a largada
   m_EditorClassIdentifier: 
   Title: Queimando a Largada
-  Text: "Todo mundo tem aquela amiga que sempre bebe at\xE9 desmaiar nas festas.
-    Se fosse com voc\xEA? Como faria para ajudar? Siga os passos para ajudar sua
-    amiga.\n\nPasso 1: leve ela at\xE9 o HOSPITAL ou UPA imediatamente, para ser
-    atendida e receber medicamentos.\n\r\nPasso 2: ela foi encaminhada para o CENTRO
-    DE ATEN\xC7\xC3O PSICOSSOCIAL INFANTIL (CAPSi), onde vai receber tratamento psicol\xF3gico,
-    participar de grupos e oficinas terap\xEAuticas.\n\r\nPasso 3: pe\xE7a ajuda
-    a UNIDADE DE SA\xDADE (US) do bairro (ESF ou UBS) para fazer uma roda de conversa
-    na ESCOLA sobre o assunto."
+  Text: "Uma amiga sua tomou bebida alco\xF3lica at\xE9 desmaiar. Como ajudar? Siga
+    os passos: 1. Leve ela at\xE9 o HOSPITAL ou UPA imediatamente, para ser atendida
+    e receber medicamentos. 2. Ela foi encaminhada para o CENTRO DE ATEN\xC7\xC3O
+    PSICOSSOCIAL INFANTIL (CAPSi), onde vai receber tratamento psicol\xF3gico, participar
+    de grupos e oficinas terap\xEAuticas. 3. Pe\xE7a ajuda a UNIDADE DE SA\xDADE
+    (US) do bairro (ESF ou UBS) para fazer uma roda de conversa na ESCOLA sobre o
+    assunto."
   Objectives:
   - NormalIcon: {fileID: 21300000, guid: 60c2d1c4cbcd5354888e42c5fb108a7a, type: 3}
     CompletedIcon: {fileID: 21300000, guid: 55d3a5771eef91f4a9e2f78e65576773, type: 3}

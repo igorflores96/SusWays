@@ -13,17 +13,16 @@ MonoBehaviour:
   m_Name: Teto de Estrelas
   m_EditorClassIdentifier: 
   Title: Teto de Estrelas
-  Text: "Voc\xEA \xE9 diretor de um filme. Ele conta a hist\xF3ria de JOHN um morador
-    de rua alcoolista e portador do v\xEDrus HIV. E se esse filme fosse no Brasil?
-    Agora voc\xEA deve dirigir a cenas:\n \r\nCENA 1 - O CONSULT\xD3RIO DE RUA encontra 
-    o JOHN em uma pra\xE7a e presta atendimento a ele. \n\r\nCENA 2 - JOHN vai ao
-    CENTRO DE REFER\xCANCIA DE ASSIST\xCANCIA SOCIAL (CRAS) refazer os documentos
-    que tinha perdido e ser direcionado para passar as noites em um abrigo p\xFAblico.\n\r\nCENA
-    3 - JOHN \xE9 encaminhado ao CENTRO DE ATEN\xC7\xC3O PSICOSSOCIAL \xC1LCOOL E
-    DROGAS (CAPSad) para participar de grupo de apoio e receber atendimento e medicamentos
-    para o alcoolismo. \n\r\nCENA 4 - JOHN deve ir ao CENTRO DE ATENDIMENTO \xC0
-    SOROLOGIA para receber um atendimento especializado, ter informa\xE7\xF5es sobre
-    o tratamento e medicamentos para  o HIV."
+  Text: "Voc\xEA \xE9 diretor de um filme. Ele conta a hist\xF3ria de John, um morador
+    de rua alcoolista e portador do v\xEDrus HIV. Agora voc\xEA deve dirigir a cenas:
+    o CONSULT\xD3RIO DE RUA encontra  o John em uma pra\xE7a e presta atendimento
+    a ele. Depois, John vai ao CENTRO DE REFER\xCANCIA DE ASSIST\xCANCIA SOCIAL (CRAS)
+    refazer os documentos que tinha perdido e ser direcionado para passar as noites
+    em um abrigo p\xFAblico. Em seguida, John \xE9 encaminhado ao CENTRO DE ATEN\xC7\xC3O
+    PSICOSSOCIAL \xC1LCOOL E DROGAS (CAPSad) para participar de grupo de apoio e
+    receber atendimento e medicamentos para o alcoolismo. Por fim, John deve ir ao
+    CENTRO DE ATENDIMENTO \xC0 SOROLOGIA para receber atendimento especializado,
+    com mais informa\xE7\xF5es e um tratamento para HIV. "
   Objectives:
   - NormalIcon: {fileID: 21300000, guid: 1f8e8958ee753d247adc5a1d847dd301, type: 3}
     CompletedIcon: {fileID: 21300000, guid: 32e2df3bbc26c0c4aa1aec764e52051f, type: 3}

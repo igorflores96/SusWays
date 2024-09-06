@@ -14,15 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Title: "Um Recome\xE7o"
   Text: "Seu vizinho perde o emprego de auxiliar de pedreiro, ele n\xE3o terminou
-    o ensino fundamental e \xE9 o \xFAnico da casa que pode trabalhar. O que fazer?
-    Leve seu vizinho para fazer o cadastro \xFAnico no CENTRO DE REFER\xCANCIA DE
-    ASSIST\xCANCIA SOCIAL (CRAS) do bairro e saber quais programas de auxilio social
-    ele pode solicitar. Para garantir o recebimento do Bolsa Fam\xEDlia\xB0 , v\xE3o
-    at\xE9 uma UNIDADE DE SA\xDADE (US) realizar vacinas e pesagem das crian\xE7as
-    da fam\xEDlia. Agora, voc\xEAs devem ir a uma ESCOLA que possua Educa\xE7\xE3o
-    de Jovens e Adultos (EJA), para que ele possa concluir os estudos. Qual o pr\xF3ximo
-    passo? Ir ao SISTEMA NACIONAL DE EMPREGO (SINE) solicitar o seguro desemprego
-    e encaminhar o curr\xEDculo dele."
+    o ensino fundamental e \xE9 o \xFAnico da casa que pode trabalhar. Leve seu vizinho
+    para fazer o cadastro \xFAnico no CENTRO DE REFER\xCANCIA DE ASSIST\xCANCIA SOCIAL
+    (CRAS) do bairro e saber quais programas de aux\xEDlio social ele pode solicitar.
+    Para garantir o recebimento do Bolsa Fam\xEDlia, v\xE3o at\xE9 uma UNIDADE DE
+    SA\xDADE (US) realizar vacinas e pesagem das crian\xE7as da fam\xEDlia. Agora,
+    voc\xEAs devem ir a uma ESCOLA que possua Educa\xE7\xE3o de Jovens e Adultos
+    (EJA), para que ele possa concluir os estudos.Por fim, v\xE1 at\xE9 o SISTEMA
+    NACIONAL DE EMPREGO (SINE) solicitar o seguro desemprego e encaminhar o curr\xEDculo
+    dele."
   Objectives:
   - NormalIcon: {fileID: 21300000, guid: 868271c8e3d24b74ab9791f8ed311465, type: 3}
     CompletedIcon: {fileID: 21300000, guid: 58e87b79b3fe89e4c9d7b85915aa05c6, type: 3}
