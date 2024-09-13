@@ -325,7 +325,7 @@ public class GameStateManager : MonoBehaviour
         }
 
         _playersOnBus.Clear();
-        _bus.ResetPlayerQuantityFeedback(_matchData.MatchPlayerQuantity);
+        _bus.ResetPlayerQuantityFeedback(_matchStatePlayers.Count);
         int nextState = (_matchStatePlayers.IndexOf(_currentState) + 1) % _matchStatePlayers.Count;
         SwitchState(_matchStatePlayers[nextState]);
         EventManager.ShouldShowUI();
@@ -486,7 +486,7 @@ public class GameStateManager : MonoBehaviour
         if(_currentPlayerGrabed.TryGetComponent(out PlayerPawn pawn))
         {
             pawn.PlayerEnterBus();
-            _bus.AddPlayerOnBus(_matchData.MatchPlayerQuantity);
+            _bus.AddPlayerOnBus(_matchStatePlayers.Count);
             EventManager.ShouldShowUI();
         }  
     }

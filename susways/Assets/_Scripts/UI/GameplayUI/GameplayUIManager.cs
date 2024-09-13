@@ -26,8 +26,6 @@ public class GameplayUIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _playerName;
     [SerializeField] private List<Image> _missionObjectives; //We goin to populate on the inspector
     [SerializeField] private TextMeshProUGUI _playerNewTurnName;
-    [SerializeField] private TextMeshProUGUI _playerDiceNumber;
-
     
 
     [Header("End Game Screen")]
@@ -64,6 +62,7 @@ public class GameplayUIManager : MonoBehaviour
         EventManager.OnPlayerTryEnterBusStop += PlayerTryEnterBusStop;
         EventManager.OnHideUI += HideUI;
         EventManager.OnShowUI += ShowUI;
+        EventManager.OnDiceEnd += AnimationEnd;
     }
 
     private void OnDisable() 
@@ -86,6 +85,8 @@ public class GameplayUIManager : MonoBehaviour
         EventManager.OnPlayerTryEnterBusStop -= PlayerTryEnterBusStop;
         EventManager.OnHideUI -= HideUI;
         EventManager.OnShowUI -= ShowUI;
+        EventManager.OnDiceEnd -= AnimationEnd;
+
 
     }
 
@@ -142,7 +143,6 @@ public class GameplayUIManager : MonoBehaviour
 
         _playerName.text = playerName;
         _playerNewTurnName.text = $"Vez de {playerName}";
-        _playerDiceNumber.text = $"Dado sorteado: {playerInfo.GetDiceNumber()}";
         HideUI();
     }
 

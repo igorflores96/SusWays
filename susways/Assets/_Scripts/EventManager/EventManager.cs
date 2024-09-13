@@ -23,6 +23,8 @@ public static class EventManager
     public static event Action OnPlayerMoveDone;
     public static event Action OnHideUI;
     public static event Action OnShowUI;
+    public static event Action OnDiceEnd;
+
 
 
 
@@ -253,6 +255,18 @@ public static class EventManager
         else
         {
             Debug.LogWarning("No listeners for OnHideUI event.");
+        }
+    }
+
+    public static void DiceEnd() //Use to hide importante UI
+    {
+        if (OnDiceEnd != null)
+        {
+            OnDiceEnd();
+        }
+        else
+        {
+            Debug.LogWarning("No listeners for OnDiceEnd event.");
         }
     }
 }

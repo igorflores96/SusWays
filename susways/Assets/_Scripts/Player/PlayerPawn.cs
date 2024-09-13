@@ -33,4 +33,5 @@ public class PlayerPawn : MonoBehaviour
     {
         _animator.SetTrigger("Exit Bus");
     }
+
 }
