@@ -117,7 +117,10 @@ public class GameplayUIManager : MonoBehaviour
         if(shouldOpenCanvas)
             _cardAnimator.SetTrigger("Open");
         else
+        {
             _cardAnimator.SetTrigger("Close");
+            _pocketMissionCanvas.SetActive(false);
+        }
 
         shouldOpenCanvas = !shouldOpenCanvas;
     }
