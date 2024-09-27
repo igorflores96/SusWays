@@ -3,6 +3,9 @@ using UnityEngine;
 public class PlayerPawn : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
+    [SerializeField] private MeshFilter _meshFilter;
+    [SerializeField] private AudioSource _playerOnGround;
+
 
     public void PlayerMove()
     {
@@ -32,6 +35,19 @@ public class PlayerPawn : MonoBehaviour
     public void PlayerExitBus()
     {
         _animator.SetTrigger("Exit Bus");
+    }
+
+    public void PlayerOnGround()
+    {
+        _playerOnGround.Play();
+    }
+
+    public void SetPrefabCaracteristics(Mesh mesh, Color color)
+    {
+        _meshFilter.mesh = mesh;
+        MeshRenderer targetRenderer = _meshFilter.GetComponent<MeshRenderer>();
+        targetRenderer.material.color = color;
+
     }
 
 }

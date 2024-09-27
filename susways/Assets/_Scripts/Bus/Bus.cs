@@ -8,6 +8,10 @@ public class Bus : MonoBehaviour
     [SerializeField] private Transform _busMesh;
     [SerializeField] private TextMeshPro _feedbackPlayersQuantity; 
     [SerializeField] private Animator _animator;
+    [Header("Sounds")]
+    [SerializeField] private AudioSource _walkAudio;
+
+
     private List<PlayerBaseState> _playersOnTheBus = new List<PlayerBaseState>();
     private int _currentStop = 0;
     private int _currentPlayersOnBus = 0;
@@ -43,7 +47,7 @@ public class Bus : MonoBehaviour
 
         _currentStop = (_currentStop + 1) % _stops.Count;
         _animator.SetTrigger("Jump");
-
+        _walkAudio.Play();
         return _playersOnTheBus;
     }
 

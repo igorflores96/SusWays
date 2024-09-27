@@ -116,6 +116,10 @@ public class MapManager : MonoBehaviour
         GameObject playerPrefab = Instantiate(player.GetVisualPrefab(), spawnPosition, Quaternion.identity);
         playerPrefab.transform.SetParent(this.transform);
         playerPrefab.name = player.GetType().Name;
+
+        if(playerPrefab.TryGetComponent(out PlayerPawn pawn))
+            pawn.SetPrefabCaracteristics(player.GetMesh(), player.GetColor());
+
         player.SetInstantiatePrefab(playerPrefab);
     }
 

@@ -21,6 +21,10 @@ public class MainCanvasManager : MonoBehaviour
     [SerializeField] private PlayerSelection _playerSelection;
     [SerializeField] private Animator _canvasAnimator;
 
+    [Header("Sound Effects")]
+    [SerializeField] AudioSource _buttonAudio;
+    [SerializeField] AudioSource _backButtonAudio;
+
 
     private void OnEnable() 
     {
@@ -41,11 +45,13 @@ public class MainCanvasManager : MonoBehaviour
 
     private void OpenCredits()
     {
+        _buttonAudio.Play();
         Debug.Log("Abriu creditos");
     }
 
     private void PlayLocal()
     {
+        _buttonAudio.Play();
         _canvasAnimator.SetTrigger("OpenGame");
         _playerSelection.InitLocalGame();
     }
@@ -58,8 +64,9 @@ public class MainCanvasManager : MonoBehaviour
 
     private void BackToMenu()
     {
+        _backButtonAudio.Play();
         _canvasAnimator.SetTrigger("BackMenu");
-
+        
         for(int i = 0; i < _playerInputFields.Length; i++)
         {
             _playerInputFields[i].text = "";

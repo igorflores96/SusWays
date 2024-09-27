@@ -16,6 +16,9 @@ public class GameStateManager : MonoBehaviour
 
     [Header("Bus")]
     [SerializeField] private Bus _bus;
+
+    [Header("Sounds")]
+    [SerializeField] private AudioSource _grabPlayer;
     
 
     private PlayerControl _playerControl;
@@ -432,6 +435,7 @@ public class GameStateManager : MonoBehaviour
 
                     if(_currentPlayerGrabed.TryGetComponent(out PlayerPawn pawn))
                     {
+                        _grabPlayer.Play();
                         pawn.PlayerGrabed();
                     }
                 }

@@ -20,12 +20,12 @@ public class CameraChangePlayerMesh : MonoBehaviour
 
     private void UpdateMesh(Mission playerMission, PlayerBaseState playerInfos)
     {
-        MeshFilter meshFilter = playerInfos.GetVisualPrefab().GetComponentInChildren<MeshFilter>();
+        MeshFilter meshFilter = playerInfos.GetInstantiatePrefab().GetComponentInChildren<MeshFilter>();
         MeshRenderer meshRenderer = playerInfos.GetVisualPrefab().GetComponentInChildren<MeshRenderer>();
 
         if (meshFilter != null)
         {
-            _meshTarget.mesh = meshFilter.sharedMesh;
+            _meshTarget.mesh = meshFilter.mesh;
         }
         else
         {
@@ -38,7 +38,7 @@ public class CameraChangePlayerMesh : MonoBehaviour
             
             if (targetRenderer != null)
             {
-                targetRenderer.material.color = meshRenderer.sharedMaterial.color;
+                targetRenderer.material.color = playerInfos.GetColor();
             }
             else
             {

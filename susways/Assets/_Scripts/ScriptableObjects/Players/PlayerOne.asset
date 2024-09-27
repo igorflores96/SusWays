@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: PlayerOne
   m_EditorClassIdentifier: 
   VisualPrefab: {fileID: 7496092928101352860, guid: afcdca35c039647428bb53c960531107, type: 3}
-  CurrentMission: {fileID: 0}
+  PlayerName: a
+  DefaultMesh: {fileID: 1705324974331375986, guid: 0e26a7badda81d54db504014a172d5d3, type: 3}
+  DefaultColor: {r: 0.14462557, g: 0.9528302, b: 0, a: 1}

@@ -9,6 +9,8 @@ public abstract class PlayerBaseState
     protected int CurrentDiceNumber { get; set; }
     protected string PlayerName { get; set; }
     protected bool GainMoreMovement { get; set; }
+    protected Mesh Mesh { get; set; }
+    protected Color Color { get; set; }
 
 
     public PlayerBaseState(PlayerInfo playerinfo, Vector2Int houseToSpawnPosition, Mission mission)
@@ -17,7 +19,21 @@ public abstract class PlayerBaseState
         this.CurrentPosition = houseToSpawnPosition;
         this.VisualPrefab = playerinfo.VisualPrefab;
         this.CurrentMission = mission;
-        this.PlayerName = playerinfo.PlayerName;
+
+        if(playerinfo.PlayerName == "")
+            this.PlayerName = GetName();
+        else
+            this.PlayerName = playerinfo.PlayerName;
+        
+        if(playerinfo.Mesh == null)
+            this.Mesh = playerinfo.DefaultMesh;
+        else
+            this.Mesh = playerinfo.Mesh;
+
+        if(!playerinfo.ColorChange)
+            this.Color = playerinfo.DefaultColor;
+        else
+            this.Color = playerinfo.Color;
     }
 
     public abstract void EnterState(GameStateManager playerContext);
@@ -62,6 +78,16 @@ public abstract class PlayerBaseState
         return PlayerName;
     }
 
+    public Mesh GetMesh()
+    {
+        return Mesh;
+    }
+
+    public Color GetColor()
+    {
+        return this.Color;
+    }
+
     public bool PlayerIsOnObjective()
     {
         bool isOn = false;
@@ -85,5 +111,13 @@ public abstract class PlayerBaseState
     public void GainMovement()
     {
         GainMoreMovement = true;
+    }
+
+    private string GetName()
+    {
+        string[] animalNames = { "Leão", "Tigre", "Elefante", "Girafa", "Rinoceronte", "Zebra", "Urso", "Lobo", "Cavalo", "Capivara" };
+        int randomIndex = Random.Range(0, animalNames.Length);
+
+        return animalNames[randomIndex];
     }
 }

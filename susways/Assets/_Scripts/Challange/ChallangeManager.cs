@@ -19,6 +19,7 @@ public class ChallangeManager : MonoBehaviour
     [SerializeField] private GameObject _wrongPanelFeedback;
     [SerializeField] private GameObject _buttonsPanel;
     [SerializeField] private Animator _animator;
+    [SerializeField] private AudioSource _buttonClick;
     private ChallangeCards _currentCard;
     private bool _isCorrectAnswer;
 
@@ -64,6 +65,7 @@ public class ChallangeManager : MonoBehaviour
 
     private void ChoiceFour()
     {
+        _buttonClick.Play();
         if(_currentCard._answers[3].IsCorrect)
             _isCorrectAnswer = true;
         else
@@ -78,6 +80,7 @@ public class ChallangeManager : MonoBehaviour
 
     private void ChoiceThree()
     {
+        _buttonClick.Play();
         if(_currentCard._answers[2].IsCorrect)
             _isCorrectAnswer = true;
         else
@@ -91,6 +94,7 @@ public class ChallangeManager : MonoBehaviour
 
     private void ChoiceTwo()
     {
+        _buttonClick.Play();
         if(_currentCard._answers[1].IsCorrect)
             _isCorrectAnswer = true;
         else
@@ -104,6 +108,7 @@ public class ChallangeManager : MonoBehaviour
 
     private void ChoiceOne()
     {
+        _buttonClick.Play();
         if(_currentCard._answers[0].IsCorrect)
             _isCorrectAnswer = true;
         else
@@ -117,6 +122,7 @@ public class ChallangeManager : MonoBehaviour
 
     private void ConfirmAnswer()
     {
+        _buttonClick.Play();
         _choiceOne.interactable = true;
         _choiceTwo.interactable = true;
         _choiceThree.interactable = true;

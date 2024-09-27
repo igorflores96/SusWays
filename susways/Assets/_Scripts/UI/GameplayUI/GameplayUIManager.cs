@@ -15,12 +15,17 @@ public class GameplayUIManager : MonoBehaviour
     [SerializeField] private Button _confirmBus;
     [SerializeField] private Button _confirmEnterBusStop;
     [SerializeField] private Button _cancelEnterBusStop;
+    [SerializeField] private Button _changeMissionText;
 
 
     [Header("Mission Card")]
     [SerializeField] private TextMeshProUGUI _missionTitle;
     [SerializeField] private TextMeshProUGUI _missionText;
+    [SerializeField] private List<TextMeshProUGUI> _missionTextObjectives; //We goin to populate on the inspector
+    [SerializeField] private List<Image> _missionObjectiveImages; //We goin to populate on the inspector
     [SerializeField] private List<Image> _objectives; //We goin to populate on the inspector
+    [SerializeField] private GameObject _fullMissionCanvas;
+    [SerializeField] private GameObject _pocketMissionCanvas;
     
     [Header("Current Player Infos")]
     [SerializeField] private TextMeshProUGUI _playerName;
@@ -40,12 +45,17 @@ public class GameplayUIManager : MonoBehaviour
     [SerializeField] private Animator _rankingAnimator;
     [SerializeField] private Animator _turnAnimator;
 
+    [Header("Sounds")]
+    [SerializeField] private AudioSource _buttonClick;
+
 
     private bool shouldOpenCanvas;
+    private bool shouldChangeMissionTexts;
 
     private void OnEnable() 
     {
         shouldOpenCanvas = true;
+        shouldChangeMissionTexts = true;
         _nextTunButton.onClick.AddListener(UpdateNextTurn);
         _showMissionButton.onClick.AddListener(CheckMissionCanvas);
         _confirmObjectiveCompleteButton.onClick.AddListener(ConfirmObjective);
@@ -53,6 +63,7 @@ public class GameplayUIManager : MonoBehaviour
         _confirmBus.onClick.AddListener(HideBus);
         _confirmEnterBusStop.onClick.AddListener(ConfirmBusEnter);
         _cancelEnterBusStop.onClick.AddListener(CancelEnterBus);
+        _changeMissionText.onClick.AddListener(ChangeMissionText);
 
         
         EventManager.OnNewPlayerTurn += UpdateInfos;
@@ -74,6 +85,8 @@ public class GameplayUIManager : MonoBehaviour
         _confirmBus.onClick.RemoveListener(HideBus);
         _confirmEnterBusStop.onClick.RemoveListener(ConfirmBusEnter);
         _cancelEnterBusStop.onClick.RemoveListener(CancelEnterBus);
+        _changeMissionText.onClick.RemoveListener(ChangeMissionText);
+
 
 
 
@@ -97,6 +110,8 @@ public class GameplayUIManager : MonoBehaviour
 
     private void CheckMissionCanvas()
     {
+        _buttonClick.Play();
+
         _nextTunButton.gameObject.SetActive(!shouldOpenCanvas);
 
         if(shouldOpenCanvas)
@@ -128,12 +143,16 @@ public class GameplayUIManager : MonoBehaviour
             {
                 _objectives[i].sprite = playerMission.Objectives[i].CompletedIcon;
                 _missionObjectives[i].sprite = playerMission.Objectives[i].CompletedIcon;
+                _missionObjectiveImages[i].sprite = playerMission.Objectives[i].CompletedIcon;
             }
             else
             {
                 _objectives[i].sprite = playerMission.Objectives[i].NormalIcon;
                 _missionObjectives[i].sprite = playerMission.Objectives[i].NormalIcon;
+                _missionObjectiveImages[i].sprite = playerMission.Objectives[i].NormalIcon;
             }
+
+            _missionTextObjectives[i].text = playerMission.Objectives[i].Name;
         }
     }
 
@@ -167,6 +186,7 @@ public class GameplayUIManager : MonoBehaviour
 
     private void ConfirmObjective()
     {
+        _buttonClick.Play();
         _cardAnimator.SetTrigger("Close");
         _nextTunButton.gameObject.SetActive(true);
         _showMissionButton.gameObject.SetActive(true);
@@ -223,6 +243,7 @@ public class GameplayUIManager : MonoBehaviour
 
     private void HideBus()
     {
+        _buttonClick.Play();
         _turnAnimator.SetTrigger("HideBus");
         EventManager.AnimationOff();
         EventManager.StateShouldBeUpdated();
@@ -246,12 +267,14 @@ public class GameplayUIManager : MonoBehaviour
 
     private void ConfirmBusEnter()
     {
+        _buttonClick.Play();
         _turnAnimator.SetTrigger("CancelEnterBus");
         EventManager.PlayerEnterBus();
     }
 
     private void CancelEnterBus()
     {
+        _buttonClick.Play();
         _turnAnimator.SetTrigger("CancelEnterBus");
         EventManager.PlayerCancelEnterBus();
     }
@@ -266,5 +289,13 @@ public class GameplayUIManager : MonoBehaviour
     {
         _nextTunButton.interactable = true;
         _showMissionButton.interactable = true;
+    }
+
+    private void ChangeMissionText()
+    {
+        _buttonClick.Play();
+        _fullMissionCanvas.SetActive(!shouldChangeMissionTexts);
+        _pocketMissionCanvas.SetActive(shouldChangeMissionTexts);
+        shouldChangeMissionTexts = !shouldChangeMissionTexts;
     }
 }

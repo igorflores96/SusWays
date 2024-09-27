@@ -4,6 +4,9 @@ public class DiceController : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
     [SerializeField] private GameObject _diceObject;
+    [SerializeField] private AudioSource _diceClicked;
+    [SerializeField] private AudioSource _diceRolling;
+    [SerializeField] private AudioSource _diceThrow;
     private int _number;
 
     private void OnEnable() 
@@ -18,6 +21,7 @@ public class DiceController : MonoBehaviour
 
     private void OnMouseDown() 
     {
+        _diceClicked.Play();
         PlayAnimation();   
     }
 
@@ -58,5 +62,11 @@ public class DiceController : MonoBehaviour
         transform.position = new Vector3((state.GetPosition().x + 2f) * 2, 1.0f, state.GetPosition().y * 2);
         _number = state.GetDiceNumber();
         _animator.SetTrigger("Show");
+        _diceRolling.Play();
+    }
+
+    public void DiceRoll()
+    {
+        _diceThrow.Play();
     }
 }
