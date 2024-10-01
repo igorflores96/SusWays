@@ -12801,8 +12801,6 @@ MonoBehaviour:
   _canvasAnimator: {fileID: 1374843127}
   _buttonAudio: {fileID: 1343270539}
   _backButtonAudio: {fileID: 1929081642}
-  _enterUI: {fileID: 576990442}
-  _exitUI: {fileID: 1539021357}
 --- !u!114 &1374843126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12858,7 +12856,7 @@ MonoBehaviour:
   _playerThree: {fileID: 11400000, guid: 19e6b8c5b5230df45a132ad3a559acd9, type: 2}
   _playerFour: {fileID: 11400000, guid: 57eb1305427d37c4780483b2116fbc5b, type: 2}
   _meeplesMesh:
-  - {fileID: 1705324974331375986, guid: 0e26a7badda81d54db504014a172d5d3, type: 3}
+  - {fileID: 3369316746193770658, guid: 86163f3edc336a7488dce04b42767da5, type: 3}
   - {fileID: 4300100, guid: 87b751928235ced49a4a5bee39a873cc, type: 3}
   - {fileID: 4300118, guid: 87b751928235ced49a4a5bee39a873cc, type: 3}
   - {fileID: 4300136, guid: 87b751928235ced49a4a5bee39a873cc, type: 3}

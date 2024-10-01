@@ -16,7 +16,10 @@ public class GameplayUIManager : MonoBehaviour
     [SerializeField] private Button _confirmEnterBusStop;
     [SerializeField] private Button _cancelEnterBusStop;
     [SerializeField] private Button _changeMissionText;
+    [SerializeField] private Button _closeBuildingText;
 
+    [Header("Building Card")]
+    [SerializeField] private GameObject _buildingCanvas;
 
     [Header("Mission Card")]
     [SerializeField] private TextMeshProUGUI _missionTitle;
@@ -40,10 +43,11 @@ public class GameplayUIManager : MonoBehaviour
     [SerializeField] private GameObject[] _playerRankingObjects;
 
 
-    [Header("Card Mission Animator")]
+    [Header("Other Animator's UI")]
     [SerializeField] private Animator _cardAnimator;
     [SerializeField] private Animator _rankingAnimator;
     [SerializeField] private Animator _turnAnimator;
+    [SerializeField] private Animator _buildingAnimator;
 
     [Header("Sounds")]
     [SerializeField] private AudioSource _buttonClick;
@@ -56,6 +60,7 @@ public class GameplayUIManager : MonoBehaviour
     {
         shouldOpenCanvas = true;
         shouldChangeMissionTexts = true;
+
         _nextTunButton.onClick.AddListener(UpdateNextTurn);
         _showMissionButton.onClick.AddListener(CheckMissionCanvas);
         _confirmObjectiveCompleteButton.onClick.AddListener(ConfirmObjective);
@@ -64,8 +69,8 @@ public class GameplayUIManager : MonoBehaviour
         _confirmEnterBusStop.onClick.AddListener(ConfirmBusEnter);
         _cancelEnterBusStop.onClick.AddListener(CancelEnterBus);
         _changeMissionText.onClick.AddListener(ChangeMissionText);
+        _closeBuildingText.onClick.AddListener(() => CloseBuildingInfo(true));
 
-        
         EventManager.OnNewPlayerTurn += UpdateInfos;
         EventManager.OnPlayersEndGame += ShowEndGameScreen;
         EventManager.OnPlayerCompleteObjective += ShowObjectives;
@@ -74,6 +79,7 @@ public class GameplayUIManager : MonoBehaviour
         EventManager.OnHideUI += HideUI;
         EventManager.OnShowUI += ShowUI;
         EventManager.OnDiceEnd += AnimationEnd;
+        EventManager.OnBuildingClicked += ActiveBuildingInfo;
     }
 
     private void OnDisable() 
@@ -86,11 +92,8 @@ public class GameplayUIManager : MonoBehaviour
         _confirmEnterBusStop.onClick.RemoveListener(ConfirmBusEnter);
         _cancelEnterBusStop.onClick.RemoveListener(CancelEnterBus);
         _changeMissionText.onClick.RemoveListener(ChangeMissionText);
+        _closeBuildingText.onClick.RemoveListener(() => CloseBuildingInfo(true));
 
-
-
-
-       
         EventManager.OnNewPlayerTurn -= UpdateInfos;
         EventManager.OnPlayersEndGame -= ShowEndGameScreen;
         EventManager.OnPlayerCompleteObjective -= ShowObjectives;
@@ -99,7 +102,7 @@ public class GameplayUIManager : MonoBehaviour
         EventManager.OnHideUI -= HideUI;
         EventManager.OnShowUI -= ShowUI;
         EventManager.OnDiceEnd -= AnimationEnd;
-
+        EventManager.OnBuildingClicked -= ActiveBuildingInfo;
 
     }
 
@@ -115,7 +118,10 @@ public class GameplayUIManager : MonoBehaviour
         _nextTunButton.gameObject.SetActive(!shouldOpenCanvas);
 
         if(shouldOpenCanvas)
+        {
             _cardAnimator.SetTrigger("Open");
+            CloseBuildingInfo(false);
+        }
         else
         {
             _cardAnimator.SetTrigger("Close");
@@ -286,6 +292,7 @@ public class GameplayUIManager : MonoBehaviour
     {
         _nextTunButton.interactable = false;
         _showMissionButton.interactable = false;
+        CloseBuildingInfo(false);
     }
 
     private void ShowUI()
@@ -300,5 +307,20 @@ public class GameplayUIManager : MonoBehaviour
         _fullMissionCanvas.SetActive(!shouldChangeMissionTexts);
         _pocketMissionCanvas.SetActive(shouldChangeMissionTexts);
         shouldChangeMissionTexts = !shouldChangeMissionTexts;
+    }
+
+    private void CloseBuildingInfo(bool shouldPlayAudio)
+    {
+        if(shouldPlayAudio)
+            _buttonClick.Play();
+
+        _buildingAnimator.SetTrigger("Hide");
+    }
+
+    private void ActiveBuildingInfo(BuildingInfo building)
+    {
+        _buildingCanvas.GetComponentInChildren<Image>().sprite = building.BuildingInfoSprite;
+        _buildingAnimator.SetTrigger("Show");
+
     }
 }

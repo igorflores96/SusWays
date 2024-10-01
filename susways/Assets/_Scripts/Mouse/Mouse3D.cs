@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class Mouse3D : MonoBehaviour {
 
@@ -42,13 +41,13 @@ public class Mouse3D : MonoBehaviour {
         return player;
     }
 
-    public static TileFeedback GetFeedback() {
+    public static BuildingInfo GetBuilding() {
         if (Instance == null) {
             Debug.LogError("Mouse3D Object does not exist!");
         }
 
-        //Vector3 result = EventSystem.current.IsPointerOverGameObject() ?  Vector3.zero : Instance.GetMouseWorldPosition_Instance();
-        TileFeedback feedback = Instance.GetFeedback_Instance();
+        //BuildingInfo result = EventSystem.current.IsPointerOverGameObject() ?  null : Instance.GetFeedback_Instance();
+        BuildingInfo feedback = Instance.GetFeedback_Instance();
         return feedback;
     }
 
@@ -70,10 +69,10 @@ public class Mouse3D : MonoBehaviour {
         }
     }
 
-        private TileFeedback GetFeedback_Instance() {
+        private BuildingInfo GetFeedback_Instance() {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit raycastHit, 999f, feedbackColliderLayerMask)) {
-            raycastHit.transform.gameObject.TryGetComponent<TileFeedback>(out TileFeedback feedback);
+            raycastHit.transform.gameObject.TryGetComponent<BuildingInfo>(out BuildingInfo feedback);
             return feedback;
         } else {
             return null;

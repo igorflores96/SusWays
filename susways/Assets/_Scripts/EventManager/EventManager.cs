@@ -11,6 +11,7 @@ public static class EventManager
     public static event Action<List<Vector3Int>> OnListReady;
     public static event Action<List<PlayerBaseState>> OnPlayersEndGame;
     public static event Action<bool> OnPlayerAnswerChallange;
+    public static event Action<BuildingInfo> OnBuildingClicked;
     public static event Action OnEndTurn;
     public static event Action OnCofirmObjective;
     public static event Action OnAnimation;
@@ -231,6 +232,18 @@ public static class EventManager
         else
         {
             Debug.LogWarning("No listeners for OnPlayerChallangeCorrectAnswer event.");
+        }
+    }
+
+    public static void BuildingClicked(BuildingInfo value) //Fired by ChallangeManager to GameStateManager add plus one in players movement.
+    {
+        if (OnBuildingClicked != null)
+        {
+            OnBuildingClicked(value);
+        }
+        else
+        {
+            Debug.LogWarning("No listeners for OnBuildingClicked event.");
         }
     }
 

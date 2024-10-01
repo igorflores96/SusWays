@@ -93,6 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7190835259413564009}
   - component: {fileID: 6850328860945375296}
+  - component: {fileID: 12597451935828062}
   m_Layer: 25
   m_Name: Building_Farmacia
   m_TagString: Untagged
@@ -137,3 +138,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 8, y: 0.1, z: 8}
   m_Center: {x: 4, y: 0.2, z: 4}
+--- !u!114 &12597451935828062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6091110876006420620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5adb87350f1717458d1d3ce58b76f85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buildingInfo: {fileID: 21300000, guid: cc12b9c8b8c5c314f8e9bc60d818de86, type: 3}

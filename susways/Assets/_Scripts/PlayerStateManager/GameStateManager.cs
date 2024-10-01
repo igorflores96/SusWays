@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class GameStateManager : MonoBehaviour
@@ -420,12 +421,22 @@ public class GameStateManager : MonoBehaviour
     {
         if(context.performed)
         {
+            bool isPointerUI = EventSystem.current.IsPointerOverGameObject();
+            
+            if(isPointerUI) return;
+
             if(!_isPlayerGrabed)
             {
+
                 _currentPlayerGrabed = Mouse3D.GetPlayer();
                 
                 if(_currentPlayerGrabed == null)
-                    return;
+                {
+                    BuildingInfo tryBuilding = Mouse3D.GetBuilding();
+
+                    if(tryBuilding != null)
+                        EventManager.BuildingClicked(tryBuilding);
+                }
                 
                 if(_currentPlayerGrabed == _currentState.GetInstantiatePrefab())
                 {
