@@ -7952,7 +7952,7 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0.025
-    y: 0.24
+    y: 0.25
     width: 0.18
     height: 0.17
   near clip plane: 0
@@ -25785,7 +25785,7 @@ MonoBehaviour:
   _wrongPanelFeedback: {fileID: 831302022}
   _buttonsPanel: {fileID: 274068054}
   _animator: {fileID: 2117061356}
-  _buttonClick: {fileID: 0}
+  _buttonClick: {fileID: 173342628}
 --- !u!95 &2117061356
 Animator:
   serializedVersion: 5

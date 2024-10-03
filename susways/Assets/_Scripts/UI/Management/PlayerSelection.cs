@@ -49,11 +49,7 @@ public class PlayerSelection : MonoBehaviour
     [SerializeField] private Button _nextColorThreeButton;
     [SerializeField] private Button _returnColorFourButton;
     [SerializeField] private Button _nextColorFourButton;
-    [SerializeField] private Image _feedbackOneColor;
-    [SerializeField] private Image _feedbackTwoColor;
-    [SerializeField] private Image _feedbackThreeColor;
-    [SerializeField] private Image _feedbackFourColor;
-
+    [SerializeField] private MeshFilter[] _meshFeedbacks;
 
     [Header("Canvases")]
     [SerializeField] private GameObject _playerThreeClosed;
@@ -105,25 +101,25 @@ public class PlayerSelection : MonoBehaviour
         _cancelConfirmPlayerFour.onClick.AddListener(() => CancelPlayerConfirm(3));
 
 
-        _nextMeshOneButton.onClick.AddListener(() => ChangePlayerMeeple(_playerOne, true));
-        _nextMeshTwoButton.onClick.AddListener(() => ChangePlayerMeeple(_playerTwo, true));
-        _nextMeshThreeButton.onClick.AddListener(() => ChangePlayerMeeple(_playerThree, true));
-        _nextMeshFourButton.onClick.AddListener(() => ChangePlayerMeeple(_playerFour, true));
+        _nextMeshOneButton.onClick.AddListener(() => ChangePlayerMeeple(_playerOne, 0, true));
+        _nextMeshTwoButton.onClick.AddListener(() => ChangePlayerMeeple(_playerTwo, 1, true));
+        _nextMeshThreeButton.onClick.AddListener(() => ChangePlayerMeeple(_playerThree, 2, true));
+        _nextMeshFourButton.onClick.AddListener(() => ChangePlayerMeeple(_playerFour, 3, true));
 
-        _returnMeshOneButton.onClick.AddListener(() => ChangePlayerMeeple(_playerOne, false));
-        _returnMeshTwoButton.onClick.AddListener(() => ChangePlayerMeeple(_playerTwo, false));
-        _returnMeshThreeButton.onClick.AddListener(() => ChangePlayerMeeple(_playerThree, false));
-        _returnMeshFourButton.onClick.AddListener(() => ChangePlayerMeeple(_playerFour, false));
+        _returnMeshOneButton.onClick.AddListener(() => ChangePlayerMeeple(_playerOne, 0,  false));
+        _returnMeshTwoButton.onClick.AddListener(() => ChangePlayerMeeple(_playerTwo, 1, false));
+        _returnMeshThreeButton.onClick.AddListener(() => ChangePlayerMeeple(_playerThree, 2, false));
+        _returnMeshFourButton.onClick.AddListener(() => ChangePlayerMeeple(_playerFour, 3, false));
 
-        _nextColorOneButton.onClick.AddListener(() => ChangePlayerColor(_playerOne, true));
-        _nextColorTwoButton.onClick.AddListener(() => ChangePlayerColor(_playerTwo, true));
-        _nextColorThreeButton.onClick.AddListener(() => ChangePlayerColor(_playerThree, true));
-        _nextColorFourButton.onClick.AddListener(() => ChangePlayerColor(_playerFour, true));
+        _nextColorOneButton.onClick.AddListener(() => ChangePlayerColor(_playerOne, 0, true));
+        _nextColorTwoButton.onClick.AddListener(() => ChangePlayerColor(_playerTwo, 1, true));
+        _nextColorThreeButton.onClick.AddListener(() => ChangePlayerColor(_playerThree, 2, true));
+        _nextColorFourButton.onClick.AddListener(() => ChangePlayerColor(_playerFour, 3, true));
 
-        _returnColorOneButton.onClick.AddListener(() => ChangePlayerColor(_playerOne, false));
-        _returnColorTwoButton.onClick.AddListener(() => ChangePlayerColor(_playerTwo, false));
-        _returnColorThreeButton.onClick.AddListener(() => ChangePlayerColor(_playerThree, false));
-        _returnColorFourButton.onClick.AddListener(() => ChangePlayerColor(_playerFour, false));
+        _returnColorOneButton.onClick.AddListener(() => ChangePlayerColor(_playerOne, 0, false));
+        _returnColorTwoButton.onClick.AddListener(() => ChangePlayerColor(_playerTwo, 1, false));
+        _returnColorThreeButton.onClick.AddListener(() => ChangePlayerColor(_playerThree, 2, false));
+        _returnColorFourButton.onClick.AddListener(() => ChangePlayerColor(_playerFour, 3, false));
 
         _confirmMatch.onClick.AddListener(StartMatch);
 
@@ -147,25 +143,25 @@ public class PlayerSelection : MonoBehaviour
         _cancelConfirmPlayerThree.onClick.RemoveListener(() => CancelPlayerConfirm(2));
         _cancelConfirmPlayerFour.onClick.RemoveListener(() => CancelPlayerConfirm(3));
 
-        _nextMeshOneButton.onClick.RemoveListener(() => ChangePlayerMeeple(_playerOne, true));
-        _nextMeshTwoButton.onClick.RemoveListener(() => ChangePlayerMeeple(_playerTwo, true));
-        _nextMeshThreeButton.onClick.RemoveListener(() => ChangePlayerMeeple(_playerThree, true));
-        _nextMeshFourButton.onClick.RemoveListener(() => ChangePlayerMeeple(_playerFour, true));
+        _nextMeshOneButton.onClick.RemoveListener(() => ChangePlayerMeeple(_playerOne, 0, true));
+        _nextMeshTwoButton.onClick.RemoveListener(() => ChangePlayerMeeple(_playerTwo, 1, true));
+        _nextMeshThreeButton.onClick.RemoveListener(() => ChangePlayerMeeple(_playerThree, 2, true));
+        _nextMeshFourButton.onClick.RemoveListener(() => ChangePlayerMeeple(_playerFour, 3, true));
 
-        _returnMeshOneButton.onClick.RemoveListener(() => ChangePlayerMeeple(_playerOne, false));
-        _returnMeshTwoButton.onClick.RemoveListener(() => ChangePlayerMeeple(_playerTwo, false));
-        _returnMeshThreeButton.onClick.RemoveListener(() => ChangePlayerMeeple(_playerThree, false));
-        _returnMeshFourButton.onClick.RemoveListener(() => ChangePlayerMeeple(_playerFour, false));
+        _returnMeshOneButton.onClick.RemoveListener(() => ChangePlayerMeeple(_playerOne, 0, false));
+        _returnMeshTwoButton.onClick.RemoveListener(() => ChangePlayerMeeple(_playerTwo, 1, false));
+        _returnMeshThreeButton.onClick.RemoveListener(() => ChangePlayerMeeple(_playerThree, 2, false));
+        _returnMeshFourButton.onClick.RemoveListener(() => ChangePlayerMeeple(_playerFour, 3, false));
 
-        _nextColorOneButton.onClick.RemoveListener(() => ChangePlayerColor(_playerOne, true));
-        _nextColorTwoButton.onClick.RemoveListener(() => ChangePlayerColor(_playerTwo, true));
-        _nextColorThreeButton.onClick.RemoveListener(() => ChangePlayerColor(_playerThree, true));
-        _nextColorFourButton.onClick.RemoveListener(() => ChangePlayerColor(_playerFour, true));
+        _nextColorOneButton.onClick.RemoveListener(() => ChangePlayerColor(_playerOne, 0, true));
+        _nextColorTwoButton.onClick.RemoveListener(() => ChangePlayerColor(_playerTwo, 1, true));
+        _nextColorThreeButton.onClick.RemoveListener(() => ChangePlayerColor(_playerThree, 2, true));
+        _nextColorFourButton.onClick.RemoveListener(() => ChangePlayerColor(_playerFour, 3, true));
 
-        _returnColorOneButton.onClick.RemoveListener(() => ChangePlayerColor(_playerOne, false));
-        _returnColorTwoButton.onClick.RemoveListener(() => ChangePlayerColor(_playerTwo, false));
-        _returnColorThreeButton.onClick.RemoveListener(() => ChangePlayerColor(_playerThree, false));
-        _returnColorFourButton.onClick.RemoveListener(() => ChangePlayerColor(_playerFour, false));
+        _returnColorOneButton.onClick.RemoveListener(() => ChangePlayerColor(_playerOne, 0, false));
+        _returnColorTwoButton.onClick.RemoveListener(() => ChangePlayerColor(_playerTwo, 1, false));
+        _returnColorThreeButton.onClick.RemoveListener(() => ChangePlayerColor(_playerThree, 2, false));
+        _returnColorFourButton.onClick.RemoveListener(() => ChangePlayerColor(_playerFour, 3, false));
 
         _confirmMatch.onClick.RemoveListener(StartMatch);
     }
@@ -277,7 +273,7 @@ public class PlayerSelection : MonoBehaviour
         SceneManager.LoadScene("GameplayLocal");
     }
 
-    private void ChangePlayerMeeple(PlayerInfo player, bool isAvanceChange)
+    private void ChangePlayerMeeple(PlayerInfo player, int playerIndex, bool isAvanceChange)
     {
         _buttonAudio.Play();
         int currentIndex = player.CurrentMeshIndex;
@@ -288,11 +284,11 @@ public class PlayerSelection : MonoBehaviour
             currentIndex = (currentIndex - 1 + _meeplesMesh.Count) % _meeplesMesh.Count;
 
         player.SetPlayerMesh(_meeplesMesh[currentIndex]);
-
+        SetFeedbackMesh(_meeplesMesh[currentIndex], playerIndex);
         player.CurrentMeshIndex = currentIndex;
     }
 
-    private void ChangePlayerColor(PlayerInfo player, bool isAvanceChange)
+    private void ChangePlayerColor(PlayerInfo player, int playerIndex, bool isAvanceChange)
     {
         _buttonAudio.Play();
         int currentIndex = player.CurrentColorIndex;
@@ -304,7 +300,7 @@ public class PlayerSelection : MonoBehaviour
 
         player.SetPlayerColor(_colors[currentIndex]);
 
-        ChangeFeedbackColor(player);
+        SetFeedbackColor(playerIndex, _colors[currentIndex]);
 
         player.CurrentColorIndex = currentIndex;
     }
@@ -318,19 +314,15 @@ public class PlayerSelection : MonoBehaviour
         _matchData.PrepareNewGame();
     }
 
-    private void ChangeFeedbackColor(PlayerInfo player)
+    private void SetFeedbackMesh(Mesh mesh, int index)
     {
-        if(player == _playerOne)
-            _feedbackOneColor.color = player.Color;
+        _meshFeedbacks[index].mesh = mesh;
+    }
 
-        if(player == _playerTwo)
-            _feedbackTwoColor.color = player.Color;
-
-        if(player == _playerThree)
-            _feedbackThreeColor.color = player.Color;
-
-        if(player == _playerFour)
-            _feedbackFourColor.color = player.Color;
+    private void SetFeedbackColor(int index, Color color)
+    {
+        MeshRenderer targetRenderer = _meshFeedbacks[index].GetComponent<MeshRenderer>();
+        targetRenderer.material.color = color;
     }
 
 }
