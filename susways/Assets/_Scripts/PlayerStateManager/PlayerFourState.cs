@@ -6,7 +6,14 @@ public class PlayerFourState : PlayerBaseState
 
     public override void EnterState(GameStateManager playerContext)
     {
-        CurrentDiceNumber = GainMoreMovement ? Dice.RollSixDice() + 1 : Dice.RollSixDice();
+        if(GainMoreMovement)
+        {
+            CurrentDiceNumber = Dice.RollSixDice() + 1;
+            EventManager.PlayerHasBonus();
+        }
+        else
+            CurrentDiceNumber = Dice.RollSixDice();
+
         GainMoreMovement = false;
     }
 }

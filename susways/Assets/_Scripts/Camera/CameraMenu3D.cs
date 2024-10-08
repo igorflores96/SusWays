@@ -6,7 +6,6 @@ public class CameraMenu3D : MonoBehaviour
     [Header("Camera Settings")]
     [SerializeField] private float _speed;
     [SerializeField] private float _lerpSpeed = 5f;
-    [SerializeField] private float _zCamOffset = 15f;
     [SerializeField] private Vector3[] _positionsToGo;
 
     [Header("Buttons")]

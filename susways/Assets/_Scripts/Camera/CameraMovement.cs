@@ -5,6 +5,11 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private float _lerpSpeed = 5f;
     [SerializeField] private float _zCamOffset = 15f;
+    [SerializeField] private float _plusGapX;
+    [SerializeField] private float _plusGapZ;
+    [SerializeField] private float _minusGapX;
+    [SerializeField] private float _minusGapZ;
+
     private Vector3 _targetPosition;
     private bool _isLerping = false;
 
@@ -30,6 +35,13 @@ public class CameraMovement : MonoBehaviour
             direction = Quaternion.Euler(0, transform.eulerAngles.y, 0) * direction;
 
             transform.Translate(direction * _speed * Time.deltaTime, Space.World);
+
+            Vector3 currentPosition = transform.position;
+
+            currentPosition.x = Mathf.Clamp(currentPosition.x, _minusGapX, _plusGapX);
+            currentPosition.z = Mathf.Clamp(currentPosition.z, _minusGapZ, _plusGapZ);
+
+            transform.position = currentPosition;
         }
         else
         {

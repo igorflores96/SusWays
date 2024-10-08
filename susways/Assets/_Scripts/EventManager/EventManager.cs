@@ -25,6 +25,7 @@ public static class EventManager
     public static event Action OnHideUI;
     public static event Action OnShowUI;
     public static event Action OnDiceEnd;
+    public static event Action OnPlayerHaveBonus;
 
 
 
@@ -280,6 +281,18 @@ public static class EventManager
         else
         {
             Debug.LogWarning("No listeners for OnDiceEnd event.");
+        }
+    }
+
+    public static void PlayerHasBonus() //Players to dice active the feedback
+    {
+        if (OnPlayerHaveBonus != null)
+        {
+            OnPlayerHaveBonus();
+        }
+        else
+        {
+            Debug.LogWarning("No listeners for OnPlayerHaveBonus event.");
         }
     }
 }

@@ -1,0 +1,24 @@
+# Sound Effects
+Woosh Noise 1.wav by potentjello -- https://freesound.org/s/194081/ -- License: Creative Commons 0
+JM_TRANSPORT_EXT_Horn 01c - Car_Very long_Mini Countryman.wav by Julien Matthey -- https://freesound.org/s/436587/ -- License: Creative Commons 0
+Night city atmosphere by Soundkrampf -- https://freesound.org/s/237329/ -- License: Creative Commons 0
+Silent City Evening Atmosphere by Basbazooka -- https://freesound.org/s/556228/ -- License: Creative Commons 0
+BGSaSc Berlin Alexanderplatz Fernsehturn City Background Atmosphere Exterior.wav by Profispiesser -- https://freesound.org/s/543818/ -- License: Creative Commons 0
+
+# 3D Models
+
+	## City
+	Created/distributed by Kay Lousberg (www.kaylousberg.com)
+	Creation date: 25/08/2023 12:00
+	License: (Creative Commons Zero, CC0)
+	http://creativecommons.org/publicdomain/zero/1.0/
+
+	## Bus
+
+	## Meeples
+	Created by Jairo Augusto de Campos Alff (https://sketchfab.com/jairoaug)
+	
+
+	##Skybox
+	https://assetstore.unity.com/packages/2d/textures-materials/sky/customizable-skybox-174576
+

@@ -7,21 +7,31 @@ public class DiceController : MonoBehaviour
     [SerializeField] private AudioSource _diceClicked;
     [SerializeField] private AudioSource _diceRolling;
     [SerializeField] private AudioSource _diceThrow;
+    [SerializeField] private GameObject _feedback;
     private int _number;
+    private bool shouldSubtract;
 
     private void OnEnable() 
     {
         EventManager.OnNewPlayerTurn += Active;
+        EventManager.OnPlayerHaveBonus += ActiveFeedback;
+        shouldSubtract = false;
     }
 
     private void OnDisable() 
     {
         EventManager.OnNewPlayerTurn -= Active;
+        EventManager.OnPlayerHaveBonus -= ActiveFeedback;
     }
 
     private void OnMouseDown() 
     {
         _diceClicked.Play();
+        
+        if(TryGetComponent(out BoxCollider collider))
+            collider.enabled = false;
+        
+        DesactiveFeedback();
         PlayAnimation();   
     }
 
@@ -49,6 +59,7 @@ public class DiceController : MonoBehaviour
             collider.enabled = false;
         
         _animator.SetTrigger("Hide");
+        DesactiveFeedback();
         EventManager.DiceEnd();
 
     }
@@ -60,7 +71,7 @@ public class DiceController : MonoBehaviour
             collider.enabled = true;
         
         transform.position = new Vector3((state.GetPosition().x + 2f) * 2, 1.0f, state.GetPosition().y * 2);
-        _number = state.GetDiceNumber();
+        _number = shouldSubtract ? state.GetDiceNumber() - 1 : state.GetDiceNumber();
         _animator.SetTrigger("Show");
         _diceRolling.Play();
     }
@@ -68,5 +79,17 @@ public class DiceController : MonoBehaviour
     public void DiceRoll()
     {
         _diceThrow.Play();
+    }
+
+    private void ActiveFeedback()
+    {
+        shouldSubtract = true;
+        _feedback.SetActive(true);
+    }
+
+    private void DesactiveFeedback()
+    {
+        _feedback.SetActive(false);
+        shouldSubtract = false;
     }
 }

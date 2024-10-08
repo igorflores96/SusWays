@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VisualPrefab: {fileID: 6439858297193802131, guid: 8d01b0f4dc0613c40abdceeb582b588b, type: 3}
   PlayerName: 
-  DefaultMesh: {fileID: 1705324974331375986, guid: 0e26a7badda81d54db504014a172d5d3, type: 3}
-  DefaultColor: {r: 0.05882353, g: 0.05882353, b: 0.05882353, a: 1}
+  DefaultMesh: {fileID: 3369316746193770658, guid: 86163f3edc336a7488dce04b42767da5, type: 3}
+  DefaultColor: {r: 1, g: 1, b: 1, a: 1}

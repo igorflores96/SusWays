@@ -32,7 +32,7 @@ public class GameplayUIManager : MonoBehaviour
     
     [Header("Current Player Infos")]
     [SerializeField] private TextMeshProUGUI _playerName;
-    [SerializeField] private List<Image> _missionObjectives; //We goin to populate on the inspector
+    [SerializeField] private List<Image> _playerAvatarObjectives; //We goin to populate on the inspector
     [SerializeField] private TextMeshProUGUI _playerNewTurnName;
     
 
@@ -151,13 +151,13 @@ public class GameplayUIManager : MonoBehaviour
             if(playerMission.Objectives[i].IsComplete)
             {
                 _objectives[i].sprite = playerMission.Objectives[i].CompletedIcon;
-                _missionObjectives[i].sprite = playerMission.Objectives[i].CompletedIcon;
+                _playerAvatarObjectives[i].sprite = playerMission.Objectives[i].CompletedIcon;
                 _missionObjectiveImages[i].sprite = playerMission.Objectives[i].CompletedIcon;
             }
             else
             {
                 _objectives[i].sprite = playerMission.Objectives[i].NormalIcon;
-                _missionObjectives[i].sprite = playerMission.Objectives[i].NormalIcon;
+                _playerAvatarObjectives[i].sprite = playerMission.Objectives[i].NormalIcon;
                 _missionObjectiveImages[i].sprite = playerMission.Objectives[i].NormalIcon;
             }
 
@@ -178,15 +178,22 @@ public class GameplayUIManager : MonoBehaviour
     {
         _nextTunButton.gameObject.SetActive(false);
         _showMissionButton.gameObject.SetActive(false);
+        _changeMissionText.interactable = false;
 
         CheckTextToShow(playerMission);
 
         for(int i = 0; i < playerMission.Objectives.Count; i++)
         {
             if(playerMission.Objectives[i].IsComplete)
+            {
                 _objectives[i].sprite = playerMission.Objectives[i].CompletedIcon;
+                _missionObjectiveImages[i].sprite = playerMission.Objectives[i].CompletedIcon;
+            }
             else
+            {
                 _objectives[i].sprite = playerMission.Objectives[i].NormalIcon;
+                _missionObjectiveImages[i].sprite = playerMission.Objectives[i].NormalIcon;
+            }
         }
 
         _confirmObjectiveCompleteButton.gameObject.SetActive(true);
@@ -199,6 +206,7 @@ public class GameplayUIManager : MonoBehaviour
         _cardAnimator.SetTrigger("Close");
         _nextTunButton.gameObject.SetActive(true);
         _showMissionButton.gameObject.SetActive(true);
+        _changeMissionText.interactable = true;
         _confirmObjectiveCompleteButton.gameObject.SetActive(false);
 
         EventManager.ConfirmObjective();

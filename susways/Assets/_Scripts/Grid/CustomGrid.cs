@@ -116,6 +116,7 @@ public class CustomGrid<TGridObject>
             }
         }
 
+        possibleTiles.Add(new Vector3Int(x, 0, z)); //player currentPosition
         return possibleTiles;
     }
 }
