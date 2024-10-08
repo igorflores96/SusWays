@@ -373,7 +373,7 @@ public class GameStateManager : MonoBehaviour
     private void HandleChallange(bool isCorrectAnswer)
     {
         EnablePlayerInput();
-        _activeBonusNextTurn = true;
+        _activeBonusNextTurn = isCorrectAnswer;
         PassToNextTun();
     }
 
