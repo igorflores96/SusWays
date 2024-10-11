@@ -4,6 +4,10 @@ JM_TRANSPORT_EXT_Horn 01c - Car_Very long_Mini Countryman.wav by Julien Matthey 
 Night city atmosphere by Soundkrampf -- https://freesound.org/s/237329/ -- License: Creative Commons 0
 Silent City Evening Atmosphere by Basbazooka -- https://freesound.org/s/556228/ -- License: Creative Commons 0
 BGSaSc Berlin Alexanderplatz Fernsehturn City Background Atmosphere Exterior.wav by Profispiesser -- https://freesound.org/s/543818/ -- License: Creative Commons 0
+firework1.wav by lezaarth -- https://freesound.org/s/232727/ -- License: Creative Commons 0
+Firework Show Ambience 1.wav by iliyabylich04 -- https://freesound.org/s/651331/ -- License: Creative Commons 0
+Correct Bell by Fupicat -- https://freesound.org/s/538147/ -- License: Creative Commons 0
+10661 bonus correct answer.wav by Robinhood76 -- https://freesound.org/s/607926/ -- License: Attribution NonCommercial 4.0
 
 # 3D Models
 
@@ -22,3 +26,6 @@ BGSaSc Berlin Alexanderplatz Fernsehturn City Background Atmosphere Exterior.wav
 	##Skybox
 	https://assetstore.unity.com/packages/2d/textures-materials/sky/customizable-skybox-174576
 
+# Musics
+
+Menu and gameplay music from zapsplat.com

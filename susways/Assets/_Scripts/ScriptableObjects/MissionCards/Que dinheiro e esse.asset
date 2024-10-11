@@ -39,9 +39,22 @@ MonoBehaviour:
     Name: Praca
     IsComplete: 0
     GoalPositions:
+    - {x: 10, y: 6}
     - {x: 11, y: 6}
     - {x: 12, y: 6}
     - {x: 13, y: 6}
+    - {x: 10, y: 11}
+    - {x: 11, y: 11}
+    - {x: 12, y: 11}
+    - {x: 13, y: 11}
+    - {x: 10, y: 7}
+    - {x: 10, y: 8}
+    - {x: 10, y: 9}
+    - {x: 10, y: 10}
+    - {x: 13, y: 7}
+    - {x: 13, y: 8}
+    - {x: 13, y: 9}
+    - {x: 13, y: 10}
   - NormalIcon: {fileID: 21300000, guid: 7664d3fa771fceb4e8920f93c01bfe51, type: 3}
     CompletedIcon: {fileID: 21300000, guid: 2032684e020958b4eae11dee8832009b, type: 3}
     Name: Escola

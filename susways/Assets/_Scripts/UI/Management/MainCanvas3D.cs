@@ -17,8 +17,9 @@ public class MainCanvas3D : MonoBehaviour
     [SerializeField] private PlayerSelection _playerSelection;
 
     [Header("Sound Effects")]
-    [SerializeField] AudioSource _buttonAudio;
-    [SerializeField] AudioSource _backButtonAudio;
+    [SerializeField] AudioSource _wooshIn;
+    [SerializeField] AudioSource _wooshOut;
+
 
 
     private void OnEnable() 
@@ -40,25 +41,23 @@ public class MainCanvas3D : MonoBehaviour
 
     private void OpenCredits()
     {
-        _buttonAudio.Play();
-        Debug.Log("Abriu creditos");
+        _wooshIn.Play();
     }
 
     private void PlayLocal()
     {
-        _buttonAudio.Play();
+        _wooshIn.Play();
         _playerSelection.InitLocalGame();
     }
 
     private void QuitGame()
     {
-        Debug.Log("Saiu do jogo");
         Application.Quit();
     }
 
     private void BackToMenu()
     {
-        _backButtonAudio.Play();
+        _wooshOut.Play();
         
         for(int i = 0; i < _playerInputFields.Length; i++)
         {

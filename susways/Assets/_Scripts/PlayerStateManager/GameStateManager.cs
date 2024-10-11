@@ -225,6 +225,7 @@ public class GameStateManager : MonoBehaviour
             if(playerMission.MissionComplete)
             {
                 playersToRemove.Add(state);
+                DisablePlayerMeeple(state.GetInstantiatePrefab());
                 _rankingList.Add(state);
             }
             else
@@ -237,6 +238,17 @@ public class GameStateManager : MonoBehaviour
         }
 
         return isEndGame;  
+    }
+
+    private void DisablePlayerMeeple(GameObject playerPawn)
+    {
+        if(playerPawn.TryGetComponent(out BoxCollider collider))
+            collider.enabled = false;
+
+        MeshRenderer pawnMesh = playerPawn.GetComponentInChildren<MeshRenderer>();
+
+        if(pawnMesh != null)
+            pawnMesh.enabled = false;
     }
 
     private void UpdateChallangeBonus()
@@ -332,7 +344,6 @@ public class GameStateManager : MonoBehaviour
         _bus.ResetPlayerQuantityFeedback(_matchStatePlayers.Count);
         int nextState = (_matchStatePlayers.IndexOf(_currentState) + 1) % _matchStatePlayers.Count;
         SwitchState(_matchStatePlayers[nextState]);
-        EventManager.ShouldShowUI();
     }
 
     private void HandleBus()
@@ -502,7 +513,6 @@ public class GameStateManager : MonoBehaviour
         {
             pawn.PlayerEnterBus();
             _bus.AddPlayerOnBus(_matchStatePlayers.Count);
-            EventManager.ShouldShowUI();
         }  
     }
 

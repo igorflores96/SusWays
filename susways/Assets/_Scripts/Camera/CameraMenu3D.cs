@@ -10,7 +10,10 @@ public class CameraMenu3D : MonoBehaviour
 
     [Header("Buttons")]
     [SerializeField] private Button _playerSelectionButton;
+    [SerializeField] private Button _credits;
     [SerializeField] private Button _backMenuButton;
+    [SerializeField] private Button _backMenuButtonCredits;
+
 
     private Vector3 _targetPosition;
     private bool _isLerping = false;
@@ -20,12 +23,20 @@ public class CameraMenu3D : MonoBehaviour
     {
         _playerSelectionButton.onClick.AddListener(() => GoToNextSpot(PositionToCamGo.PlayerSelection));
         _backMenuButton.onClick.AddListener(() => GoToNextSpot(PositionToCamGo.MainButtons));
+        _backMenuButtonCredits.onClick.AddListener(() => GoToNextSpot(PositionToCamGo.MainButtons));
+        _credits.onClick.AddListener(() => GoToNextSpot(PositionToCamGo.Credits));
+
+
     }
 
     private void OnDisable() 
     {
         _playerSelectionButton.onClick.RemoveListener(() => GoToNextSpot(PositionToCamGo.PlayerSelection));
         _backMenuButton.onClick.RemoveListener(() => GoToNextSpot(PositionToCamGo.MainButtons));
+        _backMenuButtonCredits.onClick.RemoveListener(() => GoToNextSpot(PositionToCamGo.MainButtons));
+        _credits.onClick.RemoveListener(() => GoToNextSpot(PositionToCamGo.Credits));
+
+
     }
 
     private void Update() 
@@ -51,5 +62,5 @@ public class CameraMenu3D : MonoBehaviour
 
 public enum PositionToCamGo
 {
-    MainButtons, PlayerSelection
+    MainButtons, PlayerSelection, Credits
 }

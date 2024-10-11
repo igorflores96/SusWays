@@ -20,6 +20,8 @@ public class ChallangeManager : MonoBehaviour
     [SerializeField] private GameObject _buttonsPanel;
     [SerializeField] private Animator _animator;
     [SerializeField] private AudioSource _buttonClick;
+    [SerializeField] private AudioSource _correctAnswer;
+    [SerializeField] private AudioSource _wrongAnswer;
     private ChallangeCards _currentCard;
     private bool _isCorrectAnswer;
 
@@ -130,9 +132,15 @@ public class ChallangeManager : MonoBehaviour
         _buttonsPanel.SetActive(false);
         
         if(_isCorrectAnswer)
+        {
             _correctPanelFeedback.SetActive(true); 
+            _correctAnswer.Play();
+        }
         else
+        {
             _wrongPanelFeedback.SetActive(true);
+            _wrongAnswer.Play();
+        }
 
         StartCoroutine(Close());
     }
@@ -143,7 +151,6 @@ public class ChallangeManager : MonoBehaviour
 
         EventManager.PlayersAnswerChallange(_isCorrectAnswer);
         _animator.SetTrigger("Close");
-        EventManager.ShouldShowUI();
     }
 
 }

@@ -51,6 +51,11 @@ public class GameplayUIManager : MonoBehaviour
 
     [Header("Sounds")]
     [SerializeField] private AudioSource _buttonClick;
+    [SerializeField] private AudioSource _wooshIn;
+    [SerializeField] private AudioSource _wooshOut;
+    [SerializeField] private AudioSource _clap;
+    [SerializeField] private AudioSource _firework;
+
 
 
     private bool shouldOpenCanvas;
@@ -120,11 +125,13 @@ public class GameplayUIManager : MonoBehaviour
         if(shouldOpenCanvas)
         {
             _cardAnimator.SetTrigger("Open");
+            _wooshIn.Play();
             CloseBuildingInfo(false);
         }
         else
         {
             _cardAnimator.SetTrigger("Close");
+            _wooshOut.Play();
             _pocketMissionCanvas.SetActive(false);
         }
 
@@ -135,6 +142,7 @@ public class GameplayUIManager : MonoBehaviour
     {
         _turnAnimator.SetTrigger("Show");
         EventManager.AnimationOn();
+        _wooshIn.Play();
         UpdateMissionInfos(playerMission);
         UpdatePlayerInfos(playerInfo);
     }
@@ -146,23 +154,7 @@ public class GameplayUIManager : MonoBehaviour
 
         _missionText.alignment = TextAlignmentOptions.Justified;
 
-        for(int i = 0; i < playerMission.Objectives.Count; i++)
-        {
-            if(playerMission.Objectives[i].IsComplete)
-            {
-                _objectives[i].sprite = playerMission.Objectives[i].CompletedIcon;
-                _playerAvatarObjectives[i].sprite = playerMission.Objectives[i].CompletedIcon;
-                _missionObjectiveImages[i].sprite = playerMission.Objectives[i].CompletedIcon;
-            }
-            else
-            {
-                _objectives[i].sprite = playerMission.Objectives[i].NormalIcon;
-                _playerAvatarObjectives[i].sprite = playerMission.Objectives[i].NormalIcon;
-                _missionObjectiveImages[i].sprite = playerMission.Objectives[i].NormalIcon;
-            }
-
-            _missionTextObjectives[i].text = playerMission.Objectives[i].Name;
-        }
+        UpdateMissionIcons(playerMission);
     }
 
     private void UpdatePlayerInfos(PlayerBaseState playerInfo)
@@ -182,22 +174,30 @@ public class GameplayUIManager : MonoBehaviour
 
         CheckTextToShow(playerMission);
 
+        UpdateMissionIcons(playerMission);
+
+        _confirmObjectiveCompleteButton.gameObject.SetActive(true);
+        _cardAnimator.SetTrigger("Open");
+    }
+
+    private void UpdateMissionIcons(Mission playerMission)
+    {
         for(int i = 0; i < playerMission.Objectives.Count; i++)
         {
+            _missionTextObjectives[i].text = playerMission.Objectives[i].Name;
             if(playerMission.Objectives[i].IsComplete)
             {
                 _objectives[i].sprite = playerMission.Objectives[i].CompletedIcon;
+                _playerAvatarObjectives[i].sprite = playerMission.Objectives[i].CompletedIcon;
                 _missionObjectiveImages[i].sprite = playerMission.Objectives[i].CompletedIcon;
             }
             else
             {
                 _objectives[i].sprite = playerMission.Objectives[i].NormalIcon;
+                _playerAvatarObjectives[i].sprite = playerMission.Objectives[i].NormalIcon;
                 _missionObjectiveImages[i].sprite = playerMission.Objectives[i].NormalIcon;
             }
         }
-
-        _confirmObjectiveCompleteButton.gameObject.SetActive(true);
-        _cardAnimator.SetTrigger("Open");
     }
 
     private void ConfirmObjective()
@@ -247,6 +247,9 @@ public class GameplayUIManager : MonoBehaviour
             _playerNames[i].text = playerList[i].GetPlayerName();
         }
 
+        _clap.Play();
+        _firework.Play();
+
         _rankingAnimator.SetTrigger("Show");
         _gameplayUI.SetActive(false);
         EventManager.AnimationOn();
@@ -260,15 +263,13 @@ public class GameplayUIManager : MonoBehaviour
 
     private void HideBus()
     {
-        _buttonClick.Play();
         _turnAnimator.SetTrigger("HideBus");
-        EventManager.AnimationOff();
         EventManager.StateShouldBeUpdated();
     }
 
     private void GoToMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("Menu3D");
     }
 
     public void AnimationEnd()
@@ -284,14 +285,14 @@ public class GameplayUIManager : MonoBehaviour
 
     private void ConfirmBusEnter()
     {
-        _buttonClick.Play();
+        _wooshOut.Play();
         _turnAnimator.SetTrigger("CancelEnterBus");
         EventManager.PlayerEnterBus();
     }
 
     private void CancelEnterBus()
     {
-        _buttonClick.Play();
+        _wooshOut.Play();
         _turnAnimator.SetTrigger("CancelEnterBus");
         EventManager.PlayerCancelEnterBus();
     }
@@ -320,8 +321,8 @@ public class GameplayUIManager : MonoBehaviour
     private void CloseBuildingInfo(bool shouldPlayAudio)
     {
         if(shouldPlayAudio)
-            _buttonClick.Play();
-
+            _wooshOut.Play();
+            
         _buildingAnimator.SetTrigger("Hide");
     }
 
@@ -329,6 +330,16 @@ public class GameplayUIManager : MonoBehaviour
     {
         _buildingCanvas.GetComponentInChildren<Image>().sprite = building.BuildingInfoSprite;
         _buildingAnimator.SetTrigger("Show");
+        _wooshIn.Play();
+    }
 
+    public void PlayWooshOut()
+    {
+        _wooshOut.Play();
+    }
+
+    public void EnableDiceRoll()
+    {
+        EventManager.PlayerCanRollDice();
     }
 }

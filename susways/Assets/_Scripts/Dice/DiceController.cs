@@ -9,19 +9,21 @@ public class DiceController : MonoBehaviour
     [SerializeField] private AudioSource _diceThrow;
     [SerializeField] private GameObject _feedback;
     private int _number;
-    private bool shouldSubtract;
+    private bool _shouldSubtract;
 
     private void OnEnable() 
     {
         EventManager.OnNewPlayerTurn += Active;
         EventManager.OnPlayerHaveBonus += ActiveFeedback;
-        shouldSubtract = false;
+        EventManager.OnPlayerEnableRollDice += ActiveCollider;
+        _shouldSubtract = false;
     }
 
     private void OnDisable() 
     {
         EventManager.OnNewPlayerTurn -= Active;
         EventManager.OnPlayerHaveBonus -= ActiveFeedback;
+        EventManager.OnPlayerEnableRollDice -= ActiveCollider;
     }
 
     private void OnMouseDown() 
@@ -54,10 +56,7 @@ public class DiceController : MonoBehaviour
     }
 
     public void Desactive()
-    {
-        if(TryGetComponent(out BoxCollider collider))
-            collider.enabled = false;
-        
+    {        
         _animator.SetTrigger("Hide");
         DesactiveFeedback();
         EventManager.DiceEnd();
@@ -65,13 +64,9 @@ public class DiceController : MonoBehaviour
     }
 
     public void Active(Mission playerMission, PlayerBaseState state)
-    {
-
-        if(TryGetComponent(out BoxCollider collider))
-            collider.enabled = true;
-        
+    {        
         transform.position = new Vector3((state.GetPosition().x + 2f) * 2, 1.0f, state.GetPosition().y * 2);
-        _number = shouldSubtract ? state.GetDiceNumber() - 1 : state.GetDiceNumber();
+        _number = _shouldSubtract ? state.GetDiceNumber() - 1 : state.GetDiceNumber();
         _animator.SetTrigger("Show");
         _diceRolling.Play();
     }
@@ -81,15 +76,21 @@ public class DiceController : MonoBehaviour
         _diceThrow.Play();
     }
 
+    public void ActiveCollider()
+    {
+        if(TryGetComponent(out BoxCollider collider))
+            collider.enabled = true;
+    }
+
     private void ActiveFeedback()
     {
-        shouldSubtract = true;
+        _shouldSubtract = true;
         _feedback.SetActive(true);
     }
 
     private void DesactiveFeedback()
     {
         _feedback.SetActive(false);
-        shouldSubtract = false;
+        _shouldSubtract = false;
     }
 }
