@@ -36,7 +36,7 @@ MonoBehaviour:
     - {x: 15, y: 9}
   - NormalIcon: {fileID: 21300000, guid: 548f4c8253bfd0241b0381ac8b08c542, type: 3}
     CompletedIcon: {fileID: 21300000, guid: 836d304bd38247a44b2d36bf4241abce, type: 3}
-    Name: Praca
+    Name: "Pra\xE7a"
     IsComplete: 0
     GoalPositions:
     - {x: 10, y: 6}

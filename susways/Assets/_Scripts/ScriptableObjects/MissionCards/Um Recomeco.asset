@@ -32,7 +32,7 @@ MonoBehaviour:
     - {x: 3, y: 2}
   - NormalIcon: {fileID: 21300000, guid: 5b9806d6d6fbdc1488a4bc6b7a4a71bb, type: 3}
     CompletedIcon: {fileID: 21300000, guid: 232f45f35d645d349a6a2d6757df903e, type: 3}
-    Name: Unidade de Saude
+    Name: "Unidade de Sa\xFAde"
     IsComplete: 0
     GoalPositions:
     - {x: 11, y: 4}
