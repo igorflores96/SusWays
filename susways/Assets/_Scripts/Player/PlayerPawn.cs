@@ -5,7 +5,7 @@ public class PlayerPawn : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private MeshFilter _meshFilter;
     [SerializeField] private AudioSource _playerOnGround;
-
+    [SerializeField] private ParticleSystem _ps;
 
     public void PlayerMove()
     {
@@ -24,7 +24,15 @@ public class PlayerPawn : MonoBehaviour
 
     public void PlayerShouldTeleport()
     {
+        _ps.Clear();
         EventManager.PlayerMoveDone();
+        _ps.Play();
+
+    }
+
+    public void ActiveParticle()
+    {
+        _ps.Play();
     }
 
     public void PlayerEnterBus()
@@ -47,6 +55,10 @@ public class PlayerPawn : MonoBehaviour
         _meshFilter.mesh = mesh;
         MeshRenderer targetRenderer = _meshFilter.GetComponent<MeshRenderer>();
         targetRenderer.material.color = color;
+
+        var mainModule = _ps.main;
+
+        mainModule.startColor = new ParticleSystem.MinMaxGradient(color, Color.white);
 
     }
 

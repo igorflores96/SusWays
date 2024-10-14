@@ -8,6 +8,8 @@ public class Bus : MonoBehaviour
     [SerializeField] private Transform _busMesh;
     [SerializeField] private TextMeshPro _feedbackPlayersQuantity; 
     [SerializeField] private Animator _animator;
+    [SerializeField] private ParticleSystem _ps;
+
     [Header("Sounds")]
     [SerializeField] private AudioSource _walkAudio;
 
@@ -53,6 +55,8 @@ public class Bus : MonoBehaviour
 
     public void ChangePosition()
     {
+        _ps.Clear(); //first stop and after play again
+        
         transform.position = new Vector3(_stops[_currentStop].StopPositions[1].x * 2, transform.position.y, _stops[_currentStop].StopPositions[1].y * 2);
 
         switch (_currentStop)
@@ -67,6 +71,13 @@ public class Bus : MonoBehaviour
                 _busMesh.rotation = Quaternion.Euler(0, 0, 0);
                 break;
         }
+
+        _ps.Play();
+    }
+
+    public void ActiveParticles()
+    {
+        _ps.Play();
     }
 
     public void JumpIsOver()
