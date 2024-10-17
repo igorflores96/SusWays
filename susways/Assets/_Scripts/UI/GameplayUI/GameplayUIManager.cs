@@ -29,6 +29,8 @@ public class GameplayUIManager : MonoBehaviour
     [SerializeField] private List<Image> _objectives; //We goin to populate on the inspector
     [SerializeField] private GameObject _fullMissionCanvas;
     [SerializeField] private GameObject _pocketMissionCanvas;
+    [SerializeField] private int _biggerFontSize;
+    [SerializeField] private int _smallerFontSize;
     
     [Header("Current Player Infos")]
     [SerializeField] private TextMeshProUGUI _playerName;
@@ -208,6 +210,7 @@ public class GameplayUIManager : MonoBehaviour
         _showMissionButton.gameObject.SetActive(true);
         _changeMissionText.interactable = true;
         _confirmObjectiveCompleteButton.gameObject.SetActive(false);
+        _missionText.fontSize = _smallerFontSize;
 
         EventManager.ConfirmObjective();
     }
@@ -221,12 +224,14 @@ public class GameplayUIManager : MonoBehaviour
             string playerNextObjective = mission.Objectives[mission.CurrentObjective].Name;
             _missionTitle.text = "Objetivo Completo!";
             _missionText.text = $"Você chegou em {playerObjectiveName}.\nSeus Selos foram atualizados.\nSeu próximo objetivo é: {playerNextObjective}";
+            _missionText.fontSize = _biggerFontSize;
             _missionText.alignment = TextAlignmentOptions.Center;
         }
         else
         {
             _missionTitle.text = "Todos os Objetivos foram Completos!";
             _missionText.text = $"Parabéns!\nVocê completou os Caminhos do SUS.";
+            _missionText.fontSize = _biggerFontSize;
             _missionText.alignment = TextAlignmentOptions.Center;
         }
 

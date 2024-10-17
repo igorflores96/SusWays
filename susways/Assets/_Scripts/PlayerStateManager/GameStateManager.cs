@@ -308,7 +308,7 @@ public class GameStateManager : MonoBehaviour
         }
     }
 
-    private void UpdatePlayersBus()
+    private void UpdatePlayersBus() //after bus jump
     {
         float offset = 0.5f;
         Vector2[] offsets = new Vector2[]
@@ -334,6 +334,11 @@ public class GameStateManager : MonoBehaviour
                 if(_playersOnBus[i].GetInstantiatePrefab().TryGetComponent(out PlayerPawn pawn))
                 {
                     pawn.PlayerExitBus();
+                }
+
+                if(_playersOnBus[i].GetInstantiatePrefab().TryGetComponent(out BoxCollider collider))
+                {
+                    collider.enabled = true;
                 }
             }
 
@@ -514,6 +519,9 @@ public class GameStateManager : MonoBehaviour
             pawn.PlayerEnterBus();
             _bus.AddPlayerOnBus(_matchStatePlayers.Count);
         }  
+
+        if(_currentPlayerGrabed.TryGetComponent(out BoxCollider collider))
+            collider.enabled = false;
     }
 
     private void PlayerCancelEnterBus()
