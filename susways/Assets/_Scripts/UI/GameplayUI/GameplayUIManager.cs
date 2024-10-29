@@ -15,7 +15,6 @@ public class GameplayUIManager : MonoBehaviour
     [SerializeField] private Button _confirmBus;
     [SerializeField] private Button _confirmEnterBusStop;
     [SerializeField] private Button _cancelEnterBusStop;
-    [SerializeField] private Button _changeMissionText;
     [SerializeField] private Button _closeBuildingText;
 
     [Header("Building Card")]
@@ -24,11 +23,8 @@ public class GameplayUIManager : MonoBehaviour
     [Header("Mission Card")]
     [SerializeField] private TextMeshProUGUI _missionTitle;
     [SerializeField] private TextMeshProUGUI _missionText;
-    [SerializeField] private List<TextMeshProUGUI> _missionTextObjectives; //We goin to populate on the inspector
-    [SerializeField] private List<Image> _missionObjectiveImages; //We goin to populate on the inspector
     [SerializeField] private List<Image> _objectives; //We goin to populate on the inspector
     [SerializeField] private GameObject _fullMissionCanvas;
-    [SerializeField] private GameObject _pocketMissionCanvas;
     [SerializeField] private int _biggerFontSize;
     [SerializeField] private int _smallerFontSize;
     
@@ -75,7 +71,6 @@ public class GameplayUIManager : MonoBehaviour
         _confirmBus.onClick.AddListener(HideBus);
         _confirmEnterBusStop.onClick.AddListener(ConfirmBusEnter);
         _cancelEnterBusStop.onClick.AddListener(CancelEnterBus);
-        _changeMissionText.onClick.AddListener(ChangeMissionText);
         _closeBuildingText.onClick.AddListener(() => CloseBuildingInfo(true));
 
         EventManager.OnNewPlayerTurn += UpdateInfos;
@@ -98,7 +93,6 @@ public class GameplayUIManager : MonoBehaviour
         _confirmBus.onClick.RemoveListener(HideBus);
         _confirmEnterBusStop.onClick.RemoveListener(ConfirmBusEnter);
         _cancelEnterBusStop.onClick.RemoveListener(CancelEnterBus);
-        _changeMissionText.onClick.RemoveListener(ChangeMissionText);
         _closeBuildingText.onClick.RemoveListener(() => CloseBuildingInfo(true));
 
         EventManager.OnNewPlayerTurn -= UpdateInfos;
@@ -134,7 +128,6 @@ public class GameplayUIManager : MonoBehaviour
         {
             _cardAnimator.SetTrigger("Close");
             _wooshOut.Play();
-            _pocketMissionCanvas.SetActive(false);
         }
 
         shouldOpenCanvas = !shouldOpenCanvas;
@@ -152,7 +145,7 @@ public class GameplayUIManager : MonoBehaviour
     private void UpdateMissionInfos(Mission playerMission)
     {
         _missionTitle.text = playerMission.Name;
-        _missionText.text = playerMission.Text;
+        _missionText.text = playerMission.Objectives[playerMission.CurrentObjective].Text;;
 
         _missionText.alignment = TextAlignmentOptions.Justified;
 
@@ -172,7 +165,6 @@ public class GameplayUIManager : MonoBehaviour
     {
         _nextTunButton.gameObject.SetActive(false);
         _showMissionButton.gameObject.SetActive(false);
-        _changeMissionText.interactable = false;
 
         CheckTextToShow(playerMission);
 
@@ -186,18 +178,15 @@ public class GameplayUIManager : MonoBehaviour
     {
         for(int i = 0; i < playerMission.Objectives.Count; i++)
         {
-            _missionTextObjectives[i].text = playerMission.Objectives[i].Name;
             if(playerMission.Objectives[i].IsComplete)
             {
                 _objectives[i].sprite = playerMission.Objectives[i].CompletedIcon;
                 _playerAvatarObjectives[i].sprite = playerMission.Objectives[i].CompletedIcon;
-                _missionObjectiveImages[i].sprite = playerMission.Objectives[i].CompletedIcon;
             }
             else
             {
-                _objectives[i].sprite = playerMission.Objectives[i].NormalIcon;
-                _playerAvatarObjectives[i].sprite = playerMission.Objectives[i].NormalIcon;
-                _missionObjectiveImages[i].sprite = playerMission.Objectives[i].NormalIcon;
+                _objectives[i].sprite = i == playerMission.CurrentObjective ? playerMission.Objectives[i].NormalIcon : playerMission.LockedIcon;
+                _playerAvatarObjectives[i].sprite = i == playerMission.CurrentObjective ? playerMission.Objectives[i].NormalIcon : playerMission.LockedIcon;
             }
         }
     }
@@ -208,7 +197,6 @@ public class GameplayUIManager : MonoBehaviour
         _cardAnimator.SetTrigger("Close");
         _nextTunButton.gameObject.SetActive(true);
         _showMissionButton.gameObject.SetActive(true);
-        _changeMissionText.interactable = true;
         _confirmObjectiveCompleteButton.gameObject.SetActive(false);
         _missionText.fontSize = _smallerFontSize;
 
@@ -314,15 +302,7 @@ public class GameplayUIManager : MonoBehaviour
         _nextTunButton.interactable = true;
         _showMissionButton.interactable = true;
     }
-
-    private void ChangeMissionText()
-    {
-        _buttonClick.Play();
-        _fullMissionCanvas.SetActive(!shouldChangeMissionTexts);
-        _pocketMissionCanvas.SetActive(shouldChangeMissionTexts);
-        shouldChangeMissionTexts = !shouldChangeMissionTexts;
-    }
-
+    
     private void CloseBuildingInfo(bool shouldPlayAudio)
     {
         if(shouldPlayAudio)

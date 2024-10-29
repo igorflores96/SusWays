@@ -27,6 +27,9 @@ MonoBehaviour:
   - NormalIcon: {fileID: 21300000, guid: 60c2d1c4cbcd5354888e42c5fb108a7a, type: 3}
     CompletedIcon: {fileID: 21300000, guid: 55d3a5771eef91f4a9e2f78e65576773, type: 3}
     Name: Hospital
+    Text: "Sua vizinha \xE9 uma mulher trans que h\xE1 tempo sofria viol\xEAncia
+      f\xEDsica e psicol\xF3gica de seus pais, at\xE9 o momento que foi expulsa de
+      casa. Para ajud\xE1-la, voc\xEAs devem buscar atendimento m\xE9dico no HOSPITAL."
     IsComplete: 0
     GoalPositions:
     - {x: 20, y: 8}
@@ -34,18 +37,27 @@ MonoBehaviour:
   - NormalIcon: {fileID: 21300000, guid: 1fb176f13ed1c2f4f93d287cf6f0aaa2, type: 3}
     CompletedIcon: {fileID: 21300000, guid: 380d858f0ff3fd04285f861c5d3fca91, type: 3}
     Name: Delegacia
+    Text: "Agora, v\xE3o at\xE9 a DELEGACIA para prestar den\xFAncia do ocorrido."
     IsComplete: 0
     GoalPositions:
     - {x: 15, y: 1}
   - NormalIcon: {fileID: 21300000, guid: fd148a3e64e693041ac2f504d0ee6f26, type: 3}
     CompletedIcon: {fileID: 21300000, guid: 46c01be7a770f79419513e6cf1efd5ae, type: 3}
     Name: CREAS
+    Text: "Os profissionais encaminham voc\xEAs para o CENTRO DE REFER\xCANCIA ESPECIALIZADO
+      EM ASSIST\xCANCIA SOCIAL (CREAS), em que ela vai receber atendimento psicol\xF3gico
+      e de assist\xEAncia social."
     IsComplete: 0
     GoalPositions:
     - {x: 15, y: 9}
   - NormalIcon: {fileID: 21300000, guid: 2137106f7d5ee0949b5c1c00470f2bac, type: 3}
     CompletedIcon: {fileID: 21300000, guid: 24a8b30978330ca41925da3a51b2363f, type: 3}
     Name: SINE
+    Text: "L\xE1 ela \xE9 encaminhada para um lugar seguro, onde receber\xE1 acomoda\xE7\xE3o
+      e alimenta\xE7\xE3o, que s\xE3o direito de todas as pessoas. Para ajud\xE1-la,
+      v\xE1 com ela ao SISTEMA NACIONAL DE EMPREGO (SINE), onde voc\xEAs v\xE3o buscar
+      oportunidades de emprego para ela come\xE7ar uma nova etapa de sua vida."
     IsComplete: 0
     GoalPositions:
     - {x: 2, y: 12}
+  LockedIcon: {fileID: 21300000, guid: 0cee765ea05909b4db6e4ea23f3dfe7f, type: 3}

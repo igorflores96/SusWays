@@ -24,6 +24,8 @@ MonoBehaviour:
   - NormalIcon: {fileID: 21300000, guid: 60c2d1c4cbcd5354888e42c5fb108a7a, type: 3}
     CompletedIcon: {fileID: 21300000, guid: 55d3a5771eef91f4a9e2f78e65576773, type: 3}
     Name: Hospital ou UPA
+    Text: "Uma amiga sua tomou bebida alco\xF3lica at\xE9 desmaiar. Leve ela at\xE9
+      o HOSPITAL ou UPA imediatamente, para ser atendida e receber medicamentos."
     IsComplete: 0
     GoalPositions:
     - {x: 20, y: 8}
@@ -33,19 +35,26 @@ MonoBehaviour:
   - NormalIcon: {fileID: 21300000, guid: 28c0d33278cffa44fbd6af3b88e1dd28, type: 3}
     CompletedIcon: {fileID: 21300000, guid: 5fa850f8396e1af449b49ed5b2f57204, type: 3}
     Name: CAPSi
+    Text: "Ap\xF3s o atendimento, ela foi encaminhada para o CENTRO DE ATEN\xC7\xC3O
+      PSICOSSOCIAL INFANTIL (CAPSi), onde vai receber tratamento psicol\xF3gico,
+      participar de grupos e oficinas terap\xEAuticas."
     IsComplete: 0
     GoalPositions:
     - {x: 21, y: 4}
   - NormalIcon: {fileID: 21300000, guid: 5b9806d6d6fbdc1488a4bc6b7a4a71bb, type: 3}
     CompletedIcon: {fileID: 21300000, guid: 232f45f35d645d349a6a2d6757df903e, type: 3}
     Name: "Unidade de Sa\xFAde"
+    Text: "V\xE1 at\xE9 a UNIDADE DE SA\xDADE (US) do bairro (ESF ou UBS) para fazer
+      uma roda de conversa na escola de voc\xEAs sobre o assunto.\r"
     IsComplete: 0
     GoalPositions:
     - {x: 11, y: 4}
   - NormalIcon: {fileID: 21300000, guid: 7664d3fa771fceb4e8920f93c01bfe51, type: 3}
     CompletedIcon: {fileID: 21300000, guid: 2032684e020958b4eae11dee8832009b, type: 3}
     Name: Escola
+    Text: "Conversa marcada! Agora voc\xEA deve ir at\xE9 a ESCOLA para participar."
     IsComplete: 0
     GoalPositions:
     - {x: 6, y: 10}
     - {x: 7, y: 10}
+  LockedIcon: {fileID: 21300000, guid: 0cee765ea05909b4db6e4ea23f3dfe7f, type: 3}

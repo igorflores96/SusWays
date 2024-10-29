@@ -25,18 +25,28 @@ MonoBehaviour:
   - NormalIcon: {fileID: 21300000, guid: 1fb176f13ed1c2f4f93d287cf6f0aaa2, type: 3}
     CompletedIcon: {fileID: 21300000, guid: 380d858f0ff3fd04285f861c5d3fca91, type: 3}
     Name: Delegacia
+    Text: "Voc\xEA percebe que um colega est\xE1 faltando \xE0s aulas e ganhando
+      dinheiro sem trabalhar. Certo dia voc\xEA fica sabendo que ele foi preso por
+      vender drogas e est\xE1 na delegacia! Voc\xEA precisa ir at\xE9 l\xE1 visitar
+      seu colega."
     IsComplete: 0
     GoalPositions:
     - {x: 15, y: 1}
   - NormalIcon: {fileID: 21300000, guid: fd148a3e64e693041ac2f504d0ee6f26, type: 3}
     CompletedIcon: {fileID: 21300000, guid: 46c01be7a770f79419513e6cf1efd5ae, type: 3}
     Name: CREAS
+    Text: "Voc\xEA descobriu que o juizado de menores determinou para ele uma medida
+      socioeducativa e que ele fosse atendido no CENTRO DE REFER\xCANCIA ESPECIALIZADO
+      EM ASSIST\xCANCIA SOCIAL (CREAS)."
     IsComplete: 0
     GoalPositions:
     - {x: 15, y: 9}
   - NormalIcon: {fileID: 21300000, guid: 548f4c8253bfd0241b0381ac8b08c542, type: 3}
     CompletedIcon: {fileID: 21300000, guid: 836d304bd38247a44b2d36bf4241abce, type: 3}
     Name: "Pra\xE7a"
+    Text: "A medida socioeducativa do seu colega \xE9 varrer a pra\xE7a da cidade
+      duas vezes por semana por tr\xEAs meses, voc\xEA decide ajud\xE1-lo. V\xE1
+      at\xE9 a PRA\xC7A conversar com seu colega."
     IsComplete: 0
     GoalPositions:
     - {x: 10, y: 6}
@@ -58,7 +68,10 @@ MonoBehaviour:
   - NormalIcon: {fileID: 21300000, guid: 7664d3fa771fceb4e8920f93c01bfe51, type: 3}
     CompletedIcon: {fileID: 21300000, guid: 2032684e020958b4eae11dee8832009b, type: 3}
     Name: Escola
+    Text: "Ap\xF3s toda a sua ajuda, seu colega cumpriu a medida socioeducativa!
+      Agora, leve-o para a ESCOLA e ajude-o a se enturmar."
     IsComplete: 0
     GoalPositions:
     - {x: 6, y: 10}
     - {x: 7, y: 10}
+  LockedIcon: {fileID: 21300000, guid: 0cee765ea05909b4db6e4ea23f3dfe7f, type: 3}

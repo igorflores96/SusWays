@@ -26,6 +26,10 @@ MonoBehaviour:
   - NormalIcon: {fileID: 21300000, guid: 60c2d1c4cbcd5354888e42c5fb108a7a, type: 3}
     CompletedIcon: {fileID: 21300000, guid: 55d3a5771eef91f4a9e2f78e65576773, type: 3}
     Name: Hospital
+    Text: "Durante uma conversa com seu primo ele come\xE7a a ficar com medo e pergunta
+      se voc\xEA est\xE1 ouvindo as vozes. Como assim? Mesmo prestando muita aten\xE7\xE3o
+      voc\xEA n\xE3o consegue ouvir nada. Ele est\xE1 tendo uma alucina\xE7\xE3o.
+      Para ajud\xE1-lo, voc\xEA deve ir ao HOSPITAL."
     IsComplete: 0
     GoalPositions:
     - {x: 20, y: 8}
@@ -33,18 +37,26 @@ MonoBehaviour:
   - NormalIcon: {fileID: 21300000, guid: 0988b09b77aa95a4b9cd03b611dea6d6, type: 3}
     CompletedIcon: {fileID: 21300000, guid: 16e505f8b25fe6a47886da1725efe0c8, type: 3}
     Name: CAPS
+    Text: "Voc\xEAs foram liberados e encaminhados para o CENTRO DE ATEN\xC7\xC3O
+      PSICOSSOCIAL (CAPS), onde ele ter\xE1 atendimento psicol\xF3gico e tratamento
+      psiqui\xE1trico."
     IsComplete: 0
     GoalPositions:
     - {x: 21, y: 12}
   - NormalIcon: {fileID: 21300000, guid: 95ec12002ccc7a84d898dc56c228246d, type: 3}
     CompletedIcon: {fileID: 21300000, guid: 4cfdd14b04c39c34eb1843f28bcf8f0f, type: 3}
     Name: "Farm\xE1cia Municipal"
+    Text: "Voc\xEAs receberam uma receita para retirar medicamentos na FARM\xC1CIA
+      MUNICIPAL, v\xE1 at\xE9 l\xE1."
     IsComplete: 0
     GoalPositions:
     - {x: 11, y: 13}
   - NormalIcon: {fileID: 21300000, guid: 5b9806d6d6fbdc1488a4bc6b7a4a71bb, type: 3}
     CompletedIcon: {fileID: 21300000, guid: 232f45f35d645d349a6a2d6757df903e, type: 3}
     Name: "Unidade de Sa\xFAde"
+    Text: "Agora seu primo precisa ter acompanhamento e evitar novas alucina\xE7\xF5es.
+      Voc\xEAs precisam ir \xE0 UNIDADE DE SA\xDADE do bairro (ESF ou UBS). "
     IsComplete: 0
     GoalPositions:
     - {x: 11, y: 4}
+  LockedIcon: {fileID: 21300000, guid: 0cee765ea05909b4db6e4ea23f3dfe7f, type: 3}

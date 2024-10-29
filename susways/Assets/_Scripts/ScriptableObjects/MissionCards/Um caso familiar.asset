@@ -27,18 +27,27 @@ MonoBehaviour:
   - NormalIcon: {fileID: 21300000, guid: 5b9806d6d6fbdc1488a4bc6b7a4a71bb, type: 3}
     CompletedIcon: {fileID: 21300000, guid: 232f45f35d645d349a6a2d6757df903e, type: 3}
     Name: "Unidade de Sa\xFAde"
+    Text: "Voc\xEA faz parte de uma fam\xEDlia que conversa muito e \xE9 acolhedora,
+      mas ultimamente sua irm\xE3 anda desanimada, sem querer ir \xE0 escola. Voc\xEA
+      e seus pais, preocupados, v\xE3o com ela \xE0 UNIDADE DE SA\xDADE (US)."
     IsComplete: 0
     GoalPositions:
     - {x: 11, y: 4}
   - NormalIcon: {fileID: 21300000, guid: 28c0d33278cffa44fbd6af3b88e1dd28, type: 3}
     CompletedIcon: {fileID: 21300000, guid: 5fa850f8396e1af449b49ed5b2f57204, type: 3}
     Name: CAPSi
+    Text: "Durante o atendimento, os profissionais de sa\xFAde percebem seu sofrimento
+      ps\xEDquico e encaminham para um acolhimento no CENTRO DE ATEN\xC7\xC3O PSICOSSOCIAL
+      INFANTIL (CAPSi)."
     IsComplete: 0
     GoalPositions:
     - {x: 21, y: 4}
   - NormalIcon: {fileID: 21300000, guid: 7664d3fa771fceb4e8920f93c01bfe51, type: 3}
     CompletedIcon: {fileID: 21300000, guid: 2032684e020958b4eae11dee8832009b, type: 3}
     Name: Escola
+    Text: "Ap\xF3s alguns atendimentos, sua irm\xE3 relata para a fam\xEDlia que
+      est\xE1 sofrendo racismo na escola por conta de sua cor de pele e de seu cabelo.
+      Juntos, voc\xEAs v\xE3o at\xE9 a ESCOLA para tomar conhecimento da situa\xE7\xE3o."
     IsComplete: 0
     GoalPositions:
     - {x: 6, y: 10}
@@ -46,6 +55,9 @@ MonoBehaviour:
   - NormalIcon: {fileID: 21300000, guid: 1fb176f13ed1c2f4f93d287cf6f0aaa2, type: 3}
     CompletedIcon: {fileID: 21300000, guid: 380d858f0ff3fd04285f861c5d3fca91, type: 3}
     Name: Delegacia
+    Text: "Voc\xEAs entendem como tudo aconteceu e s\xE3o aconselhados a procurar
+      a DELEGACIA, j\xE1 que o racismo \xE9 um crime grave e deve ser denunciado."
     IsComplete: 0
     GoalPositions:
     - {x: 15, y: 1}
+  LockedIcon: {fileID: 21300000, guid: 0cee765ea05909b4db6e4ea23f3dfe7f, type: 3}

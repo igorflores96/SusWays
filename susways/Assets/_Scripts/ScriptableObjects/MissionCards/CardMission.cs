@@ -8,4 +8,5 @@ public class CardMission : ScriptableObject
     [TextArea(5, 10)]
     public string Text;
     public List<MissionObjective> Objectives;
+    public Sprite LockedIcon;
 }

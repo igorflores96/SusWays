@@ -27,6 +27,9 @@ MonoBehaviour:
   - NormalIcon: {fileID: 21300000, guid: 7664d3fa771fceb4e8920f93c01bfe51, type: 3}
     CompletedIcon: {fileID: 21300000, guid: 2032684e020958b4eae11dee8832009b, type: 3}
     Name: Escola
+    Text: "Voc\xEA descobre que uma das suas colegas de escola est\xE1 gr\xE1vida.
+      Para ajud\xE1-la, voc\xEA deve convenc\xEA-la a conversar com a orientadora
+      da ESCOLA."
     IsComplete: 0
     GoalPositions:
     - {x: 6, y: 10}
@@ -34,19 +37,29 @@ MonoBehaviour:
   - NormalIcon: {fileID: 21300000, guid: 5b9806d6d6fbdc1488a4bc6b7a4a71bb, type: 3}
     CompletedIcon: {fileID: 21300000, guid: 232f45f35d645d349a6a2d6757df903e, type: 3}
     Name: "Unidade de Sa\xFAde"
+    Text: "Ap\xF3s a conversa, voc\xEAs falam com a m\xE3e dela e decidem procurar
+      a UNIDADE DE SA\xDADE (US) do bairro (ESF ou UBS). Aqui, o m\xE9dico explica
+      que devido ela ser adolescente, o corpo ainda n\xE3o est\xE1 pronto para uma
+      gravidez, sendo sua gesta\xE7\xE3o de alto risco."
     IsComplete: 0
     GoalPositions:
     - {x: 11, y: 4}
   - NormalIcon: {fileID: 21300000, guid: 19ac172653d36e040ab8df49b9c2e782, type: 3}
     CompletedIcon: {fileID: 21300000, guid: 0653e28a2c3851047a07ba8fafbd4ce2, type: 3}
     Name: Centro Materno Infantil
+    Text: "Precisamos ficar atentos \xE0 gravidez de risco! Agora sua colega precisa
+      ser encaminhada ao CENTRO MATERNO INFANTIL, para ser acompanhada por profissionais
+      da ginecologia e obstetr\xEDcia."
     IsComplete: 0
     GoalPositions:
     - {x: 15, y: 14}
   - NormalIcon: {fileID: 21300000, guid: 60c2d1c4cbcd5354888e42c5fb108a7a, type: 3}
     CompletedIcon: {fileID: 21300000, guid: 55d3a5771eef91f4a9e2f78e65576773, type: 3}
     Name: Hospital
+    Text: "Chegou o momento! passaram-se alguns meses e o beb\xEA vai nascer! Voc\xEA
+      deve ajud\xE1-la a ir para o HOSPITAL para o nascimento do beb\xEA."
     IsComplete: 0
     GoalPositions:
     - {x: 20, y: 8}
     - {x: 20, y: 7}
+  LockedIcon: {fileID: 21300000, guid: 0cee765ea05909b4db6e4ea23f3dfe7f, type: 3}
