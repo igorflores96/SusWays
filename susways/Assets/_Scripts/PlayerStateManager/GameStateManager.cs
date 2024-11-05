@@ -237,6 +237,9 @@ public class GameStateManager : MonoBehaviour
             _matchStatePlayers.Remove(player);
         }
 
+        if(_matchStatePlayers.Count == 1 && !Dice.Instance.IsMegaDice)
+            EventManager.EnableMegaDice();
+
         return isEndGame;  
     }
 

@@ -57,12 +57,10 @@ public class GameplayUIManager : MonoBehaviour
 
 
     private bool shouldOpenCanvas;
-    private bool shouldChangeMissionTexts;
 
     private void OnEnable() 
     {
         shouldOpenCanvas = true;
-        shouldChangeMissionTexts = true;
 
         _nextTunButton.onClick.AddListener(UpdateNextTurn);
         _showMissionButton.onClick.AddListener(CheckMissionCanvas);

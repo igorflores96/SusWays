@@ -27,6 +27,7 @@ public static class EventManager
     public static event Action OnDiceEnd;
     public static event Action OnPlayerHaveBonus;
     public static event Action OnPlayerEnableRollDice;
+    public static event Action OnPlayerNeedMegaDice;
 
 
 
@@ -307,6 +308,18 @@ public static class EventManager
         else
         {
             Debug.LogWarning("No listeners for OnPlayerEnableRollDice event.");
+        }
+    }
+
+    public static void EnableMegaDice() //Players to dice active the feedback
+    {
+        if (OnPlayerNeedMegaDice != null)
+        {
+            OnPlayerNeedMegaDice();
+        }
+        else
+        {
+            Debug.LogWarning("No listeners for OnPlayerNeedMegaDice event.");
         }
     }
 }

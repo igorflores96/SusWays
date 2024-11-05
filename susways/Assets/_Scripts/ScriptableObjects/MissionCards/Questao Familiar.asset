@@ -28,8 +28,8 @@ MonoBehaviour:
   - NormalIcon: {fileID: 21300000, guid: 7664d3fa771fceb4e8920f93c01bfe51, type: 3}
     CompletedIcon: {fileID: 21300000, guid: 2032684e020958b4eae11dee8832009b, type: 3}
     Name: Escola
-    Text: "Voc\xEA deve acompanhar uma nutricionista do PSE at\xE9 uma ESCOLA pesar
-      e medir os alunos."
+    Text: "Voc\xEA deve acompanhar uma nutricionista do PSE at\xE9 uma ESCOLA para
+      pesar e medir os alunos em sala de aula."
     IsComplete: 0
     GoalPositions:
     - {x: 6, y: 10}
