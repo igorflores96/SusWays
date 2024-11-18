@@ -54,9 +54,9 @@ MonoBehaviour:
   - NormalIcon: {fileID: 21300000, guid: b48482d189abd0d4e8cfe4877280469e, type: 3}
     CompletedIcon: {fileID: 21300000, guid: 618fae3b3d91d78448676e03ef2a94fa, type: 3}
     Name: CAPSad
-    Text: "John ent\xE3o \xE9 encaminhado ao CENTRO DE ATEN\xC7\xC3O PSICOSSOCIAL
-      \xC1LCOOL E DROGAS (CAPSad) para participar de grupo de apoio e receber atendimento
-      e medicamentos para o alcoolismo."
+    Text: "John agora foi encaminhado ao CENTRO DE ATEN\xC7\xC3O PSICOSSOCIAL \xC1LCOOL
+      E DROGAS (CAPSad) para participar de grupo de apoio e receber atendimento e
+      medicamentos para o alcoolismo."
     IsComplete: 0
     GoalPositions:
     - {x: 8, y: 2}

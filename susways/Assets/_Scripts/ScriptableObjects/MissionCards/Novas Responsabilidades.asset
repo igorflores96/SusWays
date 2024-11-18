@@ -38,26 +38,27 @@ MonoBehaviour:
     CompletedIcon: {fileID: 21300000, guid: 232f45f35d645d349a6a2d6757df903e, type: 3}
     Name: "Unidade de Sa\xFAde"
     Text: "Ap\xF3s a conversa, voc\xEAs falam com a m\xE3e dela e decidem procurar
-      a UNIDADE DE SA\xDADE (US) do bairro (ESF ou UBS). Aqui, o m\xE9dico explica
-      que devido ela ser adolescente, o corpo ainda n\xE3o est\xE1 pronto para uma
-      gravidez, sendo sua gesta\xE7\xE3o de alto risco."
+      a UNIDADE DE SA\xDADE (US) do bairro (ESF ou UBS). V\xE1 at\xE9 l\xE1 para
+      acompanhar sua amiga."
     IsComplete: 0
     GoalPositions:
     - {x: 11, y: 4}
   - NormalIcon: {fileID: 21300000, guid: 19ac172653d36e040ab8df49b9c2e782, type: 3}
     CompletedIcon: {fileID: 21300000, guid: 0653e28a2c3851047a07ba8fafbd4ce2, type: 3}
     Name: Centro Materno Infantil
-    Text: "Precisamos ficar atentos \xE0 gravidez de risco! Agora sua colega precisa
-      ser encaminhada ao CENTRO MATERNO INFANTIL, para ser acompanhada por profissionais
-      da ginecologia e obstetr\xEDcia."
+    Text: "Na consulta, o m\xE9dico explica que devido ser adolescente, o corpo n\xE3o
+      est\xE1 preparado para uma gesta\xE7\xE3o. Precisamos ficar atentos \xE0 gravidez
+      de risco! Sua colega precisa ser encaminhada ao CENTRO MATERNO INFANTIL, para
+      ser acompanhada por profissionais da ginecologia e obstetr\xEDcia."
     IsComplete: 0
     GoalPositions:
     - {x: 15, y: 14}
   - NormalIcon: {fileID: 21300000, guid: 60c2d1c4cbcd5354888e42c5fb108a7a, type: 3}
     CompletedIcon: {fileID: 21300000, guid: 55d3a5771eef91f4a9e2f78e65576773, type: 3}
     Name: Hospital
-    Text: "Chegou o momento! passaram-se alguns meses e o beb\xEA vai nascer! Voc\xEA
-      deve ajud\xE1-la a ir para o HOSPITAL para o nascimento do beb\xEA."
+    Text: "Voc\xEAs fizeram os acompanhamos necess\xE1rios e chegou o momento! passaram-se
+      alguns meses e o beb\xEA vai nascer! Voc\xEA deve ajud\xE1-la a ir para o HOSPITAL
+      para o nascimento do beb\xEA."
     IsComplete: 0
     GoalPositions:
     - {x: 20, y: 8}

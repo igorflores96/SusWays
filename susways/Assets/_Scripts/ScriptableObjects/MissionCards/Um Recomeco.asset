@@ -38,8 +38,8 @@ MonoBehaviour:
     CompletedIcon: {fileID: 21300000, guid: 232f45f35d645d349a6a2d6757df903e, type: 3}
     Name: "Unidade de Sa\xFAde"
     Text: "Voc\xEAs descobrem que para garantir o recebimento do Bolsa Fam\xEDlia,
-      v\xE3o at\xE9 uma UNIDADE DE SA\xDADE (US) realizar vacinas e pesagem das crian\xE7as
-      da fam\xEDlia."
+      precisam realizar vacinas e pesagem das crian\xE7as da fam\xEDlia. V\xE3o at\xE9
+      uma UNIDADE DE SA\xDADE (US) para receber os servi\xE7os."
     IsComplete: 0
     GoalPositions:
     - {x: 11, y: 4}

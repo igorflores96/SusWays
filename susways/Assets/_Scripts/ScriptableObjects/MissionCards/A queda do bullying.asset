@@ -26,8 +26,9 @@ MonoBehaviour:
   - NormalIcon: {fileID: 21300000, guid: 19ac172653d36e040ab8df49b9c2e782, type: 3}
     CompletedIcon: {fileID: 21300000, guid: 0653e28a2c3851047a07ba8fafbd4ce2, type: 3}
     Name: Centro Materno Infantil
-    Text: "Seu colega vinha sofrendo bullying devido ao seu mau h\xE1lito. Certo
-      dia, ele desmaia e \xE9 levado desacordado ao CENTRO MATERNO INFANTIL."
+    Text: "Seu amigo da colega vinha sofrendo bullying devido ao seu mau h\xE1lito.
+      Certo dia, ele desmaia e \xE9 levado desacordado ao CENTRO MATERNO INFANTIL,
+      voc\xEA deve acompanh\xE1-lo."
     IsComplete: 0
     GoalPositions:
     - {x: 15, y: 14}
@@ -36,25 +37,26 @@ MonoBehaviour:
     Name: "Unidade de Sa\xFAde"
     Text: "Durante o atendimento, a equipe multidisciplinar suspeita de uma doen\xE7a
       chamada Diabetes Mellitus (DM). Ap\xF3s ser atendido, ele \xE9 encaminhado
-      a UNIDADE DE SA\xDADE - US (UBS ou ESF), onde fez exames que confirmam a DM."
+      a UNIDADE DE SA\xDADE - US (UBS ou ESF). Ele pede que voc\xEA v\xE1 com ele
+      at\xE9 l\xE1."
     IsComplete: 0
     GoalPositions:
     - {x: 11, y: 4}
   - NormalIcon: {fileID: 21300000, guid: 95ec12002ccc7a84d898dc56c228246d, type: 3}
     CompletedIcon: {fileID: 21300000, guid: 4cfdd14b04c39c34eb1843f28bcf8f0f, type: 3}
     Name: "Farm\xE1cia Municipal"
-    Text: "Com esse diagn\xF3stico, v\xE1 com ele \xE0 FARM\xC1CIA MUNICIPAL para
-      retirar medicamentos."
+    Text: "Na consulta, a DM \xE9 confirmada. Com esse diagn\xF3stico, v\xE1 com
+      ele \xE0 FARM\xC1CIA MUNICIPAL para retirar medicamentos."
     IsComplete: 0
     GoalPositions:
     - {x: 11, y: 13}
   - NormalIcon: {fileID: 21300000, guid: 7664d3fa771fceb4e8920f93c01bfe51, type: 3}
     CompletedIcon: {fileID: 21300000, guid: 2032684e020958b4eae11dee8832009b, type: 3}
     Name: Escola
-    Text: "Voc\xEA sabe que bullying \xE9 um tipo de viol\xEAncia, ent\xE3o v\xE1
-      at\xE9 a ESCOLA denunciar essa pr\xE1tica. A dire\xE7\xE3o da escola entra
-      em contato com a unidade de sa\xFAde para realizar palestras do Programa de
-      Sa\xFAde na Escola sobre a DM e contra o bullying."
+    Text: "Ap\xF3s o tratamento do seu amigo, \xE9 hora de acabar com o bullying,
+      que \xE9 um tipo de viol\xEAncia. V\xE1 at\xE9 a ESCOLA denunciar essa pr\xE1tica
+      para que a dire\xE7\xE3o da escola realize palestras do Programa de Sa\xFAde
+      na Escola sobre a DM e contra o bullying."
     IsComplete: 0
     GoalPositions:
     - {x: 6, y: 10}

@@ -35,9 +35,8 @@ MonoBehaviour:
   - NormalIcon: {fileID: 21300000, guid: 0dfb1e42504824d479ea5f60a74078ce, type: 3}
     CompletedIcon: {fileID: 21300000, guid: 50f8ce52b9781c34e915df39c4ebb120, type: 3}
     Name: Centro de Atendimento a Sorologia
-    Text: "Ela recebeu um resultado para HIV positivo e ela \xE9 encaminhada para
-      o CENTRO DE ATENDIMENTO SOROLOGIA para receber informa\xE7\xF5es e atendimento
-      especializado."
+    Text: "Ela recebeu um resultado para HIV positivo e foi encaminhada para o CENTRO
+      DE ATENDIMENTO SOROLOGIA para receber informa\xE7\xF5es e atendimento especializado."
     IsComplete: 0
     GoalPositions:
     - {x: 5, y: 7}

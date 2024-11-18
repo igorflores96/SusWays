@@ -37,16 +37,17 @@ MonoBehaviour:
   - NormalIcon: {fileID: 21300000, guid: 5b9806d6d6fbdc1488a4bc6b7a4a71bb, type: 3}
     CompletedIcon: {fileID: 21300000, guid: 232f45f35d645d349a6a2d6757df903e, type: 3}
     Name: "Unidade de Sa\xFAde"
-    Text: "Voc\xEA deve acompanhar os irm\xE3os at\xE9 a UNIDADE DE SA\xDADE (US)
-      para uma consulta."
+    Text: "Voc\xEAs identificaram que dois irm\xE3os estavam com peso abaixo do esperado
+      para a idade. Acompanhe os irm\xE3os at\xE9 a UNIDADE DE SA\xDADE (US) para
+      uma consulta."
     IsComplete: 0
     GoalPositions:
     - {x: 11, y: 4}
   - NormalIcon: {fileID: 21300000, guid: b48482d189abd0d4e8cfe4877280469e, type: 3}
     CompletedIcon: {fileID: 21300000, guid: 618fae3b3d91d78448676e03ef2a94fa, type: 3}
     Name: CAPSad
-    Text: "Voc\xEA descobre que o pai, respons\xE1vel pelo sustento da fam\xEDlia,
-      \xE9 alcoolista e gastava todo dinheiro no bar. Sua equipe multiprofissional
+    Text: "Durante a consulta. voc\xEA descobre que o pai, respons\xE1vel pelo sustento
+      da fam\xEDlia, \xE9 alcoolista e gastava todo dinheiro no bar. Sua equipe multiprofissional
       deve encaminh\xE1-lo para o CENTRO DE ATEN\xC7\xC3O PSICOSSOCIAL \xC1LCOOL
       E DROGAS (CAPSad), para tratamento da depend\xEAncia."
     IsComplete: 0
@@ -55,10 +56,10 @@ MonoBehaviour:
   - NormalIcon: {fileID: 21300000, guid: fd148a3e64e693041ac2f504d0ee6f26, type: 3}
     CompletedIcon: {fileID: 21300000, guid: 46c01be7a770f79419513e6cf1efd5ae, type: 3}
     Name: CREAS
-    Text: "Agora, por causa da neglig\xEAncia, voc\xEA deve entrar em contato com
-      o CENTRO DE REFER\xCANCIA ESPECIALIZADA EM ASSIST\xCANCIA SOCIAL (CREAS), para
-      a fam\xEDlia receber acolhimento, atendimento psicol\xF3gico e solicitar recebimento
-      de benef\xEDcios de programas sociais."
+    Text: "Agora, por causa da neglig\xEAncia do pai, voc\xEA deve entrar em contato
+      com o CENTRO DE REFER\xCANCIA ESPECIALIZADA EM ASSIST\xCANCIA SOCIAL (CREAS),
+      para a fam\xEDlia receber acolhimento, atendimento psicol\xF3gico e solicitar
+      recebimento de benef\xEDcios de programas sociais."
     IsComplete: 0
     GoalPositions:
     - {x: 15, y: 9}
