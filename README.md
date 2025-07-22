@@ -53,6 +53,8 @@ Promover **educação em saúde pública** por meio da gamificação, reforçand
 
 O jogo foi testado em duas escolas da rede pública de Alvorada (RS), com mais de **25 estudantes** participando e avaliando os elementos gráficos, clareza das informações e intuitividade da gameplay.
 
+> 📄 Veja os resultados completos no [artigo do TCC (PDF)](Article/Projeto%20Final%20-%20Igor%20Flores.pdf)
+
 
 ## 🎓 Créditos
 
